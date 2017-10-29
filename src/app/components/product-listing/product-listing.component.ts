@@ -12,4 +12,8 @@ export class ProductListingComponent implements OnInit {
   ngOnInit() {
   }
 
+  productDetail(){
+  	
+  }
+
 }

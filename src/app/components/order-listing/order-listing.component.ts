@@ -12,4 +12,9 @@ export class OrderListingComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  orderDetail(){
+  	
+  }
+
 }
