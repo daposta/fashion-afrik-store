@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import {HttpModule,  Http } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -79,7 +79,7 @@ const appRoutes: Routes = [
     MyProfileComponent
   ],
   imports: [
-    BrowserModule, HttpModule ,FormsModule, RouterModule.forRoot(appRoutes, {}) ,
+    BrowserModule, HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}) ,
   ],
   providers: [],
   bootstrap: [AppComponent]

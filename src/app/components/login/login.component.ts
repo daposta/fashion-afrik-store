@@ -13,7 +13,8 @@ export class LoginComponent implements OnInit {
   constructor(fb: FormBuilder) {
 
   		this.loginForm = fb.group({
-  			'email':['', Validators.required]
+  			'email':['', Validators.required],
+  			'password':['', Validators.required]
   		});
    }
 
