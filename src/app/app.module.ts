@@ -35,14 +35,19 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
 
 const appRoutes: Routes = [
   
-    { path: '', component: HomeComponent ,  },
+    { path: '', component: DashboardComponent ,  },
     { path: 'login', component: LoginComponent },
     { path: 'products', component: ProductListingComponent ,},
-    { path: 'products/:id', component: ProductDetailComponent ,},
+    { path: 'new-product', component: NewProductComponent ,},
+    { path: 'products/detail', component: ProductDetailComponent ,},
     { path: 'orders', component: OrderListingComponent ,},
-    { path: 'order/:id', component: OrderDetailComponent ,},
+    { path: 'order/detail', component: OrderDetailComponent ,},
     { path: 'settings', component: SettingsComponent ,},
     { path: 'forgot-password', component: ForgotPasswordComponent ,},
+    { path: 'categorys', component: OrderListingComponent ,},
+    { path: 'new-category', component: NewCategoryComponent ,},
+    { path: 'inventory', component: InventoryListingComponent ,},
+    { path: 'inventory/detail', component: InventoryDetailComponent ,},
 ]
 
 
