@@ -25,6 +25,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { InventoryListingComponent } from './components/inventory-listing/inventory-listing.component';
 import { HeaderComponent } from './components/header/header.component';
+import { CustomersListingComponent } from './components/customers-listing/customers-listing.component';
+import { CustomerDetailComponent } from './components/customer-detail/customer-detail.component';
+import { InventoryDetailComponent } from './components/inventory-detail/inventory-detail.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
 
 
 
@@ -63,7 +67,11 @@ const appRoutes: Routes = [
     FooterComponent,
     DashboardComponent,
     InventoryListingComponent,
-    HeaderComponent
+    HeaderComponent,
+    CustomersListingComponent,
+    CustomerDetailComponent,
+    InventoryDetailComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule, HttpModule ,FormsModule, RouterModule.forRoot(appRoutes, {}) ,
