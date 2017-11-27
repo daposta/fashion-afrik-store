@@ -17,6 +17,14 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { SettingsComponent } from './components/settings/settings.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { CategoriesListingComponent } from './components/categories-listing/categories-listing.component';
+import { NewCategoryComponent } from './components/new-category/new-category.component';
+import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { InventoryListingComponent } from './components/inventory-listing/inventory-listing.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 
@@ -47,7 +55,15 @@ const appRoutes: Routes = [
     ProductDetailComponent,
     SettingsComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    CategoriesListingComponent,
+    NewCategoryComponent,
+    CategoryDetailComponent,
+    SidebarComponent,
+    FooterComponent,
+    DashboardComponent,
+    InventoryListingComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule, HttpModule ,FormsModule, RouterModule.forRoot(appRoutes, {}) ,

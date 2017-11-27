@@ -17,4 +17,8 @@ export class OrderListingComponent implements OnInit {
   	
   }
 
+  fetchOrders(){
+  	
+  }
+
 }
