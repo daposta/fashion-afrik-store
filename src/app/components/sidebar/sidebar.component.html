@@ -1,240 +1,105 @@
-<!--<div class="sb-slidebar bg-black sb-right sb-style-overlay">
-    <div class="scrollable-content scrollable-slim-sidebar">
-        <div class="pad15A">
-            <a href="#" title="" data-toggle="collapse" data-target="#sidebar-toggle-1" class="popover-title">
-                Cloud status
-                <span class="caret"></span>
-            </a>
-            <div id="sidebar-toggle-1" class="collapse in">
-                <div class="pad15A">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="text-center font-gray pad5B text-transform-upr font-size-12">New visits</div>
-                            <div class="chart-alt-3 font-gray-dark" data-percent="55"><span>55</span>%</div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="text-center font-gray pad5B text-transform-upr font-size-12">Bounce rate</div>
-                            <div class="chart-alt-3 font-gray-dark" data-percent="46"><span>46</span>%</div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="text-center font-gray pad5B text-transform-upr font-size-12">Server load</div>
-                            <div class="chart-alt-3 font-gray-dark" data-percent="92"><span>92</span>%</div>
-                        </div>
-                    </div>
-                    <div class="divider mrg15T mrg15B"></div>
-                    <div class="text-center">
-                        <a href="#" class="btn center-div btn-info mrg5T btn-sm text-transform-upr updateEasyPieChart">
-                            <i class="glyph-icon icon-refresh"></i>
-                            Update charts
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="clear"></div>
-            <a href="#" title="" data-toggle="collapse" data-target="#sidebar-toggle-6" class="popover-title">
-                Latest transfers
-                <span class="caret"></span>
-            </a>
-            <div id="sidebar-toggle-6" class="collapse in">
-                <ul class="files-box">
-                    <li>
-                        <i class="files-icon glyph-icon font-red icon-file-archive-o"></i>
-                        <div class="files-content">
-                            <b>blog_export.zip</b>
-                            <div class="files-date">
-                                <i class="glyph-icon icon-clock-o"></i>
-                                added on <b>22.10.2014</b>
-                            </div>
-                        </div>
-                        <div class="files-buttons">
-                            <a href="#" class="btn btn-xs hover-info tooltip-button" data-placement="left" title="Download">
-                                <i class="glyph-icon icon-cloud-download"></i>
-                            </a>
-                            <a href="#" class="btn btn-xs hover-danger tooltip-button" data-placement="left" title="Delete">
-                                <i class="glyph-icon icon-times"></i>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <i class="files-icon glyph-icon icon-file-code-o"></i>
-                        <div class="files-content">
-                            <b>homepage-test.html</b>
-                            <div class="files-date">
-                                <i class="glyph-icon icon-clock-o"></i>
-                                added  <b>19.10.2014</b>
-                            </div>
-                        </div>
-                        <div class="files-buttons">
-                            <a href="#" class="btn btn-xs hover-info tooltip-button" data-placement="left" title="Download">
-                                <i class="glyph-icon icon-cloud-download"></i>
-                            </a>
-                            <a href="#" class="btn btn-xs hover-danger tooltip-button" data-placement="left" title="Delete">
-                                <i class="glyph-icon icon-times"></i>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <i class="files-icon glyph-icon font-yellow icon-file-image-o"></i>
-                        <div class="files-content">
-                            <b>monthlyReport.jpg</b>
-                            <div class="files-date">
-                                <i class="glyph-icon icon-clock-o"></i>
-                                added on <b>10.9.2014</b>
-                            </div>
-                        </div>
-                        <div class="files-buttons">
-                            <a href="#" class="btn btn-xs hover-info tooltip-button" data-placement="left" title="Download">
-                                <i class="glyph-icon icon-cloud-download"></i>
-                            </a>
-                            <a href="#" class="btn btn-xs hover-danger tooltip-button" data-placement="left" title="Delete">
-                                <i class="glyph-icon icon-times"></i>
-                            </a>
-                        </div>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <i class="files-icon glyph-icon font-green icon-file-word-o"></i>
-                        <div class="files-content">
-                            <b>new_presentation.doc</b>
-                            <div class="files-date">
-                                <i class="glyph-icon icon-clock-o"></i>
-                                added on <b>5.9.2014</b>
-                            </div>
-                        </div>
-                        <div class="files-buttons">
-                            <a href="#" class="btn btn-xs hover-info tooltip-button" data-placement="left" title="Download">
-                                <i class="glyph-icon icon-cloud-download"></i>
-                            </a>
-                            <a href="#" class="btn btn-xs hover-danger tooltip-button" data-placement="left" title="Delete">
-                                <i class="glyph-icon icon-times"></i>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="clear"></div>
-            <a href="#" title="" data-toggle="collapse" data-target="#sidebar-toggle-3" class="popover-title">
-                Tasks for today
-                <span class="caret"></span>
-            </a>
-            <div id="sidebar-toggle-3" class="collapse in">
-                <ul class="progress-box">
-                    <li>
-                        <div class="progress-title">
-                            New features development
-                            <b>87%</b>
-                        </div>
-                        <div class="progressbar-smaller progressbar" data-value="87">
-                            <div class="progressbar-value bg-azure">
-                                <div class="progressbar-overlay"></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="progress-title">
-                            Finishing uploading files
-                            <b>66%</b>
-                        </div>
-                        <div class="progressbar-smaller progressbar" data-value="66">
-                            <div class="progressbar-value bg-red">
-                                <div class="progressbar-overlay"></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="progress-title">
-                            Creating tutorials
-                            <b>58%</b>
-                        </div>
-                        <div class="progressbar-smaller progressbar" data-value="58">
-                            <div class="progressbar-value bg-blue-alt"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="progress-title">
-                            Frontend bonus theme
-                            <b>74%</b>
-                        </div>
-                        <div class="progressbar-smaller progressbar" data-value="74">
-                            <div class="progressbar-value bg-purple"></div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="clear"></div>
-            <a href="#" title="" data-toggle="collapse" data-target="#sidebar-toggle-4" class="popover-title">
-                Pending notifications
-                <span class="bs-label bg-orange tooltip-button" title="Label example">New</span>
-                <span class="caret"></span>
-            </a>
-            <div id="sidebar-toggle-4" class="collapse in">
-                <ul class="notifications-box notifications-box-alt">
-                    <li>
-                        <span class="bg-purple icon-notification glyph-icon icon-users"></span>
-                        <span class="notification-text">This is an error notification</span>
-                        <div class="notification-time">
-                            a few seconds ago
-                            <span class="glyph-icon icon-clock-o"></span>
-                        </div>
-                        <a href="#" class="notification-btn btn btn-xs btn-black tooltip-button" data-placement="left" title="View details">
-                            <i class="glyph-icon icon-arrow-right"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <span class="bg-warning icon-notification glyph-icon icon-ticket"></span>
-                        <span class="notification-text">This is a warning notification</span>
-                        <div class="notification-time">
-                            <b>15</b> minutes ago
-                            <span class="glyph-icon icon-clock-o"></span>
-                        </div>
-                        <a href="#" class="notification-btn btn btn-xs btn-black tooltip-button" data-placement="left" title="View details">
-                            <i class="glyph-icon icon-arrow-right"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <span class="bg-green icon-notification glyph-icon icon-random"></span>
-                        <span class="notification-text font-green">A success message example.</span>
-                        <div class="notification-time">
-                            <b>2 hours</b> ago
-                            <span class="glyph-icon icon-clock-o"></span>
-                        </div>
-                        <a href="#" class="notification-btn btn btn-xs btn-black tooltip-button" data-placement="left" title="View details">
-                            <i class="glyph-icon icon-arrow-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+
+    <div id="page-sidebar" style="height: 662px;">
+    <div id="header-logo" class="logo-bg">
+        <a href="index.html" class="logo-content-big" title="VogueAfriq">
+            VogueAfric
+            <span>Online store for fashion</span>
+        </a>
+        <a href="index.html" class="logo-content-small" title="VogueAfriq">
+            VogueAfric
+            <span>Online store for fashion</span>
+        </a>
+        <a id="close-sidebar" href="#" title="Close sidebar">
+            <i class="glyph-icon icon-angle-left"></i>
+        </a>
     </div>
-</div>-->
-<div id="loading">
-    <div class="svg-icon-loader">
-        <img src="../../assets/images/svg-loaders/bars.svg" width="40" alt="">
-    </div>
-</div>
-<div id="page-wrapper">
-    <div id="mobile-navigation">
-        <button id="nav-toggle" class="collapsed" data-toggle="collapse" data-target="#page-sidebar"><span></span></button>
-    </div>
-    <div id="page-sidebar">
-        <div id="header-logo" class="logo-bg">
-            <a href="index.html" class="logo-content-big" title="DelightUI">
-                Delight <i>UI</i>
-                <span>Material Design Dashboard Template</span>
-            </a>
-            <a href="index.html" class="logo-content-small" title="DelightUI">
-                Delight <i>UI</i>
-                <span>Material Design Dashboard Template</span>
-            </a>
-            <a id="close-sidebar" href="#" title="Close sidebar">
-                <i class="glyph-icon icon-outdent"></i>
-            </a>
-        </div>
         <div class="scroll-sidebar">
             <ul id="sidebar-menu">
-             
+                <li class="header"><span>Overview</span></li>
+                <li>
+                    <a href="index.html" title="Admin Dashboard">
+                        <i class="glyph-icon icon-linecons-tv"></i>
+                        <span>Admin dashboard</span>
+                    </a>
+                </li>
+                <li class="header"><span>Components</span></li>
+                <li>
+                    <a href="javascript:void(0);" title="Elements">
+                        <i class="glyph-icon icon-linecons-diamond"></i>
+                        <span>Elements</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li><a href="buttons.html" title="Buttons"><span>Buttons</span></a></li>
+                            <li><a href="labels-badges.html" title="Labels &amp; Badges"><span>Labels &amp; Badges</span></a></li>
+                            <li><a href="content-boxes.html" title="Content boxes"><span>Content boxes</span></a></li>
+                            <li><a href="icons.html" title="Icons"><span>Icons</span></a></li>
+                            <li><a href="nav-menus.html" title="Navigation menus"><span>Navigation menus</span></a></li>
+                            <li><a href="response-messages.html" title="Response messages"><span>Response messages</span></a></li>
+                            <li><a href="images.html" title="Images"><span>Images</span></a></li>
+                        </ul>
+                    </div><!-- .sidebar-submenu -->
+                </li>
+                <li>
+                    <a href="javascript:void(0);" title="Dashboard boxes">
+                        <i class="glyph-icon icon-linecons-lightbulb"></i>
+                        <span>Dashboard boxes</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li><a href="chart-boxes.html" title="Chart boxes"><span>Chart boxes</span></a></li>
+                            <li><a href="tile-boxes.html" title="Tile boxes"><span>Tile boxes</span></a></li>
+                            <li><a href="social-boxes.html" title="Social boxes"><span>Social boxes</span></a></li>
+                            <li><a href="panel-boxes.html" title="Panel boxes"><span>Panel boxes</span></a></li>
+                        </ul>
+                    </div><!-- .sidebar-submenu -->
+                </li>
+                <li>
+                    <a href="javascript:void(0);" title="Widgets">
+                        <i class="glyph-icon icon-linecons-wallet"></i>
+                        <span>Widgets</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li><a href="tabs.html" title="Responsive tabs"><span>Responsive tabs</span></a></li>
+                            <li><a href="collapsable.html" title="Collapsables"><span>Collapsable accordions</span></a></li>
+                            <li><a href="bs-carousel.html" title="Bootstrap Carousel"><span>Bootstrap carousel</span></a></li>
+                            <li><a href="calendar.html" title="Calendar"><span>Calendar</span></a></li>
+                            <li><a href="scrollbars.html" title="Custom scrollbars"><span>Custom scrollbars</span></a></li>
+                            <li><a href="modals.html" title="Modals"><span>Modals</span></a></li>
+                            <li><a href="notifications.html" title="Notifications"><span>Notifications</span></a></li>
+                            <li><a href="lazyload.html" title="Lazyload"><span>Lazyload</span></a></li>
+                            <li><a href="loading-feedback.html" title="Loading feedback"><span>Loading feedback</span></a></li>
+                            <li><a href="popovers-tooltips.html" title="Popovers &amp; Tooltips"><span>Popovers & Tooltips</span></a></li>
+                            <li><a href="progress-bars.html" title="Progress bars"><span>Progress bars</span></a></li>
+                            <li><a href="sortable-elements.html" title="Sortable elements"><span>Sortable elements</span></a></li>
+                        </ul>
+                    </div><!-- .sidebar-submenu -->
+                </li>
+                <li>
+                    <a href="javascript:void(0);" title="Forms UI">
+                        <i class="glyph-icon icon-linecons-eye"></i>
+                        <span>Forms UI</span>
+                    </a>
+                    <div class="sidebar-submenu">
+                        <ul>
+                            <li><a href="forms-elements.html" title="Form elements"><span>Form elements</span></a></li>
+                            <li><a href="forms-validation.html" title="Form validation"><span>Form validation</span></a></li>
+                            <li><a href="pickers.html" title="Pickers"><span>Pickers</span></a></li>
+                            <li><a href="sliders.html" title="Sliders"><span>Sliders</span></a></li>
+                            <li><a href="forms-wizard.html" title="Form wizards"><span>Form wizards</span></a></li>
+                            <li><a href="forms-masks.html" title="Form input masks"><span>Form input masks</span></a></li>
+                            <li><a href="image-crop.html" title="Image crop"><span>Image crop</span></a></li>
+                            <li><a href="dropzone-uploader.html" title="Dropzone uploader"><span>Dropzone uploader</span></a></li>
+                            <li><a href="multi-uploader.html" title="Multi uploader"><span>Multi uploader</span></a></li>
+                            <li><a href="input-knobs.html" title="Input knobs"><span>Input knobs</span></a></li>
+                            <li><a href="ckeditor.html" title="Ckeditor"><span>Ckeditor</span></a></li>
+                            <li><a href="summernote.html" title="Summernote"><span>Summernote</span></a></li>
+                            <li><a href="markdown.html" title="Markdown editor"><span>Markdown editor</span></a></li>
+                            <li><a href="inline-editor.html" title="Inline editor"><span>Inline editor</span></a></li>
+                        </ul>
+                    </div><!-- .sidebar-submenu -->
+                </li>
                 <li>
                     <a href="javascript:void(0);" title="Advanced tables">
                         <i class="glyph-icon icon-linecons-megaphone"></i>
@@ -366,5 +231,7 @@
                 </li>
             </ul><!-- #sidebar-menu -->
         </div>
-    </div>
-    </div>
+
+        </div>
+
+

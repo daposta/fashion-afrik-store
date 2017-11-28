@@ -1,731 +1,732 @@
-
-<!--<app-sidebar></app-sidebar>-->
-<div id="page-wrapper">
-
-    <div id="mobile-navigation">
-        <button id="nav-toggle" class="collapsed" data-toggle="collapse" data-target="#page-sidebar"><span></span></button>
-    </div>
-    <div id="page-content-wrapper">
-        <div id="page-content">
-            <app-header></app-header>
-            <div class="row mailbox-wrapper">
-                <div class="col-md-4">
-                    <div class="panel-layout">
-                        <div class="panel-box">
-                            <div class="panel-content image-box">
-                                <div class="ribbon">
-                                    <div class="bg-primary">Ribbon</div>
-                                </div>
-                                <div class="image-content font-white">
-                                    <div class="meta-box meta-box-bottom">
-                                        <img src="../../assets/image-resources/gravatar.jpg" alt="" class="meta-image img-bordered img-circle">
-                                        <h3 class="meta-heading">Alex Rosenberg</h3>
-                                        <h4 class="meta-subheading">Ultimate backend programmer</h4>
-                                    </div>
-                                </div>
-                                <img src="../../assets/image-resources/blurred-bg/blurred-bg-13.jpg" alt="">
+<div id="sb-site">
+    <div class="sb-slidebar bg-black sb-right sb-style-overlay">
+        <div class="scrollable-content scrollable-slim-sidebar">
+            <div class="pad15A">
+         
+                <a href="#" title="" data-toggle="collapse" data-target="#sidebar-toggle-4" class="popover-title">
+                    Pending notifications
+                    <span class="bs-label bg-orange tooltip-button" title="Label example">New</span>
+                    <span class="caret"></span>
+                </a>
+                <div id="sidebar-toggle-4" class="collapse in">
+                    <ul class="notifications-box notifications-box-alt">
+                        <li>
+                            <span class="bg-purple icon-notification glyph-icon icon-users"></span>
+                            <span class="notification-text">This is an error notification</span>
+                            <div class="notification-time">
+                                a few seconds ago
+                                <span class="glyph-icon icon-clock-o"></span>
                             </div>
-                            <div class="panel-content pad15A bg-white radius-bottom-all-4">
-                                <div class="clear profile-box">
-                                    <ul class="nav nav-pills nav-justified">
-                                        <li>
-                                            <a href="#" class="btn btn-sm bg-google">
-                                                <span class="glyph-icon icon-separator">
-                                                    <i class="glyph-icon icon-google-plus"></i>
-                                                </span>
-                                                <span class="button-content">
-                                                    Google+
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="btn btn-sm bg-facebook">
-                                                <span class="glyph-icon icon-separator">
-                                                    <i class="glyph-icon icon-facebook"></i>
-                                                </span>
-                                                <span class="button-content">
-                                                    Facebook
-                                                </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="btn btn-sm bg-twitter">
-                                                <span class="glyph-icon icon-separator">
-                                                    <i class="glyph-icon icon-twitter"></i>
-                                                </span>
-                                                <span class="button-content">
-                                                    Twitter
-                                                </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="mrg15T mrg15B"></div>
-                                <blockquote class="font-gray">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                                    <small>
-                                        Programmer at
-                                        <cite title="Delight">Delight</cite>
-                                    </small>
-                                </blockquote>
+                            <a href="#" class="notification-btn btn btn-xs btn-black tooltip-button" data-placement="left" title="View details">
+                                <i class="glyph-icon icon-arrow-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="bg-warning icon-notification glyph-icon icon-ticket"></span>
+                            <span class="notification-text">This is a warning notification</span>
+                            <div class="notification-time">
+                                <b>15</b> minutes ago
+                                <span class="glyph-icon icon-clock-o"></span>
                             </div>
-                        </div>
-                    </div>
-                    <div class="content-box mrg15B">
-                        <h3 class="content-box-header clearfix">
-                            Friends online
-                            <div class="font-size-11 float-right">
-                                <a href="#" title="">
-                                    <i class="glyph-icon mrg5R opacity-hover icon-plus"></i>
-                                </a>
-                                <a href="#" title="">
-                                    <i class="glyph-icon opacity-hover icon-cog"></i>
-                                </a>
+                            <a href="#" class="notification-btn btn btn-xs btn-black tooltip-button" data-placement="left" title="View details">
+                                <i class="glyph-icon icon-arrow-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="bg-green icon-notification glyph-icon icon-random"></span>
+                            <span class="notification-text font-green">A success message example.</span>
+                            <div class="notification-time">
+                                <b>2 hours</b> ago
+                                <span class="glyph-icon icon-clock-o"></span>
                             </div>
-                        </h3>
-                        <div class="content-box-wrapper text-center clearfix">
-                            <div class="status-badge mrg10A">
-                                <img class="img-circle" width="40" src="../../assets/image-resources/people/testimonial1.jpg" alt="">
-                                <div class="small-badge bg-red"></div>
-                            </div>
-                            <div class="status-badge mrg10A">
-                                <img class="img-circle" width="40" src="../../assets/image-resources/people/testimonial2.jpg" alt="">
-                                <div class="small-badge bg-orange"></div>
-                            </div>
-                            <div class="status-badge mrg10A">
-                                <img class="img-circle" width="40" src="../../assets/image-resources/people/testimonial3.jpg" alt="">
-                                <div class="small-badge bg-red"></div>
-                            </div>
-                            <div class="status-badge mrg10A">
-                                <img class="img-circle" width="40" src="../../assets/image-resources/people/testimonial4.jpg" alt="">
-                                <div class="small-badge bg-green"></div>
-                            </div>
-                            <div class="status-badge mrg10A">
-                                <img class="img-circle" width="40" src="../../assets/image-resources/people/testimonial5.jpg" alt="">
-                                <div class="small-badge bg-orange"></div>
-                            </div>
-                            <div class="status-badge mrg10A">
-                                <img class="img-circle" width="40" src="../../assets/image-resources/people/testimonial6.jpg" alt="">
-                                <div class="small-badge bg-red"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content-box mrg15B">
-                        <h3 class="content-box-header clearfix">
-                            Recent activity
-                            <div class="font-size-11 float-right">
-                                <a href="#" title="">
-                                    <i class="glyph-icon mrg5R opacity-hover icon-plus"></i>
-                                </a>
-                                <a href="#" title="">
-                                    <i class="glyph-icon opacity-hover icon-cog"></i>
-                                </a>
-                            </div>
-                        </h3>
-                        <div class="content-box-wrapper text-center clearfix">
-                            <div class="timeline-box timeline-box-right">
-                                <div class="tl-row">
-                                    <div class="tl-item">
-                                        <div class="tl-icon bg-yellow">
-                                            <i class="glyph-icon icon-eyedropper"></i>
-                                        </div>
-                                        <div class="popover left">
-                                            <div class="arrow"></div>
-                                            <div class="popover-content">
-                                                <div class="tl-label bs-label label-success">Meeting</div>
-                                                <p class="tl-content">Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.</p>
-                                                <div class="tl-time">
-                                                    <i class="glyph-icon icon-clock-o"></i>
-                                                    a few seconds ago
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tl-row">
-                                    <div class="tl-item">
-                                        <div class="tl-icon bg-blue">
-                                            <i class="glyph-icon icon-line-chart"></i>
-                                        </div>
-                                        <div class="popover left">
-                                            <div class="arrow"></div>
-                                            <div class="popover-content">
-                                                <div class="tl-label bs-label label-danger">Audio</div>
-                                                <p class="tl-content">Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.</p>
-                                                <div class="tl-time">
-                                                    <i class="glyph-icon icon-clock-o"></i>
-                                                    a few seconds ago
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tl-row">
-                                    <div class="tl-item">
-                                        <div class="tl-icon bg-blue">
-                                            <i class="glyph-icon icon-cab"></i>
-                                        </div>
-                                        <div class="popover left">
-                                            <div class="arrow"></div>
-                                            <div class="popover-content">
-                                                <div class="tl-label bs-label label-warning">Video</div>
-                                                <p class="tl-content">Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.</p>
-                                                <div class="tl-time">
-                                                    <i class="glyph-icon icon-clock-o"></i>
-                                                    a few seconds ago
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            <a href="#" class="notification-btn btn btn-xs btn-black tooltip-button" data-placement="left" title="View details">
+                                <i class="glyph-icon icon-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col-md-8">
-                    <div class="content-box">
-                        <div class="mail-header clearfix">
-                            <span class="mail-title">My Profile</span>
-                            <div class="btn-group">
-                                <a href="#" data-toggle="dropdown" class="btn btn-default btn-small dropdown-toggle"><span class="glyph-icon icon-caret-down"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </div>
-                            <div class="float-right col-md-4 pad0A">
-                                <div class="input-group">
-                                    <input type="text" class="form-control">
-                                    <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default" tabindex="-1">
-                                            <i class="glyph-icon icon-search"></i>
-                                        </button>
+            </div>
+        </div>
+    </div>
+    <div id="loading">
+        <div class="svg-icon-loader">
+            <img src="assets/images/svg-loaders/bars.svg" width="40" alt="">
+        </div>
+    </div>
+    <div id="page-wrapper">
+        <div id="mobile-navigation">
+            <button id="nav-toggle" class="collapsed" data-toggle="collapse" data-target="#page-sidebar"><span></span></button>
+        </div>
+       <app-sidebar></app-sidebar>
+        <div id="page-content-wrapper">
+            <div id="page-content">
+                <app-header></app-header>
+
+                <!-- Skycons -->
+                <script type="text/javascript" src="../../assets/widgets/skycons/skycons.js"></script>
+                <!-- Data tables -->
+                <!--<link rel="stylesheet" type="text/css" href="../../assets/widgets/datatable/datatable.css">-->
+                <script type="text/javascript" src="../../assets/widgets/datatable/datatable.js"></script>
+                <script type="text/javascript" src="../../assets/widgets/datatable/datatable-bootstrap.js"></script>
+                <script type="text/javascript" src="../../assets/widgets/datatable/datatable-tabletools.js"></script>
+                <script type="text/javascript">
+
+    /* Datatables basic */
+
+    $(document).ready(function() {
+        $('#datatable-example').dataTable();
+    });
+
+    /* Datatables hide columns */
+
+    $(document).ready(function() {
+        var table = $('#datatable-hide-columns').DataTable( {
+            "scrollY": "300px",
+            "paging": false
+        } );
+
+        $('#datatable-hide-columns_filter').hide();
+
+        $('a.toggle-vis').on( 'click', function (e) {
+            e.preventDefault();
+
+            // Get the column API object
+            var column = table.column( $(this).attr('data-column') );
+
+            // Toggle the visibility
+            column.visible( ! column.visible() );
+        } );
+    } );
+
+    /* Datatable row highlight */
+
+    $(document).ready(function() {
+        var table = $('#datatable-row-highlight').DataTable();
+
+        $('#datatable-row-highlight tbody').on( 'click', 'tr', function () {
+            $(this).toggleClass('tr-selected');
+        } );
+    });
+
+
+
+    $(document).ready(function() {
+        $('.dataTables_filter input').attr("placeholder", "Search...");
+    });
+
+                </script>
+                <!-- Chart.js -->
+                <script type="text/javascript" src="../../assets/widgets/charts/chart-js/chart-core.js"></script>
+                <script type="text/javascript" src="../../assets/widgets/charts/chart-js/chart-doughnut.js"></script>
+                <script type="text/javascript" src="../../assets/widgets/charts/chart-js/chart-demo-1.js"></script>
+                <!-- Flot charts -->
+                <script type="text/javascript" src="../../assets/widgets/charts/flot/flot.js"></script>
+                <script type="text/javascript" src="../../assets/widgets/charts/flot/flot-resize.js"></script>
+                <script type="text/javascript" src="../../assets/widgets/charts/flot/flot-stack.js"></script>
+                <script type="text/javascript" src="../../assets/widgets/charts/flot/flot-pie.js"></script>
+                <script type="text/javascript" src="../../assets/widgets/charts/flot/flot-tooltip.js"></script>
+                <script type="text/javascript" src="../../assets/widgets/charts/flot/flot-demo-1.js"></script>
+                <!-- Sparklines charts -->
+                <script type="text/javascript" src="../../assets/widgets/charts/sparklines/sparklines.js"></script>
+                <script type="text/javascript" src="../../assets/widgets/charts/sparklines/sparklines-demo.js"></script>
+                <!-- Owl carousel -->
+                <link rel="stylesheet" type="text/css" href="../../assets/widgets/owlcarousel/owlcarousel.css">
+                <script type="text/javascript" src="../../assets/widgets/owlcarousel/owlcarousel.js"></script>
+                <script type="text/javascript" src="../../assets/widgets/owlcarousel/owlcarousel-demo.js"></script>
+                <div id="page-title">
+                    <h2>Dashboard</h2>
+                    <p>The most complete user interface framework that can be used to create stunning admin dashboards and presentation websites.</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="#" title="Example tile shortcut" class="tile-box tile-box-shortcut btn-danger">
+                                    <span class="bs-badge badge-absolute">1</span>
+                                    <div class="tile-header">
+                                        Reach
                                     </div>
+                                    <div class="tile-content-wrapper">
+                                        <i class="glyph-icon icon-file-photo-o"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" title="Example tile shortcut" class="tile-box tile-box-shortcut btn-success">
+                                    <div class="tile-header">
+                                        Comments
+                                    </div>
+                                    <div class="tile-content-wrapper">
+                                        <i class="glyph-icon icon-desktop"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" title="Example tile shortcut" class="tile-box tile-box-shortcut btn-info">
+                                    <span class="bs-badge badge-absolute">2</span>
+                                    <div class="tile-header">
+                                        Reviews
+                                    </div>
+                                    <div class="tile-content-wrapper">
+                                        <i class="glyph-icon icon-download"></i>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" title="Example tile shortcut" class="tile-box tile-box-shortcut btn-warning">
+                                    <div class="tile-header">
+                                        Visitors
+                                    </div>
+                                    <div class="tile-content-wrapper">
+                                        <i class="glyph-icon icon-code-fork"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="panel mrg20T">
+                            <div class="panel-body">
+                                <h3 class="title-hero">
+                                    Weekly Sales
+                                </h3>
+                                <div class="example-box-wrapper">
+                                    <div id="data-example-1" class="mrg20B" style="width: 100%; height: 300px;"></div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="content-box bg-white post-box">
-                        <textarea name="" class="textarea-autosize" placeholder="What are you doing right now?"></textarea>
-                        <div class="button-pane">
-                            <a href="#" class="btn btn-md btn-link hover-white" title="">
-                                <i class="glyph-icon icon-volume-down"></i>
-                            </a>
-                            <a href="#" class="btn btn-md btn-link hover-white" title="">
-                                <i class="glyph-icon icon-video-camera"></i>
-                            </a>
-                            <a href="#" class="btn btn-md btn-link hover-white" title="">
-                                <i class="glyph-icon icon-microphone"></i>
-                            </a>
-                            <a href="#" class="btn btn-md btn-link hover-white" title="">
-                                <i class="glyph-icon icon-picture-o"></i>
-                            </a>
-                            <a href="#" class="btn btn-md btn-post float-right btn-success" title="">
-                                Share it!
-                            </a>
-                        </div>
-                    </div>
-                    <div class="example-box-wrapper">
-                        <ul class="list-group row list-group-icons">
-                            <li class="col-md-3 active">
-                                <a href="#tab-example-4" data-toggle="tab" class="list-group-item">
-                                    <i class="glyph-icon font-red icon-bullhorn"></i>
-                                    Personal Information
-                                </a>
-                            </li>
-                            <li class="col-md-3">
-                                <a href="#tab-example-1" data-toggle="tab" class="list-group-item">
-                                    <i class="glyph-icon icon-dashboard"></i>
-                                    Account Settings
-                                </a>
-                            </li>
-                            <li class="col-md-3">
-                                <a href="#tab-example-2" data-toggle="tab" class="list-group-item">
-                                    <i class="glyph-icon font-primary icon-camera"></i>
-                                    Messages Inbox
-                                </a>
-                            </li>
-                            <li class="col-md-3">
-                                <a href="#tab-example-3" data-toggle="tab" class="list-group-item">
-                                    <i class="glyph-icon font-blue-alt icon-globe"></i>
-                                    FAQ Section
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane fade" id="tab-example-1">
-                                <div class="alert alert-close alert-success">
-                                    <a href="#" title="Close" class="glyph-icon alert-close-btn icon-remove"></a>
-                                    <div class="bg-green alert-icon">
-                                        <i class="glyph-icon icon-check"></i>
-                                    </div>
-                                    <div class="alert-content">
-                                        <h4 class="alert-title">Example Infobox</h4>
-                                        <p>Lorem ipsum dolor sic amet dixit tu...</p>
-                                    </div>
+
+                        <div class="panel-layout">
+                            <div class="panel-box col-xs-6">
+                                <div class="panel-content bg-white">
+                                    <canvas id="icon-cloud" width="80" height="80"></canvas>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="content-box">
-                                            <form class="form-horizontal clearfix pad15L pad15R pad20B bordered-row">
-                                                <div class="form-group remove-border">
-                                                    <label class="col-sm-7 control-label">Enable account:</label>
-                                                    <div class="col-sm-3">
-                                                        <input type="checkbox" class="input-switch-alt">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-7 control-label">Visible Profile</label>
-                                                    <div class="col-sm-3">
-                                                        <input type="checkbox" checked class="input-switch-alt">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-7 control-label">Hide timeline</label>
-                                                    <div class="col-sm-3">
-                                                        <input type="checkbox" data-on-color="danger" data-size="small" name="checkbox-example-1" class="input-switch" data-on-text="On" data-off-text="Off">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-7 control-label">Is it active?</label>
-                                                    <div class="col-sm-3">
-                                                        <input type="checkbox" data-on-color="info" data-size="small" name="checkbox-example-2" class="input-switch" data-on-text="On" data-off-text="Off">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-7 control-label">Radio example</label>
-                                                    <div class="col-sm-3">
-                                                        <input type="checkbox" data-on-color="success" data-size="small" name="checkbox-example-3" class="input-switch" checked data-on-text="On" data-off-text="Off">
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="content-box mrg15B">
-                                            <h3 class="content-box-header clearfix">
-                                                Change Password
-                                                <div class="font-size-11 float-right">
-                                                    <a href="#" title="">
-                                                        <i class="glyph-icon mrg5R opacity-hover icon-plus"></i>
-                                                    </a>
-                                                    <a href="#" title="">
-                                                        <i class="glyph-icon opacity-hover icon-cog"></i>
-                                                    </a>
-                                                </div>
-                                            </h3>
-                                            <div class="content-box-wrapper pad0T clearfix">
-                                                <form class="form-horizontal pad15L pad15R bordered-row">
-                                                    <div class="form-group">
-                                                        <label class="col-sm-6 control-label">Old password:</label>
-                                                        <div class="col-sm-6">
-                                                            <input type="text" class="form-control" id="" placeholder="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-6 control-label">New password:</label>
-                                                        <div class="col-sm-6">
-                                                            <input type="text" class="form-control" id="" placeholder="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-6 control-label">Repeat password:</label>
-                                                        <div class="col-sm-6">
-                                                            <input type="text" class="form-control" id="" placeholder="">
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="button-pane mrg20T">
-                                                <button class="btn btn-success">Update Password</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="tab-example-2">
-                                <div class="content-box pad25A">
-                                    <ul class="chat-box">
-                                        <li>
-                                            <div class="chat-author">
-                                                <img width="36" src="../../assets/image-resources/gravatar.jpg" alt="">
-                                            </div>
-                                            <div class="popover left no-shadow">
-                                                <div class="arrow"></div>
-                                                <div class="popover-content">
-                                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
-                                                    <div class="chat-time">
-                                                        <i class="glyph-icon icon-clock-o"></i>
-                                                        a few seconds ago
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="float-left">
-                                            <div class="chat-author">
-                                                <img width="36" src="../../assets/image-resources/gravatar.jpg" alt="">
-                                            </div>
-                                            <div class="popover right no-shadow">
-                                                <div class="arrow"></div>
-                                                <div class="popover-content">
-                                                    <h3>
-                                                        <a href="#" title="Horia Simon">Horia Simon</a>
-                                                        <div class="float-right">
-                                                            <a href="#" class="btn glyph-icon icon-inbox font-gray tooltip-button" data-placement="bottom" title="This chat line was received in the mail."></a>
-                                                        </div>
-                                                    </h3>
-                                                    This comment line has a title (author name) and a right button panel.
-                                                    <div class="chat-time">
-                                                        <i class="glyph-icon icon-clock-o"></i>
-                                                        a few seconds ago
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="chat-author">
-                                                <img width="36" src="../../assets/image-resources/gravatar.jpg" alt="">
-                                            </div>
-                                            <div class="popover left no-shadow">
-                                                <div class="arrow"></div>
-                                                <div class="popover-content">
-                                                    This comment line has a bottom button panel, box shadow and title.
-                                                    <div class="chat-time">
-                                                        <i class="glyph-icon icon-clock-o"></i>
-                                                        a few seconds ago
-                                                    </div>
-                                                    <div class="divider"></div>
-                                                    <a href="#" class="btn btn-sm btn-default font-bold text-transform-upr" title=""><span class="button-content">Reply</span></a>
-                                                    <a href="#" class="btn btn-sm btn-danger float-right tooltip-button" data-placement="left" title="Remove comment"><i class="glyph-icon icon-remove"></i></a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="chat-author">
-                                                <img width="36" src="../../assets/image-resources/gravatar.jpg" alt="">
-                                            </div>
-                                            <div class="popover left no-shadow">
-                                                <div class="arrow"></div>
-                                                <div class="popover-content">
-                                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
-                                                    <div class="chat-time">
-                                                        <i class="glyph-icon icon-clock-o"></i>
-                                                        a few seconds ago
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="float-left">
-                                            <div class="chat-author">
-                                                <img width="36" src="../../assets/image-resources/gravatar.jpg" alt="">
-                                            </div>
-                                            <div class="popover right no-shadow">
-                                                <div class="arrow"></div>
-                                                <div class="popover-content">
-                                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.
-                                                    <div class="chat-time">
-                                                        <i class="glyph-icon icon-clock-o"></i>
-                                                        a few seconds ago
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="tab-example-3">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <ul class="list-group">
-                                            <li class="mrg10B">
-                                                <a href="#faq-tab-1" data-toggle="tab" class="list-group-item">
-                                                    How to get paid
-                                                    <i class="glyph-icon icon-angle-right mrg0A"></i>
-                                                </a>
+                                <div class="panel-content bg-black">
+                                    <div class="center-vertical">
+                                        <ul class="center-content nav nav-justified">
+                                            <li>
+                                                <h4>
+                                                    <i class="glyph-icon font-green opacity-80 icon-chevron-down"></i>
+                                                    7 º
+                                                </h4>
+                                                <p class="opacity-80 text-transform-upr font-size-11 mrg5T">Low</p>
                                             </li>
-                                            <li class="mrg10B">
-                                                <a href="#faq-tab-2" data-toggle="tab" class="list-group-item">
-                                                    ThemeForest related
-                                                    <i class="glyph-icon font-green icon-angle-right mrg0A"></i>
-                                                </a>
-                                            </li>
-                                            <li class="mrg10B">
-                                                <a href="#faq-tab-3" data-toggle="tab" class="list-group-item">
-                                                    Common questions
-                                                    <i class="glyph-icon icon-angle-right mrg0A"></i>
-                                                </a>
-                                            </li>
-                                            <li class="mrg10B">
-                                                <a href="#faq-tab-4" data-toggle="tab" class="list-group-item">
-                                                    Terms of service
-                                                    <i class="glyph-icon icon-angle-right mrg0A"></i>
-                                                </a>
+                                            <li>
+                                                <h4>
+                                                    <i class="glyph-icon font-red opacity-80 icon-chevron-up"></i>
+                                                    21 º
+                                                </h4>
+                                                <p class="opacity-80 text-transform-upr font-size-11 mrg5T">High</p>
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="col-md-9">
-                                        <div class="tab-content">
-                                            <div class="tab-pane fade active in pad0A" id="faq-tab-1">
-                                                <div class="panel-group" id="accordion5">
-                                                    <div class="panel">
-                                                        <div class="panel-heading">
-                                                            <h4 class="panel-title">
-                                                                <a data-toggle="collapse" data-parent="#accordion5" href="#collapseOne">
-                                                                    Collapsible Group Item #1
-                                                                </a>
-                                                            </h4>
-                                                        </div>
-                                                        <div id="collapseOne" class="panel-collapse collapse in">
-                                                            <div class="panel-body">
-                                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                </div>
+                            </div>
+                            <div class="panel-box col-xs-6 bg-blue-alt">
+                                <div class="panel-content">
+                                    <h3>San Francisco</h3>
+                                    <h4 class="opacity-60">California</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-body">
+                                <h3 class="title-hero">
+                                    Basic
+                                </h3>
+                                <div class="example-box-wrapper">
+                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="datatable-example">
+                                        <thead>
+                                            <tr>
+                                                <th>Browser</th>
+                                                <th>Platform(s)</th>
+                                                <th>Engine version</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="odd gradeX">
+
+                                                <td>
+                                                    Internet
+                                                    Explorer 4.0
+                                                </td>
+                                                <td>Win 95+</td>
+                                                <td class="center"> 4</td>
+
+                                            </tr>
+                                            <tr class="even gradeC">
+
+                                                <td>
+                                                    Internet
+                                                    Explorer 5.0
+                                                </td>
+                                                <td>Win 95+</td>
+                                                <td class="center">5</td>
+
+                                            </tr>
+                                            <tr class="odd gradeA">
+
+                                                <td>
+                                                    Internet
+                                                    Explorer 5.5
+                                                </td>
+                                                <td>Win 95+</td>
+                                                <td class="center">5.5</td>
+
+                                            </tr>
+                                            <tr class="even gradeA">
+
+                                                <td>
+                                                    Internet
+                                                    Explorer 6
+                                                </td>
+                                                <td>Win 98+</td>
+                                                <td class="center">6</td>
+
+                                            </tr>
+                                            <tr class="odd gradeA">
+
+                                                <td>Internet Explorer 7</td>
+                                                <td>Win XP SP2+</td>
+                                                <td class="center">7</td>
+
+                                            </tr>
+                                            <tr class="even gradeA">
+
+                                                <td>AOL browser (AOL desktop)</td>
+                                                <td>Win XP</td>
+                                                <td class="center">6</td>
+
+                                            </tr>
+                                            <tr class="gradeA">
+
+                                                <td>Firefox 1.0</td>
+                                                <td>Win 98+ / OSX.2+</td>
+                                                <td class="center">1.7</td>
+
+                                            </tr>
+                                            <tr class="gradeA">
+
+                                                <td>Firefox 1.5</td>
+                                                <td>Win 98+ / OSX.2+</td>
+                                                <td class="center">1.8</td>
+
+                                            </tr>
+                                            <tr class="gradeA">
+
+                                                <td>Firefox 2.0</td>
+                                                <td>Win 98+ / OSX.2+</td>
+                                                <td class="center">1.8</td>
+
+                                            </tr>
+                                            <tr class="gradeA">
+
+                                                <td>Firefox 3.0</td>
+                                                <td>Win 2k+ / OSX.3+</td>
+                                                <td class="center">1.9</td>
+
+                                            </tr>
+                                            <tr class="gradeA">
+
+                                                <td>Camino 1.0</td>
+                                                <td>OSX.2+</td>
+                                                <td class="center">1.8</td>
+
+                                            </tr>
+                                            <tr class="gradeA">
+
+                                                <td>Camino 1.5</td>
+                                                <td>OSX.3+</td>
+                                                <td class="center">1.8</td>
+
+                                            </tr>
+                                            <tr class="gradeU">
+                                                <td>All others</td>
+                                                <td>-</td>
+                                                <td class="center">-</td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-body">
+                                <h3 class="title-hero">
+                                    Alternate carousel
+                                </h3>
+                                <div class="example-box-wrapper">
+                                    <div class="owl-carousel-4 slider-wrapper inverse arrows-outside carousel-wrapper">
+                                        <div>
+                                            <div class="thumbnail-box-wrapper mrg5A">
+                                                <div class="thumbnail-box">
+                                                    <a class="thumb-link" href="#" title=""></a>
+                                                    <div class="thumb-content">
+                                                        <div class="center-vertical">
+                                                            <div class="center-content">
+                                                                <i class="icon-helper icon-center animated zoomInUp font-white glyph-icon icon-linecons-camera"></i>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="panel">
-                                                        <div class="panel-heading">
-                                                            <h4 class="panel-title">
-                                                                <a data-toggle="collapse" data-parent="#accordion5" href="#collapseTwo">
-                                                                    Collapsible Group Item #2
-                                                                </a>
-                                                            </h4>
-                                                        </div>
-                                                        <div id="collapseTwo" class="panel-collapse collapse">
-                                                            <div class="panel-body">
-                                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="panel">
-                                                        <div class="panel-heading">
-                                                            <h4 class="panel-title">
-                                                                <a data-toggle="collapse" data-parent="#accordion5" href="#collapseThree">
-                                                                    Collapsible Group Item #3
-                                                                </a>
-                                                            </h4>
-                                                        </div>
-                                                        <div id="collapseThree" class="panel-collapse collapse">
-                                                            <div class="panel-body">
-                                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <div class="thumb-overlay bg-black"></div>
+                                                    <img src="../../assets/image-resources/stock-images/img-17.jpg" alt="">
+                                                </div>
+                                                <div class="thumb-pane">
+                                                    <h3 class="thumb-heading animated rollIn">
+                                                        <a href="#" title="">
+                                                            Working in the morning
+                                                        </a>
+                                                        <small>12 March 2015</small>
+                                                    </h3>
                                                 </div>
                                             </div>
-                                            <div class="tab-pane fade pad0A" id="faq-tab-2">
-                                                <div class="panel-group" id="accordion1">
-                                                    <div class="panel">
-                                                        <div class="panel-heading">
-                                                            <h4 class="panel-title">
-                                                                <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1">
-                                                                    Collapsible Group Item #1
-                                                                </a>
-                                                            </h4>
-                                                        </div>
-                                                        <div id="collapseOne1" class="panel-collapse collapse in">
-                                                            <div class="panel-body">
-                                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                        </div>
+                                        <div>
+                                            <div class="thumbnail-box-wrapper mrg5A">
+                                                <div class="thumbnail-box">
+                                                    <a class="thumb-link" href="#" title=""></a>
+                                                    <div class="thumb-content">
+                                                        <div class="center-vertical">
+                                                            <div class="center-content">
+                                                                <i class="icon-helper icon-center animated zoomInUp font-white glyph-icon icon-linecons-camera"></i>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="panel">
-                                                        <div class="panel-heading">
-                                                            <h4 class="panel-title">
-                                                                <a data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1">
-                                                                    Collapsible Group Item #2
-                                                                </a>
-                                                            </h4>
-                                                        </div>
-                                                        <div id="collapseTwo1" class="panel-collapse collapse">
-                                                            <div class="panel-body">
-                                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="panel">
-                                                        <div class="panel-heading">
-                                                            <h4 class="panel-title">
-                                                                <a data-toggle="collapse" data-parent="#accordion1" href="#collapseThree1">
-                                                                    Collapsible Group Item #3
-                                                                </a>
-                                                            </h4>
-                                                        </div>
-                                                        <div id="collapseThree1" class="panel-collapse collapse">
-                                                            <div class="panel-body">
-                                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <div class="thumb-overlay bg-black"></div>
+                                                    <img src="../../assets/image-resources/stock-images/img-18.jpg" alt="">
+                                                </div>
+                                                <div class="thumb-pane">
+                                                    <h3 class="thumb-heading animated rollIn">
+                                                        <a href="#" title="">
+                                                            Working in the morning
+                                                        </a>
+                                                        <small>12 March 2015</small>
+                                                    </h3>
                                                 </div>
                                             </div>
-                                            <div class="tab-pane fade pad0A" id="faq-tab-3">
-                                                <div class="panel-group" id="accordion2">
-                                                    <div class="panel">
-                                                        <div class="panel-heading">
-                                                            <h4 class="panel-title">
-                                                                <a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2">
-                                                                    Collapsible Group Item #1
-                                                                </a>
-                                                            </h4>
-                                                        </div>
-                                                        <div id="collapseOne2" class="panel-collapse collapse in">
-                                                            <div class="panel-body">
-                                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                        </div>
+                                        <div>
+                                            <div class="thumbnail-box-wrapper mrg5A">
+                                                <div class="thumbnail-box">
+                                                    <a class="thumb-link" href="#" title=""></a>
+                                                    <div class="thumb-content">
+                                                        <div class="center-vertical">
+                                                            <div class="center-content">
+                                                                <i class="icon-helper icon-center animated zoomInUp font-white glyph-icon icon-linecons-camera"></i>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="panel">
-                                                        <div class="panel-heading">
-                                                            <h4 class="panel-title">
-                                                                <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo2">
-                                                                    Collapsible Group Item #2
-                                                                </a>
-                                                            </h4>
-                                                        </div>
-                                                        <div id="collapseTwo2" class="panel-collapse collapse">
-                                                            <div class="panel-body">
-                                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="panel">
-                                                        <div class="panel-heading">
-                                                            <h4 class="panel-title">
-                                                                <a data-toggle="collapse" data-parent="#accordion2" href="#collapseThree2">
-                                                                    Collapsible Group Item #3
-                                                                </a>
-                                                            </h4>
-                                                        </div>
-                                                        <div id="collapseThree2" class="panel-collapse collapse">
-                                                            <div class="panel-body">
-                                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <div class="thumb-overlay bg-black"></div>
+                                                    <img src="../../assets/image-resources/stock-images/img-19.jpg" alt="">
+                                                </div>
+                                                <div class="thumb-pane">
+                                                    <h3 class="thumb-heading animated rollIn">
+                                                        <a href="#" title="">
+                                                            Working in the morning
+                                                        </a>
+                                                        <small>12 March 2015</small>
+                                                    </h3>
                                                 </div>
                                             </div>
-                                            <div class="tab-pane fade pad0A" id="faq-tab-4">
-                                                <div class="panel-group" id="accordion3">
-                                                    <div class="panel">
-                                                        <div class="panel-heading">
-                                                            <h4 class="panel-title">
-                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne4">
-                                                                    Collapsible Group Item #1
-                                                                </a>
-                                                            </h4>
-                                                        </div>
-                                                        <div id="collapseOne4" class="panel-collapse collapse in">
-                                                            <div class="panel-body">
-                                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                        </div>
+                                        <div>
+                                            <div class="thumbnail-box-wrapper mrg5A">
+                                                <div class="thumbnail-box">
+                                                    <a class="thumb-link" href="#" title=""></a>
+                                                    <div class="thumb-content">
+                                                        <div class="center-vertical">
+                                                            <div class="center-content">
+                                                                <i class="icon-helper icon-center animated zoomInUp font-white glyph-icon icon-linecons-camera"></i>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="panel">
-                                                        <div class="panel-heading">
-                                                            <h4 class="panel-title">
-                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo4">
-                                                                    Collapsible Group Item #2
-                                                                </a>
-                                                            </h4>
-                                                        </div>
-                                                        <div id="collapseTwo4" class="panel-collapse collapse">
-                                                            <div class="panel-body">
-                                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                    <div class="thumb-overlay bg-black"></div>
+                                                    <img src="../../assets/image-resources/stock-images/img-20.jpg" alt="">
+                                                </div>
+                                                <div class="thumb-pane">
+                                                    <h3 class="thumb-heading animated rollIn">
+                                                        <a href="#" title="">
+                                                            Working in the morning
+                                                        </a>
+                                                        <small>12 March 2015</small>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="thumbnail-box-wrapper mrg5A">
+                                                <div class="thumbnail-box">
+                                                    <a class="thumb-link" href="#" title=""></a>
+                                                    <div class="thumb-content">
+                                                        <div class="center-vertical">
+                                                            <div class="center-content">
+                                                                <i class="icon-helper icon-center animated zoomInUp font-white glyph-icon icon-linecons-camera"></i>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="panel">
-                                                        <div class="panel-heading">
-                                                            <h4 class="panel-title">
-                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree4">
-                                                                    Collapsible Group Item #3
-                                                                </a>
-                                                            </h4>
-                                                        </div>
-                                                        <div id="collapseThree4" class="panel-collapse collapse">
-                                                            <div class="panel-body">
-                                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                    <div class="thumb-overlay bg-black"></div>
+                                                    <img src="../../assets/image-resources/stock-images/img-23.jpg" alt="">
+                                                </div>
+                                                <div class="thumb-pane">
+                                                    <h3 class="thumb-heading animated rollIn">
+                                                        <a href="#" title="">
+                                                            Working in the morning
+                                                        </a>
+                                                        <small>12 March 2015</small>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="thumbnail-box-wrapper mrg5A">
+                                                <div class="thumbnail-box">
+                                                    <a class="thumb-link" href="#" title=""></a>
+                                                    <div class="thumb-content">
+                                                        <div class="center-vertical">
+                                                            <div class="center-content">
+                                                                <i class="icon-helper icon-center animated zoomInUp font-white glyph-icon icon-linecons-camera"></i>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="thumb-overlay bg-black"></div>
+                                                    <img src="../../assets/image-resources/stock-images/img-24.jpg" alt="">
+                                                </div>
+                                                <div class="thumb-pane">
+                                                    <h3 class="thumb-heading animated rollIn">
+                                                        <a href="#" title="">
+                                                            Working in the morning
+                                                        </a>
+                                                        <small>12 March 2015</small>
+                                                    </h3>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane pad0A fade active in" id="tab-example-4">
-                                <div class="content-box">
-                                    <form class="form-horizontal pad15L pad15R bordered-row">
-                                        <div class="form-group remove-border">
-                                            <label class="col-sm-3 control-label">First Name:</label>
-                                            <div class="col-sm-6">
-                                                <input type="text" class="form-control" id="" placeholder="First name...">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="dashboard-box dashboard-box-chart bg-white content-box">
+                            <div class="content-wrapper">
+                                <div class="header">
+                                    8960
+                                    <span>Total Downloads<b> in last</b> 6 years</span>
+                                </div>
+                                <div class="bs-label bg-orange">~51%</div>
+                                <div class="center-div sparkline-big-alt">2210,2310,2010,2310,2123,2350</div>
+                                <div class="row list-grade">
+                                    <div class="col-md-2">2009</div>
+                                    <div class="col-md-2">2010</div>
+                                    <div class="col-md-2">2011</div>
+                                    <div class="col-md-2">2012</div>
+                                    <div class="col-md-2">2013</div>
+                                    <div class="col-md-2">2014</div>
+                                </div>
+                            </div>
+                            <div class="button-pane">
+                                <div class="size-md float-left">
+                                    <a href="#" title="">
+                                        View more details
+                                    </a>
+                                </div>
+                                <a href="#" class="btn btn-primary float-right tooltip-button" data-placement="top" title="View details">
+                                    <i class="glyph-icon icon-caret-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="content-box">
+                            <h3 class="content-box-header bg-default">
+                                <i class="glyph-icon icon-cog"></i>
+                                Live server status
+                                <span class="header-buttons-separator">
+                                    <a href="#" class="icon-separator remove-button" data-animation="flipOutX">
+                                        <i class="glyph-icon icon-times"></i>
+                                    </a>
+                                </span>
+                            </h3>
+                            <div class="content-box-wrapper pad0A">
+                                <div class="mrg20A">
+                                    <div class="row">
+                                        <div class="col-md-7 center-margin pad0A">
+                                            <canvas id="chart-area" width="150" height="150"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table class="table remove-background">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-left size-sm">
+                                                <div class="badge mrg10L badge-small mrg5R bg-azure"></div>
+                                                New user registrations
+                                            </td>
+                                            <td class="text-right">
+                                                <a href="#" class="btn btn-sm hover-yellow tooltip-button" data-placement="top" title="Flag">
+                                                    <i class="glyph-icon icon-flag"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-sm hover-blue-alt tooltip-button" data-placement="top" title="Edit">
+                                                    <i class="glyph-icon icon-edit"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-sm hover-red tooltip-button" data-placement="top" title="Remove">
+                                                    <i class="glyph-icon icon-remove"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left size-sm">
+                                                <div class="badge mrg10L badge-small mrg5R bg-orange"></div>
+                                                Returning visitors
+                                            </td>
+                                            <td class="text-right">
+                                                <a href="#" class="btn btn-sm hover-yellow tooltip-button" data-placement="top" title="Flag">
+                                                    <i class="glyph-icon icon-flag"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-sm hover-blue-alt tooltip-button" data-placement="top" title="Edit">
+                                                    <i class="glyph-icon icon-edit"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-sm hover-red tooltip-button" data-placement="top" title="Remove">
+                                                    <i class="glyph-icon icon-remove"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-left size-sm">
+                                                <div class="badge mrg10L badge-small mrg5R bg-gray"></div>
+                                                Page views
+                                            </td>
+                                            <td class="text-right">
+                                                <a href="#" class="btn btn-sm hover-yellow tooltip-button" data-placement="top" title="Flag">
+                                                    <i class="glyph-icon icon-flag"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-sm hover-blue-alt tooltip-button" data-placement="top" title="Edit">
+                                                    <i class="glyph-icon icon-edit"></i>
+                                                </a>
+                                                <a href="#" class="btn btn-sm hover-red tooltip-button" data-placement="top" title="Remove">
+                                                    <i class="glyph-icon icon-remove"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="panel-layout">
+                                    <div class="panel-box">
+                                        <div class="panel-content bg-facebook">
+                                            <i class="glyph-icon font-size-35 icon-facebook"></i>
+                                        </div>
+                                        <div class="panel-content pad15A bg-white">
+                                            <div class="center-vertical">
+                                                <ul class="center-content list-group list-group-separator row mrg0A">
+                                                    <li class="col-md-6">
+                                                        <b>1,456</b>
+                                                        <p class="font-gray">Friends</p>
+                                                    </li>
+                                                    <li class="col-md-6">
+                                                        <b>593</b>
+                                                        <p class="font-gray">Likes</p>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-3 control-label">Last Name:</label>
-                                            <div class="col-sm-6">
-                                                <input type="text" class="form-control" id="" placeholder="Last name...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="panel-layout">
+                                    <div class="panel-box">
+                                        <div class="panel-content bg-twitter">
+                                            <i class="glyph-icon font-size-35 icon-twitter"></i>
+                                        </div>
+                                        <div class="panel-content pad15A bg-white">
+                                            <div class="center-vertical">
+                                                <ul class="center-content list-group list-group-separator row mrg0A">
+                                                    <li class="col-md-6">
+                                                        <b>356</b>
+                                                        <p class="font-gray">Followers</p>
+                                                    </li>
+                                                    <li class="col-md-6">
+                                                        <b>981</b>
+                                                        <p class="font-gray">Tweets</p>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-3 control-label">Email:</label>
-                                            <div class="col-sm-6">
-                                                <input type="text" class="form-control" id="" placeholder="Email address...">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-3 control-label">Website:</label>
-                                            <div class="col-sm-6">
-                                                <input type="text" class="form-control" id="" placeholder="Website...">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-3 control-label">About me:</label>
-                                            <div class="col-sm-6">
-                                                <textarea name="" rows="3" class="form-control textarea-autosize"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-3 control-label">Profile Picture:</label>
-                                            <div class="col-sm-6">
-                                                <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
-                                                    <div>
-                                                        <span class="btn btn-default btn-file">
-                                                            <span class="fileinput-new">Select image</span>
-                                                            <span class="fileinput-exists">Change</span>
-                                                            <input type="file" name="...">
-                                                        </span>
-                                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-body">
+                                <h3 class="title-hero">
+                                    Users activity
+                                </h3>
+                                <div class="example-box-wrapper">
+                                    <div class="timeline-box timeline-box-left">
+                                        <div class="tl-row">
+                                            <div class="tl-item float-right">
+                                                <div class="tl-icon bg-red">
+                                                    <i class="glyph-icon icon-toggle-on"></i>
+                                                </div>
+                                                <div class="popover right">
+                                                    <div class="arrow"></div>
+                                                    <div class="popover-content">
+                                                        <div class="tl-label bs-label label-info">Appointment</div>
+                                                        <p class="tl-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. </p>
+                                                        <div class="tl-time">
+                                                            <i class="glyph-icon icon-clock-o"></i>
+                                                            a few seconds ago
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
-                                    <div class="button-pane mrg20T">
-                                        <button class="btn btn-info">Save</button>
-                                        <button class="btn btn-link font-gray-dark">Cancel</button>
+                                        <div class="tl-row">
+                                            <div class="tl-item float-right">
+                                                <div class="tl-icon bg-primary">
+                                                    <i class="glyph-icon icon-wifi"></i>
+                                                </div>
+                                                <div class="popover right">
+                                                    <div class="arrow"></div>
+                                                    <div class="popover-content">
+                                                        <div class="tl-label bs-label bg-yellow">Teleconference</div>
+                                                        <p class="tl-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. </p>
+                                                        <div class="tl-time">
+                                                            <i class="glyph-icon icon-clock-o"></i>
+                                                            a few seconds ago
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tl-row">
+                                            <div class="tl-item float-right">
+                                                <div class="tl-icon bg-black">
+                                                    <i class="glyph-icon icon-headphones"></i>
+                                                </div>
+                                                <div class="popover right">
+                                                    <div class="arrow"></div>
+                                                    <div class="popover-content">
+                                                        <div class="tl-label bs-label label-danger">Meeting</div>
+                                                        <p class="tl-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. </p>
+                                                        <div class="tl-time">
+                                                            <i class="glyph-icon icon-clock-o"></i>
+                                                            a few seconds ago
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
-
-
-
         </div>
     </div>
-    </div>
-    <!--<app-header></app-header>-->
 
-    <app-sidebar></app-sidebar>
-
-
-    <!--<app-footer></app-footer>-->
-
+</div>
