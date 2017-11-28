@@ -1,8 +1,7 @@
 
 <div class="center-vertical bg-black">
     <div class="center-content">
-        <form action="" id="login-validation" class="col-md-5 col-sm-5 col-xs-11 center-margin"  
-        [formGroup]="" (ngSubmit)="" novalidate>
+        <form action="" id="login-validation" class="col-md-5 col-sm-5 col-xs-11 center-margin" method="">
             <h3 class="text-center pad25B font-gray font-size-23">VogueAfriq</h3>
             <div id="login-form" class="content-box">
                 <div class="content-box-wrapper pad20A">
@@ -12,10 +11,7 @@
                             <span class="input-group-addon addon-inside bg-white font-primary">
                                 <i class="glyph-icon icon-envelope-o"></i>
                             </span>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" [formControl]="email" required>
-                            <div *ngIf="email.errors.required">
-                                    Name is required.
-                            </div>
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                         </div>
                     </div>
                     <div class="form-group">
