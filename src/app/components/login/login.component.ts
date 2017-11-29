@@ -13,9 +13,10 @@ export class LoginComponent implements OnInit {
   loginForm:FormGroup;
 
   constructor(fb: FormBuilder) {
+       let emailRegex = '^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$';
 
   		this.loginForm = fb.group({
-  			'email':['', Validators.required],
+  			'email':['', [Validators.required, <any>Validators.pattern(emailRegex)]],
   			'password':['', Validators.required]
   		});
    }
