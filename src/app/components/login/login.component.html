@@ -8,16 +8,20 @@
         <div class="login-box-body">
             <p class="login-box-msg">Sign in to your account</p>
 
-            <form>
+            <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
                 <div class="form-group has-feedback">
-                    <input type="email" class="form-control" placeholder="Email" name="email" required>
+                    <input type="email" class="form-control" placeholder="Email" [formControl]="loginForm.controls['email']" required>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+
+                     <div *ngIf="!loginForm.controls['email'].valid" class="ui error message">SKU is invalid</div>
 
 
                 </div>
                 <div class="form-group has-feedback">
                     <input type="password" class="form-control" placeholder="Password" name="password" required>
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+
+                   
                   
                 </div>
                 <div class="row">
