@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
-     document.body.classList.add("skin-black");
-     document.body.classList.add("sidebar-mini");
+     document.body.classList.add("login-page");
+    
   }
 
 
