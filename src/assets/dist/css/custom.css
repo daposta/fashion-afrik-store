@@ -1,0 +1,28 @@
+﻿.register-body{
+    background-size:cover;
+    background-image: url("../img/img-1.jpg");
+    height:650px;
+}
+.register-cover
+{
+    background-size:cover;
+    background: rgba(0, 0, 0, 0.2);
+      height:670px;
+      margin:-15px;
+}
+
+.register-body-admin{
+    background-size:cover;
+    background-image: url("../img/img-5.jpg");
+    height:650px;
+}
+.register-cover-admin
+{
+    background-size:cover;
+    background: rgba(0, 0, 0, 0.1);
+      height:670px;
+      margin:-15px;
+}
+.height500{
+    min-height:500px;
+}

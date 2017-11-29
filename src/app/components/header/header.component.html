@@ -1,173 +1,115 @@
+<header class="main-header">
+    <!-- Logo -->
+    <a href="#" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>VOGUE</b></span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><!--<img style="width:250px;height:50px;" src="/assets/dist/img/logo.png" />-->VogueAfric</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </a>
 
-<div id="page-wrapper">
-    <div id="page-header" class="bg-gradient-9">
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <!-- Messages: style can be found in dropdown.less-->
+                <li class="dropdown messages-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="label label-success">1</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have 1 messages</li>
+                        <li>
+                            <!-- inner menu: contains the actual data -->
+                            <ul class="menu">
+                                <li>
+                                    <!-- start message -->
+                                    <a href="#">
+                                        <div class="pull-left">
+                                            <img src="/assets/dist/img/logo.png" class="img-circle" alt="User Image">
+                                        </div>
+                                        <h4>
+                                            DCG
+                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                        </h4>
+                                        <p>DCG has approved your application?</p>
+                                    </a>
+                                </li>
+                                <!-- end message -->
 
-        <div id="header-nav-left">
-            <a class="header-btn" id="logout-btn" href="lockscreen-3.html" title="Lockscreen page example">
-                <i class="glyph-icon icon-linecons-lock"></i>
-            </a>
-            <div class="user-account-btn dropdown">
-                <a href="#" title="My Account" class="user-profile clearfix" data-toggle="dropdown">
-                    <img width="28" src="assets/image-resources/gravatar.jpg" alt="Profile image">
-                    <span>Michael Lee</span>
-                    <i class="glyph-icon icon-angle-down"></i>
-                </a>
-                <div class="dropdown-menu float-right">
-                    <div class="box-sm">
-                        <div class="login-box clearfix">
-                            <div class="user-img">
-                                <a href="#" title="" class="change-img">Change photo</a>
-                                <img src="assets/image-resources/gravatar.jpg" alt="">
+                            </ul>
+                        </li>
+                        <li class="footer"><a href="#">See All Messages</a></li>
+                    </ul>
+                </li>
+                <!-- Notifications: style can be found in dropdown.less -->
+                <li class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning">2</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have 2 notifications</li>
+                        <li>
+                            <!-- inner menu: contains the actual data -->
+                            <ul class="menu">
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-users text-aqua"></i> Payment of form is pending.
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-warning text-yellow"></i> HQ Team sends you a message
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="footer"><a href="#">View all</a></li>
+                    </ul>
+                </li>
+
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <!--   <img src="/assets/dist/img/bat.png" class="user-image" alt="User Image"> -->
+                        <span class="hidden-xs">R. J. Musah's Store</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                            <!--   <img src="/NCS/dist/img/bat.png" class="img-circle" alt="User Image"> -->
+
+                            <p>
+                                R. J. Musah's Store
+                                <small>Member since Nov. 2012</small>
+                            </p>
+                        </li>
+                        <!-- Menu Body -->
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">Profile</a>
                             </div>
-                            <div class="user-info">
-                                <span>
-                                    Michael Lee
-                                    <i>UX/UI developer</i>
-                                </span>
-                                <a href="#" title="Edit profile">Edit profile</a>
-                                <a href="#" title="View notifications">View notifications</a>
+                            <div class="pull-right">
+                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
                             </div>
-                        </div>
-                        <div class="divider"></div>
-
-                        <div class="button-pane button-pane-alt pad5L pad5R text-center">
-                            <a href="#" class="btn btn-flat display-block font-normal btn-danger">
-                                <i class="glyph-icon icon-power-off"></i>
-                                Logout
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- #header-nav-left -->
-        <div id="header-nav-right">
-            <a href="#" class="hdr-btn popover-button" title="Search" data-placement="bottom" data-id="#popover-search">
-                <i class="glyph-icon icon-search"></i>
-            </a>
-            <div class="hide" id="popover-search">
-                <div class="pad5A box-md">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search terms here ...">
-                        <span class="input-group-btn">
-                            <a class="btn btn-primary" href="#">Search</a>
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dropdown" id="notifications-btn">
-                <a data-toggle="dropdown" href="#" title="">
-                    <span class="small-badge bg-yellow"></span>
-                    <i class="glyph-icon icon-linecons-megaphone"></i>
-                </a>
-                <div class="dropdown-menu box-md float-left">
-                    <div class="popover-title display-block clearfix pad10A">
-                        Notifications
-                        <a class="text-transform-cap font-primary font-normal btn-link float-right" href="#" title="View more options">
-                            More options...
-                        </a>
-                    </div>
-                    <div class="scrollable-content scrollable-slim-box">
-                        <ul class="no-border notifications-box">
-                            <li>
-                                <span class="bg-danger icon-notification glyph-icon icon-bullhorn"></span>
-                                <span class="notification-text">This is an error notification</span>
-                                <div class="notification-time">
-                                    a few seconds ago
-                                    <span class="glyph-icon icon-clock-o"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="bg-warning icon-notification glyph-icon icon-users"></span>
-                                <span class="notification-text font-blue">This is a warning notification</span>
-                                <div class="notification-time">
-                                    <b>15</b> minutes ago
-                                    <span class="glyph-icon icon-clock-o"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="bg-green icon-notification glyph-icon icon-sitemap"></span>
-                                <span class="notification-text font-green">A success message example.</span>
-                                <div class="notification-time">
-                                    <b>2 hours</b> ago
-                                    <span class="glyph-icon icon-clock-o"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="bg-azure icon-notification glyph-icon icon-random"></span>
-                                <span class="notification-text">This is an error notification</span>
-                                <div class="notification-time">
-                                    a few seconds ago
-                                    <span class="glyph-icon icon-clock-o"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="bg-warning icon-notification glyph-icon icon-ticket"></span>
-                                <span class="notification-text">This is a warning notification</span>
-                                <div class="notification-time">
-                                    <b>15</b> minutes ago
-                                    <span class="glyph-icon icon-clock-o"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="bg-blue icon-notification glyph-icon icon-user"></span>
-                                <span class="notification-text font-blue">Alternate notification styling.</span>
-                                <div class="notification-time">
-                                    <b>2 hours</b> ago
-                                    <span class="glyph-icon icon-clock-o"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="bg-purple icon-notification glyph-icon icon-user"></span>
-                                <span class="notification-text">This is an error notification</span>
-                                <div class="notification-time">
-                                    a few seconds ago
-                                    <span class="glyph-icon icon-clock-o"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="bg-warning icon-notification glyph-icon icon-user"></span>
-                                <span class="notification-text">This is a warning notification</span>
-                                <div class="notification-time">
-                                    <b>15</b> minutes ago
-                                    <span class="glyph-icon icon-clock-o"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="bg-green icon-notification glyph-icon icon-user"></span>
-                                <span class="notification-text font-green">A success message example.</span>
-                                <div class="notification-time">
-                                    <b>2 hours</b> ago
-                                    <span class="glyph-icon icon-clock-o"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="bg-purple icon-notification glyph-icon icon-user"></span>
-                                <span class="notification-text">This is an error notification</span>
-                                <div class="notification-time">
-                                    a few seconds ago
-                                    <span class="glyph-icon icon-clock-o"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="bg-warning icon-notification glyph-icon icon-user"></span>
-                                <span class="notification-text">This is a warning notification</span>
-                                <div class="notification-time">
-                                    <b>15</b> minutes ago
-                                    <span class="glyph-icon icon-clock-o"></span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="button-pane button-pane-alt pad5T pad5L pad5R text-center">
-                        <a href="#" class="btn btn-flat btn-primary" title="View all notifications">
-                            View all notifications
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
-        </div><!-- #header-nav-right -->
-    </div>
-    </div>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Control Sidebar Toggle Button -->
+                <!--<li>
+                  <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                </li>-->
+            </ul>
+        </div>
+    </nav>
+</header>
