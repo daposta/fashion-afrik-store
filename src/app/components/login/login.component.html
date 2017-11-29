@@ -13,7 +13,8 @@
                     <input type="email" class="form-control" placeholder="Email" [formControl]="loginForm.controls['email']" required>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 
-                     <div *ngIf="!loginForm.controls['email'].valid" class="ui error message">SKU is invalid</div>
+
+                     <div *ngIf="!loginForm.controls['email'].valid" class="bg-red padding10  ui error message">SKU is invalid</div>
 
 
                 </div>
