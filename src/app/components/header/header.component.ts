@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
     user: any = {};
-    bodyClasses: string = "skin-black sidebar-mini";
+    bodyClasses: string = "skin-blue sidebar-mini";
   constructor() { }
 
   ngOnInit() {
@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
           this.user = JSON.parse(tempUser);
       }
 
-      document.body.classList.add("skin-black");
+      document.body.classList.add("skin-blue");
       document.body.classList.add("sidebar-mini");
       document.body.classList.add("wysihtml5 - supported");
   }
