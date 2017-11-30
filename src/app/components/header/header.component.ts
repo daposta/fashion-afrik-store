@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
 
       document.body.classList.add("skin-black");
       document.body.classList.add("sidebar-mini");
+      document.body.classList.add("wysihtml5 - supported");
   }
 
 }
