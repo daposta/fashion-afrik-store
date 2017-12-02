@@ -43,8 +43,17 @@ h1,h2,h3,h4,h5,h6 {
 	border-top: 0;
 }
 
+.box a {
+	color: #e76f15;
+}
+
 .box-title {
 	padding: 10px;
+	font-size: 16px
+}
+
+.box-footer {
+	padding: 15px;
 }
 .progress-group {
 	font-size: 12px;
@@ -75,3 +84,49 @@ border-radius: 5px;
  font-size: 12px;
  font-weight: 700	
 }
+
+.products-list .product-title {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.product-title span.label {
+	background: transparent;
+	color: #e76f15;
+    border: 1px solid #ffc107;
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 8px;
+    float: right;
+}
+
+
+table .label{
+	background-color: transparent;
+    border: 1px solid currentColor;
+}
+
+table .label.label-success{
+	background-color: transparent !important;
+    color: #00a65a !important;
+}
+
+table .label.label-warning{
+	background-color: transparent !important;
+    color: orange !important;
+}
+
+table .label.label-danger{
+	background-color: transparent !important;
+    color: #dd4b39 !important;
+}
+
+table .label.label-info{
+	background-color: transparent !important;
+    color:#00c0ef !important;
+}
+
+
+
+
