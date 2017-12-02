@@ -57,16 +57,9 @@ export class UserService {
 
 	logout(){
 			let v = this.page_header();
-			//localStorage.clear();
-			this.http.post(this.logoutUrl, {}, v).subscribe(res => {
-				localStorage.clear();
-				this.loggedIn = false;
-				this.router.navigate(['/login']);
-			}, (err) => {
-				console.log(err);
-				//this.evil = JSON.parse(err['_body']).non_field_errors[0];
-				//this._toasterService.pop('error', this.evil, '');
-			})
+			localStorage.clear();
+			this.router.navigate(['/login']);
+			
 	};
 
 	private page_header(){

@@ -1,18 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormGroup, Validators} from '@angular/forms'
 import {FileValidator} from '../../validators/file-input.validator'
+import { ProductService} from '../../services/product.service';
+import { CategoryService } from '../../services/category.service';
+
 
 @Component({
   selector: 'app-new-product',
   templateUrl: './new-product.component.html',
-  styleUrls: ['./new-product.component.css']
+  styleUrls: ['./new-product.component.css'],
+  providers: [ProductService, CategoryService ]
 })
 export class NewProductComponent implements OnInit {
   
   private formSubmitAttempt: boolean;
   productForm:FormGroup;
+  categorys:any[];
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, private productSrv:ProductService, private categorySrv:CategoryService) {
   			this.productForm = fb.group({
   			'name':['', Validators.required],
   			'description':['', Validators.required],
@@ -30,7 +35,7 @@ export class NewProductComponent implements OnInit {
   }
 
   fetchCategories(){
-
+    this.categorySrv.fetchCategories();
   }
 
   saveProduct(){
