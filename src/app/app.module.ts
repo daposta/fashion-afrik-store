@@ -29,7 +29,6 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { SettingsComponent } from './components/settings/settings.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { CategoriesListingComponent } from './components/categories-listing/categories-listing.component';
 import { NewCategoryComponent } from './components/new-category/new-category.component';
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -91,7 +90,6 @@ const appRoutes: Routes = [
     SettingsComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
-    CategoriesListingComponent,
     NewCategoryComponent,
     CategoryDetailComponent,
     SidebarComponent,
