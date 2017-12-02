@@ -66,3 +66,14 @@ a{
 .bold {
     font-weight: 400;
 }
+
+
+/*datatables
+*/
+
+div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: 0.5em;
+    display: inline-block;
+    width: auto;
+    height: 30px;
+}
