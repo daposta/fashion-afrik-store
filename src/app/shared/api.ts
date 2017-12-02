@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 
 Injectable()
 export class Globals{
-	HOST_URL =  'http://139.162.248.210:8004';  // 'http://127.0.0.1:8000';//  
+	HOST_URL =  'http://139.162.248.210:8004';  // 'http://127.0.0.1:8000';//   
 	LOGIN_URL =  this.HOST_URL + '/stores/api/login/';
     LOGOUT_URL = this.HOST_URL + '/stores/api/logout/';
-    CATEGORYS_URL =  this.HOST_URL + '/client/api/blood_groups/';
+    CATEGORYS_URL =  this.HOST_URL + '/stores/api/blood_groups/';
     PRODUCTS_URL =  this.HOST_URL + '/stores/api/products/';
     ALLERGIES_URL =  this.HOST_URL + '/client/api/allergies/';
     HMOS_URL =  this.HOST_URL + '/client/api/hmos/';
