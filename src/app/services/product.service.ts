@@ -19,6 +19,21 @@ export class ProductService {
               .catch(this.handleError);
   }
 
+
+  saveProduct(data: any){
+    let _data = JSON.stringify(data);
+    let v = this.page_header();
+     this.http.post(this.productsUrl, data, v).subscribe(
+         data => {
+
+           
+             this.router.navigateByUrl('products');
+         },
+         error => console.log(error.json().message)
+      )
+
+  };
+
   private page_header(){
      let data =  localStorage.getItem('auth_token');
       let headers = new Headers();
