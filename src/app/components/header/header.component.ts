@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-header',
@@ -7,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-    user: any = {};
-    bodyClasses: string = "skin-blue sidebar-mini";
+   user: any = {};
+   bodyClasses: string = "skin-blue sidebar-mini";
   constructor() { }
 
   ngOnInit() {
@@ -19,7 +20,7 @@ export class HeaderComponent implements OnInit {
 
       document.body.classList.add("skin-blue");
       document.body.classList.add("sidebar-mini");
-      document.body.classList.add("wysihtml5 - supported");
+      //document.body.classList.add("wysihtml5 - supported");
   }
 
 }

@@ -9,6 +9,7 @@ import {FileValidator} from '../../validators/file-input.validator'
 })
 export class NewProductComponent implements OnInit {
   
+  private formSubmitAttempt: boolean;
   productForm:FormGroup;
 
   constructor(fb: FormBuilder) {
@@ -24,10 +25,20 @@ export class NewProductComponent implements OnInit {
 
   ngOnInit() {
 
+    this.fetchCategories();
   
   }
 
+  fetchCategories(){
+
+  }
+
   saveProduct(){
+
+    this.formSubmitAttempt = true;
+     if (this.productForm.valid) {
+            console.log('form submitted');
+        }
 
   }
 
