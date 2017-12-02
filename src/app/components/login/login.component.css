@@ -14,8 +14,13 @@
     letter-spacing: -2px;
 }
 
+a{
+    color: #222;
+}
+
 .login-box {
 	width: auto;
+    margin: auto;
 }
 
 .login-box-msg {
