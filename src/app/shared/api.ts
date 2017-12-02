@@ -6,9 +6,9 @@ export class Globals{
 	HOST_URL =  'http://139.162.248.210:8004';  // 'http://127.0.0.1:8000';//   
 	LOGIN_URL =  this.HOST_URL + '/stores/api/login/';
     LOGOUT_URL = this.HOST_URL + '/stores/api/logout/';
-    CATEGORYS_URL =  this.HOST_URL + '/stores/api/blood_groups/';
+    CATEGORYS_URL =  this.HOST_URL + '/stores/api/categorys/';
     PRODUCTS_URL =  this.HOST_URL + '/stores/api/products/';
-    ALLERGIES_URL =  this.HOST_URL + '/client/api/allergies/';
+    ORDERS_URL =  this.HOST_URL + '/store/api/orders/';
     HMOS_URL =  this.HOST_URL + '/client/api/hmos/';
     DISEASE_URL =  this.HOST_URL + '/client/api/diseases/';
     GENOTYPES_URL =  this.HOST_URL + '/client/api/genotypes/';

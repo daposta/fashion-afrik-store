@@ -15,7 +15,8 @@ export class NewProductComponent implements OnInit {
   
   private formSubmitAttempt: boolean;
   productForm:FormGroup;
-  categorys:any[];
+  categorys: any= {};
+  error: any;
 
   constructor(fb: FormBuilder, private productSrv:ProductService, private categorySrv:CategoryService) {
   			this.productForm = fb.group({
@@ -30,12 +31,13 @@ export class NewProductComponent implements OnInit {
 
   ngOnInit() {
 
-    this.fetchCategories();
+    this.fetchCategorys();
   
   }
 
-  fetchCategories(){
-    this.categorySrv.fetchCategories();
+  fetchCategorys(){
+    this.categorySrv.fetchCategories().then(response =>this.categorys = response.results  )
+    .catch(error=> this.error = error )
   }
 
   saveProduct(){

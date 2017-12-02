@@ -51,8 +51,7 @@
                                 <div class="form-group">
                                     <label>Select Category</label>
                                    <select class="form-control">
-                                       <option value="">Shoe</option>
-                                       <option value="">Bata</option>
+                                       <option *ngFor="let item of categorys" [value]="item.id">{{item.name}}</option>
                                    </select>
                                 </div>
                            

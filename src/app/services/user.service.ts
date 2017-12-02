@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import {Router} from '@angular/router';
 import { Globals } from '../shared/api';
+import 'rxjs/add/operator/toPromise';
+
 @Injectable()
 export class UserService {
 
@@ -25,8 +27,7 @@ export class UserService {
 		return this.http.post(this.loginUrl,  JSON.stringify({email, password}), {headers})
 		.subscribe(res =>{
 				let data = res.json();
-				console.log(data)
-				console.log(data.token)
+			
 				if (data.token){
 					localStorage.setItem('auth_token', data.token);
 					localStorage.setItem('user', JSON.stringify(data.user));
@@ -57,8 +58,18 @@ export class UserService {
 
 	logout(){
 			let v = this.page_header();
-			localStorage.clear();
-			this.router.navigate(['/login']);
+			// localStorage.clear();
+			// this.router.navigate(['/login']);
+
+			this.http.post(this.logoutUrl, {}, v).subscribe(res => {
+				localStorage.clear();
+				this.loggedIn = false;
+				this.router.navigate(['/login']);
+			}, (err) => {
+				console.log(err);
+				//this.evil = JSON.parse(err['_body']).non_field_errors[0];
+				//this._toasterService.pop('error', this.evil, '');
+			})
 			
 	};
 
