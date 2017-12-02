@@ -10,42 +10,24 @@
              
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Manage </li>
+                <li><a href="#"><i class="ion-home-android"></i> Home</a></li>
+                <li class="active">Manage Categories</li>
             </ol>
         </section>
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content" style="background: #fff; padding: 0 30px">
             <!-- Info boxes -->
             <div class="row">
                 <div class="box-body">
-                    <a href="/new-category" class="btn btn-primary text-bold">
-                        <i class="fa fa-edit"></i> Add New Category
+                    <a href="/new-category" class="btn btn-sm btn-accent text-bold pull-right">
+                         Add New Category
                     </a>
-                   
-                    <div class="box-header">
-                        <div class="col-md-3">
-                            <div class="row">
-                                <select class="form-control">
-                                    <option>Filter Products</option>
-                                    <option>In stock</option>
-                                    <option>Out of stock</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="box-tools">
-                            <ul class="pagination pagination-sm no-margin pull-right">
-                                <li><a href="#">&larr;</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">&rarr;</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                   <div class="clearfix"></div>
+                     <br><br>
+                    
                     <div class="table-responsive">
-                        <table class="table no-margin">
+                        <table class="table datatable table-striped no-margin">
                             <thead>
                                 <tr>
                                     <th>Category Name</th>
@@ -56,9 +38,9 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let item of categorys">
-                                    <td>{{item.name}}</td>
+                                    <td class="very-bold">{{item.name}}</td>
                                   
-                                    <td>{{item.parentCategory?.name}}</td>
+                                    <td class="very-bold">{{item.parentCategory?.name}}</td>
                                   
                                 </tr>
                                 
@@ -68,15 +50,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="box-tools">
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                            <li><a href="#">&larr;</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">&rarr;</a></li>
-                        </ul>
-                    </div>
+                  
                     <!-- /.table-responsive -->
                 </div>
                 </div>
