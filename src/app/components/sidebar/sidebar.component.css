@@ -1,0 +1,10 @@
+.logo{
+	background: #f39c12;
+}
+.sidebar-menu .header {
+	    background: transparent;
+    margin: 10px 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: orange;
+}

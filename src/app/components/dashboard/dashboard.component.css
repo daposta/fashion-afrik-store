@@ -1,0 +1,77 @@
+h1,h2,h3,h4,h5,h6 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+}
+.info-box {
+	padding: 10px 0;
+	display: block;
+    background: #fff;
+    width: 100%;
+    box-shadow: 5px 5px 8px rgba(0,0,0,0.1);
+    border-radius: 2px;
+    margin-bottom: 15px;
+    min-height: auto;
+    height: 80px
+}
+.info-box-icon {
+	background: transparent;
+	    margin-top: 5px;
+	    line-height: 1;
+	    height: auto;
+}
+
+.info-box-icon img {
+	width: 50%
+}
+.info-box-text{
+	font-weight: 700;
+	font-size: 10px;
+	color: #e76f15;
+
+}
+
+.info-box-number {
+	font-weight: 300;
+	margin-top: 3px;
+	font-size: 25px;
+
+}
+
+.box {
+	box-shadow: 5px 5px 8px rgba(0,0,0,0.1);
+	margin-top: 20px;
+	border-top: 0;
+}
+
+.box-title {
+	padding: 10px;
+}
+.progress-group {
+	font-size: 12px;
+}
+.progress {
+	margin-top: 5px;
+	    border-radius: 5px;
+}
+
+.progress .progress-bar {
+border-radius: 5px;
+}
+
+.progress-group .progress-text {
+	font-weight: 300;
+}
+
+.description-block .description-percentage {
+ font-weight: 700
+}
+
+.description-block .description-header {
+	font-weight: 300;
+    margin: 5px 0;
+}
+
+.description-block .description-text {
+ font-size: 12px;
+ font-weight: 700	
+}

@@ -8,6 +8,10 @@ color: #041935;
 font-weight: 700;
 }
 
+.main-header .logo {
+	    background-color: #E76F15;
+}
+
 .main-header .navbar .label{
 	    border-radius: 50%;
     width: 17px;
