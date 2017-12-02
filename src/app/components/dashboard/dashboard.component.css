@@ -37,33 +37,7 @@ h1,h2,h3,h4,h5,h6 {
 
 }
 
-.box {
-	box-shadow: 5px 5px 8px rgba(0,0,0,0.1);
-	margin-top: 20px;
-	border-top: 0;
-}
 
-.box a {
-	color: #e76f15;
-}
-
-.box-title {
-	padding: 10px;
-	font-size: 16px
-}
-
-.box-footer {
-	padding: 15px;
-}
-
-.box-footer .btn-accent {
-	margin: 0;
-    color: #fff;
-    font-size: 12px;
-    height: 40px;
-    line-height: 40px;
-    padding: 0 23px;
-}
 .progress-group {
 	font-size: 12px;
 }
