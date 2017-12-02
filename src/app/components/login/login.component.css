@@ -1,0 +1,39 @@
+.login-wrapper {
+	height: 100vh;
+	background: url('/assets/dist/img/fashion-hanger.jpg');
+	background-size: cover;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-logo a {
+	color: #fff;
+    font-weight: 700;
+    text-transform: lowercase;
+    letter-spacing: -2px;
+}
+
+.login-box {
+	width: auto;
+}
+
+.login-box-msg {
+	font-size: 20px
+}
+
+.login-box-body {
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 100px;
+}
+
+input[type=checkbox]{
+	-webkit-appearance: none;
+    border: 1px solid #ccc;
+    height: 15px;
+    width: 15px;
+    vertical-align: ;
+    margin: -2px 10px -2px 0;
+    position: relative;
+}

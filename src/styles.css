@@ -1,1 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
+
+body, a {
+    font-family: 'Montserrat', sans-serif;
+}
+a{
+    font-family:   'Montserrat', sans-serif;
+    font-weight: 700
+}
+.form-control {
+    /*border-color: #d2d6de;*/
+    border-radius: 5px;
+    height: 40px;
+    line-height: 40px;
+}
+.form-control-feedback {
+    font-size: 25px;
+    height: 40px;
+    line-height: 40px;
+}
+.form-error {
+    color: #db362b;
+    font-weight: 700;
+    font-size: 12px;
+    margin-top: 5px;
+    text-transform: lowercase;
+}
+.logo-lg {
+	color: #fff;
+    font-weight: 700;
+    text-transform: lowercase;
+    letter-spacing: -1px;
+}
+/*misc*/
+
+.b-r-5 {
+    border-radius: 5px;
+}
+.b-r-7 {
+    border-radius: 7px;
+}
+.b-r-10 {
+    border-radius: 10px;
+}
+.btn {
+    height: 40px;
+}
+.btn-accent {
+    background: #db362b;
+    color: #fff;
+    margin-top: 15px;
+    border-radius: 7px !important;
+    height: 45px;
+    box-shadow: 0 3px 8px #ccc;
+    font-weight: 700;
+    transition: .2s ease-in-out;
+}
+.btn-accent:hover {
+    color: #fff;
+    opacity: 0.7;
+}
+.very-bold {
+    font-weight: 700;
+}
+.bold {
+    font-weight: 400;
+}
