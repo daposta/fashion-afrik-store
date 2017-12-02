@@ -6,6 +6,12 @@ import { Globals } from '../shared/api';
 export class UserService {
 
   private loginUrl = this.globals.LOGIN_URL; 
+  private logoutUrl = this.globals.LOGOUT_URL; 
+  // v = localStorage.getItem('auth_token');
+  // private options = new RequestOptions({headers: new Headers({'Content-Type': 'application/json',
+  // 'Authorization': 'JWT ' +this.v
+  // })});
+
   private  loggedIn = false;
 
 
@@ -47,5 +53,29 @@ export class UserService {
 
 		
 	};
+
+
+	logout(){
+			let v = this.page_header();
+			//localStorage.clear();
+			this.http.post(this.logoutUrl, {}, v).subscribe(res => {
+				localStorage.clear();
+				this.loggedIn = false;
+				this.router.navigate(['/login']);
+			}, (err) => {
+				console.log(err);
+				//this.evil = JSON.parse(err['_body']).non_field_errors[0];
+				//this._toasterService.pop('error', this.evil, '');
+			})
+	};
+
+	private page_header(){
+     let data =  localStorage.getItem('auth_token');
+      let headers = new Headers();
+      let opt: RequestOptions;
+      headers.append('Authorization', 'JWT ' + data );
+      opt = new RequestOptions({headers: headers})  ;
+      return opt;
+  }
 
 }

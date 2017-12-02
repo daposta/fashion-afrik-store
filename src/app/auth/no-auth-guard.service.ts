@@ -13,6 +13,7 @@ export class  NoAuthGuardService implements CanActivate {
 
   }
   canActivate(): boolean {
+  	
     if (localStorage.getItem('user') ){
      
       this._location.back();
