@@ -17,6 +17,7 @@ export class NewProductComponent implements OnInit {
   productForm:FormGroup;
   categorys: any[];
   error: any;
+  product : any = {};
 
   constructor(fb: FormBuilder, private productSrv:ProductService, private categorySrv:CategoryService) {
   			this.productForm = fb.group({
@@ -25,6 +26,7 @@ export class NewProductComponent implements OnInit {
   			'sizes':['', Validators.required],
   			'price':['', Validators.required],
   			'category':['', Validators.required],
+        'tags':['', Validators.required],
         'banner_image':['', [Validators.required,  FileValidator.validate]]
       });
    }
@@ -34,6 +36,9 @@ export class NewProductComponent implements OnInit {
     this.fetchCategorys();
   
   }
+
+
+  
 
   fetchCategorys(){
     this.categorySrv.fetchCategories().then(response =>this.categorys = response.results  )
