@@ -15,7 +15,7 @@ export class NewProductComponent implements OnInit {
   
   private formSubmitAttempt: boolean;
   productForm:FormGroup;
-  categorys: any= {};
+  categorys: any[];
   error: any;
 
   constructor(fb: FormBuilder, private productSrv:ProductService, private categorySrv:CategoryService) {

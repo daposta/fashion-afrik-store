@@ -45,6 +45,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { PaymentReportsComponent } from './components/payment-reports/payment-reports.component';
 import { SalesReportsComponent } from './components/sales-reports/sales-reports.component';
 import { InventoryReportsComponent } from './components/inventory-reports/inventory-reports.component';
+import { CategoryListingComponent } from './components/category-listing/category-listing.component';
 
 
 
@@ -56,6 +57,10 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent ,  canActivate: [NoAuthGuard]},
     { path: 'products', component: ProductListingComponent ,  canActivate: [AuthGuard]},
     { path: 'new-product', component: NewProductComponent ,  canActivate: [AuthGuard]},
+
+     { path: 'categorys', component: CategoryListingComponent ,  canActivate: [AuthGuard]},
+    { path: 'new-category', component: NewCategoryComponent ,  canActivate: [AuthGuard]},
+
     { path: 'products/detail', component: ProductDetailComponent ,  canActivate: [AuthGuard]},
     { path: 'orders', component: OrderListingComponent ,  canActivate: [AuthGuard]},
     { path: 'order/detail', component: OrderDetailComponent ,  canActivate: [AuthGuard]},
@@ -101,7 +106,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     PaymentReportsComponent,
     SalesReportsComponent,
-    InventoryReportsComponent
+    InventoryReportsComponent,
+    CategoryListingComponent
   ],
   imports: [
     BrowserModule, HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}) ,

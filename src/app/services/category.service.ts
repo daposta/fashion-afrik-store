@@ -20,6 +20,20 @@ export class CategoryService {
               .catch(this.handleError);
   };
 
+  saveCategory(data: any){
+    let _data = JSON.stringify(data);
+    let v = this.page_header();
+     this.http.post(this.categoryURL, data, v).subscribe(
+         data => {
+
+         //  this.toasterService.pop('success', 'Disease saved', '');
+             this.router.navigateByUrl('categorys');
+         },
+         error => console.log(error.json().message)
+      )
+
+  };
+
 
    private page_header(){
      let data =  localStorage.getItem('auth_token');
