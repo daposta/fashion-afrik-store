@@ -42,6 +42,9 @@ import { CustomerDetailComponent } from './components/customer-detail/customer-d
 import { InventoryDetailComponent } from './components/inventory-detail/inventory-detail.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PaymentReportsComponent } from './components/payment-reports/payment-reports.component';
+import { SalesReportsComponent } from './components/sales-reports/sales-reports.component';
+import { InventoryReportsComponent } from './components/inventory-reports/inventory-reports.component';
 
 
 
@@ -62,6 +65,9 @@ const appRoutes: Routes = [
     { path: 'new-category', component: NewCategoryComponent , canActivate: [AuthGuard]},
     { path: 'inventory', component: InventoryListingComponent ,  canActivate: [AuthGuard]},
     { path: 'inventory/detail', component: InventoryDetailComponent ,  canActivate: [AuthGuard]},
+    { path: 'payment-reports', component: PaymentReportsComponent ,  canActivate: [AuthGuard]},
+    { path: 'sales-reports', component: SalesReportsComponent ,  canActivate: [AuthGuard]},
+    { path: 'inventory-reports', component: InventoryReportsComponent ,  canActivate: [AuthGuard]},
 
 ]
 
@@ -92,7 +98,10 @@ const appRoutes: Routes = [
     CustomerDetailComponent,
     InventoryDetailComponent,
     MyProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    PaymentReportsComponent,
+    SalesReportsComponent,
+    InventoryReportsComponent
   ],
   imports: [
     BrowserModule, HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}) ,
