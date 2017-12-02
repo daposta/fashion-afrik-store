@@ -14,9 +14,9 @@
                     <span class="ion-ios-email-outline form-control-feedback"></span>
 
                     
-                     <div *ngIf="loginForm.controls['email'].errors?.required" class="form-error">Email is required</div>
+                     <div *ngIf="loginForm.controls['email'].hasError('required') && formSubmitAttempt" class="form-error">Email is required</div>
 
-                      <div *ngIf="loginForm.controls['email'].errors?.pattern" class="form-error">Email is invalid</div>
+                      <div *ngIf="loginForm.controls['email'].hasError('pattern')  && formSubmitAttempt" class="form-error">Email is invalid</div>
 
                    
 
@@ -28,9 +28,9 @@
 
 
 
-                    <div *ngIf="!loginForm.controls['password'].valid" class="form-error">Password is required</div>
+                    <div *ngIf="loginForm.controls['password'].hasError('required') && formSubmitAttempt" class="form-error">Password is required</div>
 
-<a href="#/forgot-password" class="pull-right" style="font-weight: 700;
+<a href="/forgot-password" class="pull-right" style="font-weight: 700;
     margin: 10px 0;
     font-size: 12px;">Forgot my password</a><br>
 <div class="clearfix"></div>
@@ -38,7 +38,7 @@
                             <input type="checkbox"> Remember Me
                         </label>
 <button type="submit" class="btn  btn-accent btn-block btn-flat b-r-10">Sign In</button> <br>
-<p>Dont have an account? <a href="#/register" class="" style="font-weight: 700;
+<p>Dont have an account? <a href="/register" class="" style="font-weight: 700;
     margin: 10px 0;
     font-size: 12px;">Register</a></p>
                   
