@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
-     document.body.classList.add("login-page");
+     //document.body.classList.add("login-page");
     
   }
 

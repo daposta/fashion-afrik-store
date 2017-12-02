@@ -1,0 +1,21 @@
+.main-header .navbar {
+	background: #fff;
+	color: #041935;
+}
+
+.main-header .navbar a {
+color: #041935;
+font-weight: 700;
+}
+
+.main-header .navbar .label{
+	    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+    line-height: 17px;
+    padding: 0;
+}
+
+.notifications-menu a {
+	font-size: 25px
+}
