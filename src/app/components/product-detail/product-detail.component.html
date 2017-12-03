@@ -6,11 +6,11 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Manage Product #79281
+                Manage Product <span class="very-bold product-ref">#79281</span> 
 
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="#"><i class="ion-android-home"></i> Home</a></li>
                 <li class="active">Manage Product</li>
             </ol>
         </section>
@@ -23,7 +23,9 @@
                         <div class="box-header with-border">
                             <h3 class="box-title">Product Image</h3>
                         </div>
-                        <img src="assets/dist/img/photo2.png" style="height:350px;width:455px;" />
+                        <div class="product-image-wrapper">
+                            <img src="assets/dist/img/photo2.png" class="img-responsive" style="height:350px;" />
+                        </div>
                         </div>
                     </div>
                 <div class="col-md-6">
@@ -55,10 +57,10 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Tag</label>
-                                    <input type="text" class="form-control" value="Tight, Denim, Shoes">
+                                    <label>Tag</label> <br>
+                                    <input type="text" class="form-control tagsinput" value="Tight, Denim, Shoes">
                                 </div>
-                                <input type="submit" class="btn btn-warning" value="Update">
+                                <input type="submit" class="btn btn-accent" value="Update">
                                 </form>
                         </div>
                         </div>

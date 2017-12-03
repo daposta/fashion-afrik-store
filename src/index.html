@@ -61,14 +61,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
 <script>
 $(document).ready(function(){
- $('.datatable').DataTable({
-                dom: "<'row'<'pull-left'l><'pull-right'f>>tp",
-                "lengthMenu": [
-                    [5, 10, 25, 50, -1],
-                    [5, 10, 25, 50, "All"]
-                ]
-            });
- // $('select').select2();
+     $('.datatable').DataTable({
+        dom: "<'row'<'pull-left'l><'pull-right'f>>tp",
+        "lengthMenu": [
+            [5, 10, 25, 50, -1],
+            [5, 10, 25, 50, "All"]
+        ]
+    });
+     
+    $('.tagsinput').tagsinput();
 
 });
  var myDropzone = new Dropzone(".dropzone", { url: '/sample'});

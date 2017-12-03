@@ -86,7 +86,7 @@
 
                                 <div class="form-group col-sm-6">
                                     <label>Tags</label>
-                                    <input type="text" class="form-control" [(ngModel)]="product.tags"  [formControl]="productForm.controls['tags']"  required>
+                                    <input type="text" class="form-control tagsinput" [(ngModel)]="product.tags"  [formControl]="productForm.controls['tags']"  required>
 
                                     <div *ngIf="productForm.controls['tags'].hasError('required') && formSubmitAttempt" style="color: red">Product tags are required</div>
                                 </div>

@@ -181,3 +181,13 @@ form .dropzone {
     color: orange;
     font-weight: 700;
 }
+
+.bootstrap-tagsinput {
+    width: 100%;
+}
+
+.btn.btn-outline {
+    border: 2px solid #aaa;
+    color: currentColor;
+    font-weight: bold;
+}
