@@ -13,13 +13,13 @@ export class Globals{
     DISEASE_URL =  this.HOST_URL + '/stores/api/diseases/';
     GENOTYPES_URL =  this.HOST_URL + '/stores/api/genotypes/';
     GENDER_URL =  this.HOST_URL + '/stores/api/genders/';
-    CREATE_PROFILE_URL =  this.HOST_URL + '/client/api/create_profile/';
-    CURRENT_PROFILE_URL = this.HOST_URL + '/client/api/current_profile/'; //current_profile
-    PROFILE_DETAIL_URL = this.HOST_URL + '/client/api/profile_detail/';
-    FORGOT_PASS_URL = this.HOST_URL + '/client/api/forgot_password/';
-    RESET_PASS_URL = this.HOST_URL + '/client/api/reset_password/';
-    VERTIFY_NUMBER_URL =  this.HOST_URL + '/client/api/activate_user/';
-    NEWSLETTER_UNSUBSCRIBE_URL =  this.HOST_URL + '/client/api/newsletter_unsubscribe/';
+    //CREATE_PROFILE_URL =  this.HOST_URL + '/client/api/create_profile/';
+    CURRENT_PROFILE_URL = this.HOST_URL + '/stores/api/me/'; //current_profile
+   // PROFILE_DETAIL_URL = this.HOST_URL + '/client/api/profile_detail/';
+    //FORGOT_PASS_URL = this.HOST_URL + '/client/api/forgot_password/';
+    //RESET_PASS_URL = this.HOST_URL + '/client/api/reset_password/';
+    //VERTIFY_NUMBER_URL =  this.HOST_URL + '/client/api/activate_user/';
+    //NEWSLETTER_UNSUBSCRIBE_URL =  this.HOST_URL + '/client/api/newsletter_unsubscribe/';
 
     
 }

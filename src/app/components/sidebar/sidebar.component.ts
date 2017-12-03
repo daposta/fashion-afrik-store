@@ -8,10 +8,12 @@ declare var $: any;
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
+ 
+  store: any
   constructor() { }
 
   ngOnInit() {
+  	this.store =  JSON.parse(localStorage.getItem('store'));
   }
 
 }

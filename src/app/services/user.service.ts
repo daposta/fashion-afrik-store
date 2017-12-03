@@ -10,6 +10,7 @@ export class UserService {
   private loginUrl = this.globals.LOGIN_URL; 
   private logoutUrl = this.globals.LOGOUT_URL; 
   private registerUrl = this.globals.REGISTER_URL; 
+   private userProfileUrl = this.globals.CURRENT_PROFILE_URL; 
   // v = localStorage.getItem('auth_token');
   // private options = new RequestOptions({headers: new Headers({'Content-Type': 'application/json',
   // 'Authorization': 'JWT ' +this.v
@@ -100,6 +101,15 @@ export class UserService {
 		})
 
 	};
+
+	getCurrentProfile() {
+    
+     let v = this.page_header();
+    return this.http.get(this.userProfileUrl, v)
+              .toPromise()
+              .then(response =>  response.json())
+              //.catch(this.handleError);
+  	};
 
 	private page_header(){
      let data =  localStorage.getItem('auth_token');

@@ -11,7 +11,9 @@ declare var $: any;
 })
 export class HeaderComponent implements OnInit {
 
+   error :any;
    user: any = {};
+   profile: any ;
    bodyClasses: string = "skin-blue sidebar-mini";
   constructor(private userSrv: UserService) { }
 
@@ -20,11 +22,22 @@ export class HeaderComponent implements OnInit {
       if (tempUser) {
           this.user = JSON.parse(tempUser);
       }
+      this.getStoreProfile();
+
 
       document.body.classList.add("skin-blue");
       document.body.classList.add("sidebar-mini");
       //document.body.classList.add("wysihtml5 - supported");
   }
+
+    getStoreProfile(){
+      this.userSrv.getCurrentProfile().then(response =>{
+          localStorage.setItem('store',  JSON.stringify(response));
+          this.profile =  JSON.parse(localStorage.getItem('store'));
+       
+        
+      }).catch(err => this.error = err)
+    }
 
 
   logout(){
