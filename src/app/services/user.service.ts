@@ -9,7 +9,7 @@ export class UserService {
 
   private loginUrl = this.globals.LOGIN_URL; 
   private logoutUrl = this.globals.LOGOUT_URL; 
-  private registerUrl = this.globals.LOGOUT_URL; 
+  private registerUrl = this.globals.REGISTER_URL; 
   // v = localStorage.getItem('auth_token');
   // private options = new RequestOptions({headers: new Headers({'Content-Type': 'application/json',
   // 'Authorization': 'JWT ' +this.v
