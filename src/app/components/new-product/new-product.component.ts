@@ -25,9 +25,10 @@ export class NewProductComponent implements OnInit {
   			'description':['', Validators.required],
   			'sizes':['', Validators.required],
   			'price':['', Validators.required],
-  			'category':['', Validators.required],
+  			'productCategory':['', Validators.required],
         'tags':['', Validators.required],
-        'banner_image':['', [Validators.required,  FileValidator.validate]]
+        'bannerImage':['', ], //[  FileValidator.validate]
+        'otherImages':['', ]
       });
    }
 
@@ -46,11 +47,31 @@ export class NewProductComponent implements OnInit {
   }
 
   saveProduct(){
-
+  
     this.formSubmitAttempt = true;
      if (this.productForm.valid) {
-            console.log('form submitted');
+           // console.log('form submitted');
+           this.productSrv.saveProduct(this.product);
         }
+
+  };
+
+  addDocument($event){
+  
+
+    let  files = $event.target.files || $event.srcElement.files;
+     this.product.bannerImage = files[0];
+   
+
+  }
+
+
+  addOtherDocuments($event){
+  
+
+    let  files = $event.target.files || $event.srcElement.files;
+      this.product.otherImages = files[0];
+   
 
   }
 

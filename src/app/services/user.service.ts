@@ -9,6 +9,7 @@ export class UserService {
 
   private loginUrl = this.globals.LOGIN_URL; 
   private logoutUrl = this.globals.LOGOUT_URL; 
+  private registerUrl = this.globals.LOGOUT_URL; 
   // v = localStorage.getItem('auth_token');
   // private options = new RequestOptions({headers: new Headers({'Content-Type': 'application/json',
   // 'Authorization': 'JWT ' +this.v
@@ -73,6 +74,31 @@ export class UserService {
 				//this._toasterService.pop('error', this.evil, '');
 			})
 			
+	};
+
+
+	register(data: any){
+		return this.http.post(this.registerUrl,data)
+		.subscribe(res =>{
+				 //this._toasterService.pop('success', 'Registration Successful', );
+				//localStorage.setItem('mobile' , data['mobile']);
+				this.router.navigateByUrl('/login');
+				
+
+		}, error =>{
+				
+				console.log(error);
+
+			// if(error['status']){
+			// 	this.evil = JSON.parse(error['_body']).message; //.non_field_errors[0];
+			// 	this._toasterService.pop('error', this.evil, '');
+			// }else{
+			// 	this._toasterService.pop('error', 'You are not connected to the server', '');
+			// }
+		   
+			
+		})
+
 	};
 
 	private page_header(){

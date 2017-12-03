@@ -37,9 +37,11 @@
 
                                  <div class="form-group col-sm-6">
                                     <label>Select Category</label>
-                                   <select class="form-control" [(ngModel)]="product.category" [formControl]="productForm.controls['category']" require>
-                                       <option *ngFor="let item of categorys" [value]="item.id">{{item.name}}</option>
+                                   <select class="form-control" [(ngModel)]="product.category" [formControl]="productForm.controls['productCategory']" require>
+                                       <option *ngFor="let item of categorys" [value]="item.slug">{{item.name}}</option>
                                    </select>
+
+                                      <div *ngIf="productForm.controls['productCategory'].hasError('required') && formSubmitAttempt" style="color: red">Product Category is required</div>
                                 </div>
                        </div>
                              
@@ -66,9 +68,9 @@
                                   
                                   <div class="form-group col-sm-6">
                                     <label>Banner/Feature Image</label>
-                                    <input type="file"  class="form-control" [(ngModel)]="banner_image"  [formControl]="productForm.controls['banner_image']" required/> 
+                                    <input type="file"  class="form-control" [(ngModel)]="product.banner_image"  [formControl]="productForm.controls['bannerImage']" (change)="addDocument($event)"  /> 
 
-                                    <div *ngIf="productForm.controls['banner_image'].hasError('required') && formSubmitAttempt" style="color: red">Banner Image is required</div>
+                                    <!-- <div *ngIf="productForm.controls.bannerImage.errors?.required" style="color: red">Banner Image is required</div> -->
                                 </div>
                                
                                </div>
@@ -91,15 +93,16 @@
                                 
                                
                                 </div>
-                                <div class="form-group">
-                                    <label>Image Upload</label>
+                                <div class="row">
+                                <div class="form-group col-sm-6">
+                                    <label>Other Images</label>
                                  
+                                     <input type="file"  class="form-control" [(ngModel)]="product.other_images"  [formControl]="productForm.controls['otherImages']" multiple    (change)="addOtherDocuments($event)"/> 
 
-
-                                  <div *ngIf="productForm.controls['banner_image'].hasError('required') && formSubmitAttempt" style="color: red">Banner Image is required</div>
+                                 <!--  <div *ngIf="productForm.controls['otherImages'].hasError('required') && formSubmitAttempt" style="color: red">Other Images required</div> -->
                                 </div>
-
-                                <div class="dropzone"></div>
+                                </div>
+                               <!--  <div class="dropzone"></div> -->
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-accent pull-right btn-flat" value="Publish"/>
                                     <div class="clearfix"></div>

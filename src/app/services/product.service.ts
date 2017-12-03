@@ -21,9 +21,24 @@ export class ProductService {
 
 
   saveProduct(data: any){
-    let _data = JSON.stringify(data);
-    let v = this.page_header();
-     this.http.post(this.productsUrl, data, v).subscribe(
+   
+     let token =  localStorage.getItem('auth_token');
+      let headers = new Headers();
+     
+      headers.append('Authorization', 'JWT ' + token );
+    //  headers.append('Content-Type', 'multipart/form-data');
+
+      let formData = new FormData();
+        formData.append("name", data['name']);
+        formData.append('description', data['description']);
+        formData.append('category', data['category']);
+        formData.append('price', data['price']);
+        formData.append('sizes', data['sizes']);
+        formData.append('tags', data['tags']);
+        formData.append('banner_image', data['bannerImage']);
+        formData.append('other_images', data['otherImages']);
+
+     this.http.post(this.productsUrl, formData, {headers}).subscribe(
          data => {
 
            

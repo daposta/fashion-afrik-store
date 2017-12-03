@@ -12,23 +12,44 @@ declare var $: any;
 })
 export class RegisterComponent implements OnInit {
   
-  user : any = {};
+  
+  store : any = {};
   registrationForm:FormGroup;
   private formSubmitAttempt: boolean;
 
   constructor(fb: FormBuilder, private userSrv: UserService) {
 
   	this.registrationForm = fb.group({
-  		    'storeName':['', Validators.required],
+  		  'storeName':['', Validators.required],
+        'mobile':['', Validators.required],
   			'email':['', [Validators.required]],
   			'password':['', Validators.required],
   			'confirmPassword':['', Validators.required],
-  			'address':['', Validators.required],
-  		});
+  			'agreedToTerms':['', Validators.required],
+  		}, {validator: this.checkPasswords});
 
-   }
+   };
+
+  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+      let pass = group.controls.password.value;
+      let confirmPass = group.controls.confirmPassword.value;
+
+  
+      return pass === confirmPass ? null : { notSame: true }    ;
+      
+    };
 
   ngOnInit() {
+  }
+
+  register(){
+    this.formSubmitAttempt = true;
+     if (this.registrationForm.valid) {
+            console.log('form submitted');
+            this.userSrv.register(this.store);
+           //this.productSrv.saveProduct(this.product);
+        }
+
   }
 
 }
