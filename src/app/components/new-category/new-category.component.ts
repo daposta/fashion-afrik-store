@@ -35,7 +35,6 @@ export class NewCategoryComponent implements OnInit {
 
   saveCategory(){
     this.formSubmitAttempt = true;
-    console.log(this.category);
     if (this.categoryForm.valid){
   	    this.categorySrv.saveCategory(this.category);
        }

@@ -26,28 +26,34 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <form role="form" [formGroup]="categoryForm" (ngSubmit)="saveCategory()" novalidate>
+
+                             <div class="row">
                                 <!-- text input -->
-                                <div class="form-group">
+                                <div class="form-group col-sm-6">
                                     <label>Category Name</label>
                                     <input type="text" class="form-control" [(ngModel)]="category.name" [formControl]="categoryForm.controls['name']" required>
 
                                       <div *ngIf="categoryForm.controls['name'].hasError('required') && formSubmitAttempt" style="color: red">Category Name is required</div>
                                 </div>
                             
-                               
+                            </div>
+                             <div class="row">
                               
-                                <div class="form-group">
+                                <div class="form-group col-sm-6">
                                     <label>Select Parent Category</label>
                                    <select class="form-control" [(ngModel)]="category.parent" [formControl]="categoryForm.controls['parent']" >
                                       <option *ngFor="let item of parentCategorys" [value]="item.slug">{{item.name}}</option>
                                    </select>
                                 </div>
                           
-                               
+                            </div>
+
+                             <div class="row">
                             
-                                <div class="form-group">
-                                    <input type="submit" class="btn btn-warning btn-block btn-flat" value="Publish"/>
+                                <div class="form-group col-sm-6">
+                                    <input type="submit" class="btn btn-accent pull-right btn-flat" value="Publish"/>
                                 </div>
+                            </div>
                             </form>
                         </div>
                         <!-- /.box-body -->

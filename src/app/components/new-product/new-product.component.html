@@ -68,9 +68,12 @@
                                   
                                   <div class="form-group col-sm-6">
                                     <label>Banner/Feature Image</label>
-                                    <input type="file"  class="form-control" [(ngModel)]="product.banner_image"  [formControl]="productForm.controls['bannerImage']" (change)="addDocument($event)"  /> 
+                                    <input type="file"  class="form-control" [(ngModel)]="product.banner_image"  [formControl]="productForm.controls['bannerImage']" (change)="addDocument($event)"   /> 
 
-                                    <!-- <div *ngIf="productForm.controls.bannerImage.errors?.required" style="color: red">Banner Image is required</div> -->
+                                   <!--  <p *ngIf="productForm.controls.bannerImage.errors?.required" style="color: red">This field is required!</p> -->
+        
+
+                                    <div *ngIf="productForm.controls['bannerImage'].hasError('required')" style="color: red">Banner Image is required</div>
                                 </div>
                                
                                </div>
@@ -86,7 +89,7 @@
 
                                 <div class="form-group col-sm-6">
                                     <label>Tags</label>
-                                    <input type="text" class="form-control tagsinput" [(ngModel)]="product.tags"  [formControl]="productForm.controls['tags']"  required>
+                                    <input type="text" class="form-control" [(ngModel)]="product.tags"  [formControl]="productForm.controls['tags']"  required>
 
                                     <div *ngIf="productForm.controls['tags'].hasError('required') && formSubmitAttempt" style="color: red">Product tags are required</div>
                                 </div>

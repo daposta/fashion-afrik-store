@@ -14,6 +14,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
   	this.store =  JSON.parse(localStorage.getItem('store'));
+  	
   }
 
 }

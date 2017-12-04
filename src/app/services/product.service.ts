@@ -17,7 +17,17 @@ export class ProductService {
               .toPromise()
               .then(response => response.json())
               .catch(this.handleError);
-  }
+  };
+
+
+  findProductByUUID(data: string){
+   
+    let v = this.page_header();
+     return this.http.get(this.productsUrl + data +'/', v)
+              .toPromise()
+              .then(response => response.json())
+              .catch(this.handleError);
+  };
 
 
   saveProduct(data: any){

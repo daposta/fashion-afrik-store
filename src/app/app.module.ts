@@ -60,7 +60,7 @@ const appRoutes: Routes = [
      { path: 'categorys', component: CategoryListingComponent ,  canActivate: [AuthGuard]},
     { path: 'new-category', component: NewCategoryComponent ,  canActivate: [AuthGuard]},
 
-    { path: 'products/detail', component: ProductDetailComponent ,  canActivate: [AuthGuard]},
+    { path: 'products/:id', component: ProductDetailComponent ,  canActivate: [AuthGuard]},
     { path: 'orders', component: OrderListingComponent ,  canActivate: [AuthGuard]},
     { path: 'order/detail', component: OrderDetailComponent ,  canActivate: [AuthGuard]},
     { path: 'settings', component: SettingsComponent , canActivate: [AuthGuard]},

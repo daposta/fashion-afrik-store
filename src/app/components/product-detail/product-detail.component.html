@@ -24,7 +24,9 @@
                             <h3 class="box-title">Product Image</h3>
                         </div>
                         <div class="product-image-wrapper">
-                            <img src="assets/dist/img/photo2.png" class="img-responsive" style="height:350px;" />
+                           <!--  <img src="assets/dist/img/photo2.png" class="img-responsive" style="height:350px;" /> -->
+
+                             <img src="{{host_address + product.feature_image}}" class="img-responsive" style="height:350px;" />
                         </div>
                         </div>
                     </div>
@@ -38,27 +40,29 @@
                                 <!-- text input -->
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" class="form-control"  value="Tight Denim Crop Jeans">
+                                    <input type="text" class="form-control"  value="{{product.name}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="4">Tight Denim Crop Jeans</textarea>
+                                    <textarea class="form-control" rows="4">{{product.description}}</textarea>
+                                </div>
+                                 <div class="form-group">
+                                    <label>Regular Price</label>
+                                    <input type="text" class="form-control"  value="{{product.regular_price}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Category</label>
-                                    <select class="form-control">
-                                        <option>Shoes</option>
-                                    </select>
+                                   <select class="form-control" >
+                                       <option *ngFor="let item of categorys" [value]="item.slug">{{item.name}}</option>
+                                   </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Size</label>
-                                    <select class="form-control">
-                                        <option>41</option>
-                                    </select>
+                                    <input type="text" class="form-control tagsinput" value="{{product.sizes_temp}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Tag</label> <br>
-                                    <input type="text" class="form-control tagsinput" value="Tight, Denim, Shoes">
+                                    <input type="text" class="form-control tagsinput" value="{{product.tags_temp}}">
                                 </div>
                                 <input type="submit" class="btn btn-accent" value="Update">
                                 </form>
