@@ -16,7 +16,10 @@
     <link rel="stylesheet" href="assets/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="assets/dist/css/custom.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="/assets/plugins/iCheck/square/blue.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="/assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="/assets/plugins/iCheck/icheck.min.js"></script>
+    <link rel="stylesheet" href="/assets/plugins/iCheck/flat/red.css">
     <link rel="stylesheet" href="assets/dist/css/skins/_all-skins.min.css">
     <link href="/assets/dist/css/skins/skin-black.min.css" rel="stylesheet" />
     
@@ -42,9 +45,9 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jque‌​ry.min.js"></script> -->
 
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
 <!-- jQuery 2.2.3 -->
-<script src="/assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
+
 <!-- Bootstrap 3.3.6 -->
 <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
 <!-- FastClick -->
@@ -55,7 +58,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="/assets/dist/js/demo.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
+
 <!-- <script src="assets/plugins/select2/select2.full.min.js"></script>
  --><script src="/assets/dist/js/datatables.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.2.0/min/dropzone.min.js"></script>
@@ -71,8 +74,11 @@ $(document).ready(function(){
             [5, 10, 25, 50, "All"]
         ]
     });
-     
 
+     $('input[type=checkbox]').iCheck({
+    checkboxClass: 'icheckbox_flat-red',
+    increaseArea: '20%' // optional
+  });
 });
  // var myDropzone = new Dropzone(".dropzone", { url: '/sample'});
 </script>

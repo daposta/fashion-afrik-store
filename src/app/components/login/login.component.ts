@@ -29,11 +29,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
      //document.body.classList.add("login-page");
-     $.toast({
-        text: 'Login Unsuccessful',
-         position: 'top-center',
-         'icon': 'error'
-    })
     
   }
 
