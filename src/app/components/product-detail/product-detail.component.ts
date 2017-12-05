@@ -45,7 +45,6 @@ export class ProductDetailComponent implements OnInit {
            });
 
            this.product['sizes_temp'] = sizes_temp;
-           console.log(this.product['sizes_temp']);
           
          }
 			 	);

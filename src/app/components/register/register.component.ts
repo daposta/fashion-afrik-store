@@ -44,9 +44,16 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
+    let success = <HTMLInputElement>document.getElementById('feedback_success');
+    success.innerHTML = '';
+    success.style.display= 'None';
+    let err = <HTMLInputElement>document.getElementById('feedback_err');
+    err.innerHTML = '';
+    err.style.display= 'None';
+
     this.formSubmitAttempt = true;
      if (this.registrationForm.valid) {
-            console.log('form submitted');
+         
             this.userSrv.register(this.store);
            //this.productSrv.saveProduct(this.product);
         }

@@ -4,9 +4,16 @@
         <div class="login-logo">
             <a href="/" style="color:#fff">VogueAfriq</a>
         </div>
+
+
+
         <!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg very-bold">Create a merchant account</p>
+
+             <div id="feedback_err" [style.display]="'none'" style="background-color: red;"></div>
+               <div id="feedback_success" [style.display]="'none'" style="background-color: green;"></div>
+            
 
             <form  [formGroup]="registrationForm" (ngSubmit)="register()" novalidate>
             	<div class="form-group has-feedback">
