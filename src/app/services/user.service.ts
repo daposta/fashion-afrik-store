@@ -4,6 +4,10 @@ import {Router} from '@angular/router';
 import { Globals } from '../shared/api';
 import 'rxjs/add/operator/toPromise';
 
+declare var $: any;
+
+
+
 @Injectable()
 export class UserService {
 
@@ -42,15 +46,22 @@ export class UserService {
 					}
 
 		}, error =>{
-			
-			if(!error.status){
-				console.log(error);
-				//this._toasterService.pop('error', "You are not connected to the server", '');
-			}else{
-				console.log(error);
-				//this.evil = JSON.parse(error['_body']).non_field_errors[0];
-				//this._toasterService.pop('error', this.evil, '');
-			}
+
+			let msg = JSON.parse(error._body)['message'];
+				
+			$.toast({
+		        text: msg,
+		         position: 'top-center',
+		         'icon': 'error'
+		    })
+			// if(!error.status){
+			// 	console.log(error);
+			// 	//this._toasterService.pop('error', "You are not connected to the server", '');
+			// }else{
+			// 	console.log(error);
+			// 	//this.evil = JSON.parse(error['_body']).non_field_errors[0];
+			// 	//this._toasterService.pop('error', this.evil, '');
+			// }
 		
 			
 		})
@@ -81,22 +92,37 @@ export class UserService {
 
 	register(data: any){
 		
-		let error =  <HTMLInputElement>document.getElementById('feedback_success');
+		//let error =  <HTMLInputElement>document.getElementById('feedback_success');
 		return this.http.post(this.registerUrl,data)
 		.subscribe(res =>{
 				
 				
-				let f = <HTMLInputElement>document.getElementById('feedback_success');
-				f.innerHTML = JSON.parse(res['_body'])['message'];
-				f.style.display= '';
+				// let f = <HTMLInputElement>document.getElementById('feedback_success');
+				// f.innerHTML = JSON.parse(res['_body'])['message'];
+				// f.style.display= '';
+
+				let msg = JSON.parse(res['_body'])['message'];
+				$.toast({
+		        text: msg,
+		         position: 'top-center',
+		         'icon': 'success',
+		        showHideTransition: 'slide',
+		    });
 				
 
 		}, error =>{
 				
 				
-				let f = <HTMLInputElement>document.getElementById('feedback_err');
-				f.innerHTML = JSON.parse(error._body)['message'];
-				f.style.display= '';
+				// let f = <HTMLInputElement>document.getElementById('feedback_err');
+				// f.innerHTML = JSON.parse(error._body)['message'];
+				// f.style.display= '';
+				let msg = JSON.parse(error._body)['message'];
+				$.toast({
+		        text: msg,
+		         position: 'top-center',
+		         icon: 'error',
+		         showHideTransition: 'slide',
+		    });
 			
 		})
 
