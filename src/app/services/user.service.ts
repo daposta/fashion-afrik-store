@@ -95,11 +95,6 @@ export class UserService {
 		//let error =  <HTMLInputElement>document.getElementById('feedback_success');
 		return this.http.post(this.registerUrl,data)
 		.subscribe(res =>{
-				
-				
-				// let f = <HTMLInputElement>document.getElementById('feedback_success');
-				// f.innerHTML = JSON.parse(res['_body'])['message'];
-				// f.style.display= '';
 
 				let msg = JSON.parse(res['_body'])['message'];
 				$.toast({

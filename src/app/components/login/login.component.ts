@@ -28,8 +28,7 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
-     //document.body.classList.add("login-page");
-     
+ 
     
   }
 
@@ -42,13 +41,7 @@ export class LoginComponent implements OnInit {
    this.formSubmitAttempt = true;
     if (this.user.email, this.user.password){
       this.userSrv.login(this.user.email, this.user.password);
-    } else {
-    $.toast({
-        text: 'Login Unsuccessful',
-         position: 'top-center',
-         'icon': 'error'
-    })
-    }
+    } 
 
   }
 
