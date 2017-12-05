@@ -45,6 +45,7 @@ import { PaymentReportsComponent } from './components/payment-reports/payment-re
 import { SalesReportsComponent } from './components/sales-reports/sales-reports.component';
 import { InventoryReportsComponent } from './components/inventory-reports/inventory-reports.component';
 import { CategoryListingComponent } from './components/category-listing/category-listing.component';
+import { AccountActivationComponent } from './components/account-activation/account-activation.component';
 
 
 
@@ -54,6 +55,7 @@ const appRoutes: Routes = [
     { path: '', component: DashboardComponent ,  canActivate: [AuthGuard]  },
     { path: 'login', component: LoginComponent ,  canActivate: [NoAuthGuard]},
     { path: 'register', component: RegisterComponent ,  canActivate: [NoAuthGuard]},
+    { path: 'activate/:uid/:token', component: AccountActivationComponent, canActivate: [NoAuthGuard]},
     { path: 'products', component: ProductListingComponent ,  canActivate: [AuthGuard]},
     { path: 'new-product', component: NewProductComponent ,  canActivate: [AuthGuard]},
 
@@ -105,7 +107,8 @@ const appRoutes: Routes = [
     PaymentReportsComponent,
     SalesReportsComponent,
     InventoryReportsComponent,
-    CategoryListingComponent
+    CategoryListingComponent,
+    AccountActivationComponent
   ],
   imports: [
     BrowserModule, HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}) ,

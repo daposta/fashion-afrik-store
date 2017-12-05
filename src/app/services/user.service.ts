@@ -11,6 +11,7 @@ export class UserService {
   private logoutUrl = this.globals.LOGOUT_URL; 
   private registerUrl = this.globals.REGISTER_URL; 
    private userProfileUrl = this.globals.CURRENT_PROFILE_URL; 
+    private activationUrl = this.globals.ACCOUNT_ACTIVATION_URL; 
   // v = localStorage.getItem('auth_token');
   // private options = new RequestOptions({headers: new Headers({'Content-Type': 'application/json',
   // 'Authorization': 'JWT ' +this.v
@@ -79,28 +80,36 @@ export class UserService {
 
 
 	register(data: any){
+		
+		let error =  <HTMLInputElement>document.getElementById('feedback_success');
 		return this.http.post(this.registerUrl,data)
 		.subscribe(res =>{
-				 //this._toasterService.pop('success', 'Registration Successful', );
-				//localStorage.setItem('mobile' , data['mobile']);
-				this.router.navigateByUrl('/login');
+				
+				
+				let f = <HTMLInputElement>document.getElementById('feedback_success');
+				f.innerHTML = JSON.parse(res['_body'])['message'];
+				f.style.display= '';
 				
 
 		}, error =>{
 				
-				console.log(error);
-
-			// if(error['status']){
-			// 	this.evil = JSON.parse(error['_body']).message; //.non_field_errors[0];
-			// 	this._toasterService.pop('error', this.evil, '');
-			// }else{
-			// 	this._toasterService.pop('error', 'You are not connected to the server', '');
-			// }
-		   
+				
+				let f = <HTMLInputElement>document.getElementById('feedback_err');
+				f.innerHTML = JSON.parse(error._body)['message'];
+				f.style.display= '';
 			
 		})
 
 	};
+
+
+	activateAccount(data: any){
+   			console.log(data);
+		     return this.http.get(this.activationUrl + data['uid'] +'/' +data['token'] +'/'  )
+		              .toPromise()
+		              .then(response => response.json())
+		              .catch(this.handleError);
+  		};
 
 	getCurrentProfile() {
     
@@ -119,5 +128,12 @@ export class UserService {
       opt = new RequestOptions({headers: headers})  ;
       return opt;
   }
+
+
+   private handleError(error: any) {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
+  };
+
 
 }
