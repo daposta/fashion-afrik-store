@@ -40,33 +40,37 @@
                             <h3 class="box-title">Product Information</h3>
                         </div>
                         <div class="box-body">
-                            <form role="form">
+                            <form role="form" [formGroup]="productForm" (ngSubmit)="updateProduct()" novalidate >
                                 <!-- text input -->
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" class="form-control"  value="{{product.name}}">
+                                    <input type="text" class="form-control"  value="{{product.name}}" 
+                                    [(ngModel)]="new_product.name" [formControl]="productForm.controls['name']" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="4">{{product.description}}</textarea>
+                                    <textarea class="form-control" rows="4" value="{{product.description}}" [(ngModel)]="new_product.description"  [formControl]="productForm.controls['description']" required></textarea>
                                 </div>
                                  <div class="form-group">
                                     <label>Regular Price</label>
-                                    <input type="text" class="form-control"  value="{{product.regular_price}}">
+                                    <input type="text" class="form-control"  value="{{product.regular_price}}" [(ngModel)]="new_product.price"  [formControl]="productForm.controls['price']"  required>
                                 </div>
                                 <div class="form-group">
                                     <label>Category</label>
-                                   <select class="form-control" >
-                                       <option *ngFor="let item of categorys" [value]="item.slug">{{item.name}}</option>
+                                   <select class="form-control" [(ngModel)]="new_product.category"  
+                                   [formControl]="productForm.controls['productCategory']" require>
+                                       <option *ngFor="let item of categorys" [value]="item.slug" 
+                                       [selected]="product.category== item.id">{{item.name}}</option>
                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Size</label>
-                                    <input type="text" class="form-control tagsinput" value="{{product.sizes_temp}}">
+                                    <input type="text" class="form-control" value="{{product.sizes_temp}}" [(ngModel)]="new_product.sizes"  [formControl]="productForm.controls['sizes']"  required>
                                 </div>
                                 <div class="form-group">
                                     <label>Tag</label> <br>
-                                    <input type="text" class="form-control tagsinput" value="{{product.tags_temp}}">
+                                    <input type="text" class="form-control" value="{{product.tags_temp}}" 
+                                    [(ngModel)]="new_product.tags"  [formControl]="productForm.controls['tags']"  required>
                                 </div>
                                 <input type="submit" class="btn btn-accent" value="Update">
                                 </form>

@@ -4,6 +4,10 @@ import {Router} from '@angular/router';
 import { Globals } from '../shared/api';
 import 'rxjs/add/operator/toPromise';
 
+
+declare var $: any;
+
+
 @Injectable()
 export class ProductService {
 
@@ -56,6 +60,40 @@ export class ProductService {
          },
          error => console.log(error.json().message)
       )
+
+  };
+
+   updateProductInfo(product:any= {}){
+     let v = this.page_header();
+    //let _data = JSON.stringify(product);
+    if (product){
+        this.http.patch(this.productsUrl + product.id + '/', product, v).subscribe(
+           data => {
+
+             //this.toasterService.pop('success', 'Client Info updated', '');
+             let msg = JSON.parse(data['_body'])['message'];
+              $.toast({
+                  text: msg,
+                   position: 'top-center',
+                   'icon': 'success',
+                  showHideTransition: 'slide',
+              });
+              this.router.navigateByUrl('products/' + product.id);
+            
+           },
+           error => {
+             let msg = JSON.parse(error._body)['message'];
+        
+              $.toast({
+                    text: msg,
+                     position: 'top-center',
+                     'icon': 'error',
+                     showHideTransition: 'slide',
+                });
+           }
+        );
+    }
+     
 
   };
 
