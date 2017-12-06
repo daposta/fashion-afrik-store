@@ -16,7 +16,7 @@ export class ProductListingComponent implements OnInit {
 
   ngOnInit() {
   	this.fetchProducts();
-    $('[type=file]').filer();
+    // $('[type=file]').filer();
   }
 
   productDetail(){

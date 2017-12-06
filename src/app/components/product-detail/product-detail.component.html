@@ -79,12 +79,12 @@
                                 <input type="file" name="blah" class="single-file">
                            </div>
                             <div class="other-images" style="padding: 20px">
-                            <div class="item">
-                                <img src="http://placehold.it/80x80" alt="">
+                            <div class="item" *ngFor="let item of product.other_product_images" >
+                                <img src="{{host_address + item.doc}}" alt="">
                                 <span class="remove-img">&times;</span>
                             </div>
 
-                            <div class="item">
+                            <!-- <div class="item">
                                 <img src="http://placehold.it/80x80" alt="">
                             </div>
 
@@ -94,7 +94,7 @@
 
                             <div class="item">
                                 <img src="http://placehold.it/80x80" alt="">
-                            </div>
+                            </div> -->
                         </div>
                         </div>
                     </div>
