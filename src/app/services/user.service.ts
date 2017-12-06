@@ -80,7 +80,6 @@ export class UserService {
 				this.loggedIn = false;
 				this.router.navigate(['/login']);
 			}, (err) => {
-				console.log(err);
 				localStorage.clear();
 				this.router.navigate(['/login']);
 				//this.evil = JSON.parse(err['_body']).non_field_errors[0];

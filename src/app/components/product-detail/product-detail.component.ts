@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { CategoryService } from '../../services/category.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+import {FormBuilder,FormGroup, Validators} from '@angular/forms'
 import 'rxjs/add/operator/switchMap';
 import { Globals } from '../../shared/api';
 
@@ -15,12 +16,25 @@ import { Globals } from '../../shared/api';
 export class ProductDetailComponent implements OnInit {
   
   product: Object= {};
+  new_product: Object= {};
   host_address: string =  this.globals.HOST_URL; 
   categorys: any[];
   error: any;
+  private formSubmitAttempt: boolean;
+  productForm:FormGroup;
 
   constructor(private productSrv : ProductService,private route: ActivatedRoute, private globals: Globals,
-    private categorySrv:CategoryService) { }
+    private categorySrv:CategoryService, fb: FormBuilder) { 
+        this.productForm = fb.group({
+        'name':['', Validators.required],
+        'description':['', Validators.required],
+        'sizes':['', Validators.required],
+        'price':['', Validators.required],
+        'productCategory':['', Validators.required],
+        'tags':['', Validators.required],
+        
+      });
+  }
 
   ngOnInit() {
 
@@ -45,16 +59,33 @@ export class ProductDetailComponent implements OnInit {
            });
 
            this.product['sizes_temp'] = sizes_temp;
+           //set category as selected
+          
+           this.product['category'] = data.category? data.category.id : null;
           
          }
 			 	);
-     //  this.fetchCategorys();
+       this.fetchCategorys();
   };
 
 
   fetchCategorys(){
     this.categorySrv.fetchCategories().then(response =>this.categorys = response.results  )
     .catch(error=> this.error = error )
+  }
+
+
+  updateProduct(){
+    this.new_product['id'] = this.product['id'];
+    // if( this.new_product['sizes']){
+    //     this.new_product['sizes'] = this.product['sizes_temp'] + this.new_product['sizes'];
+    // }
+    // if(this.new_product['tags']){
+    //     this.new_product['tags'] = this.product['tags_temp'] +  this.new_product['tags'];
+    // }
+    
+    this.productSrv.updateProductInfo(this.new_product);
+
   }
 
 
