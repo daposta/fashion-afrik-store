@@ -4,6 +4,7 @@ import {FileValidator} from '../../validators/file-input.validator'
 import { ProductService} from '../../services/product.service';
 import { CategoryService } from '../../services/category.service';
 
+declare var $: any;
 
 @Component({
   selector: 'app-new-product',

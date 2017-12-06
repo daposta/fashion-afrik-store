@@ -68,7 +68,7 @@
                                   
                                   <div class="form-group col-sm-6">
                                     <label>Banner/Feature Image</label>
-                                    <input type="file"  class="form-control" [(ngModel)]="product.banner_image"  [formControl]="productForm.controls['bannerImage']" (change)="addDocument($event)"   /> 
+                                    <input name="f-image"  type="file"  class="single-file form-control" [(ngModel)]="product.banner_image"  [formControl]="productForm.controls['bannerImage']"    /> 
 
                                    <!--  <p *ngIf="productForm.controls.bannerImage.errors?.required" style="color: red">This field is required!</p> -->
         
@@ -100,7 +100,7 @@
                                 <div class="form-group col-sm-6">
                                     <label>Other Images</label>
                                  
-                                     <input type="file"  class="form-control" [(ngModel)]="product.other_images"  [formControl]="productForm.controls['otherImages']" multiple    (change)="addOtherDocuments($event)"/> 
+                                     <input type="file" name="other_images[]"  class="form-control multi-file" [(ngModel)]="product.other_images"  [formControl]="productForm.controls['otherImages']" multiple    (change)="addOtherDocuments($event)"/> 
 
                                  <!--  <div *ngIf="productForm.controls['otherImages'].hasError('required') && formSubmitAttempt" style="color: red">Other Images required</div> -->
                                 </div>
