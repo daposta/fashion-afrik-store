@@ -16,10 +16,7 @@ export class UserService {
   private registerUrl = this.globals.REGISTER_URL; 
    private userProfileUrl = this.globals.CURRENT_PROFILE_URL; 
     private activationUrl = this.globals.ACCOUNT_ACTIVATION_URL; 
-  // v = localStorage.getItem('auth_token');
-  // private options = new RequestOptions({headers: new Headers({'Content-Type': 'application/json',
-  // 'Authorization': 'JWT ' +this.v
-  // })});
+ 
 
   private  loggedIn = false;
 
@@ -82,8 +79,7 @@ export class UserService {
 			}, (err) => {
 				localStorage.clear();
 				this.router.navigate(['/login']);
-				//this.evil = JSON.parse(err['_body']).non_field_errors[0];
-				//this._toasterService.pop('error', this.evil, '');
+				
 			})
 			
 	};
@@ -106,10 +102,6 @@ export class UserService {
 
 		}, error =>{
 				
-				
-				// let f = <HTMLInputElement>document.getElementById('feedback_err');
-				// f.innerHTML = JSON.parse(error._body)['message'];
-				// f.style.display= '';
 				let msg = JSON.parse(error._body)['message'];
 				$.toast({
 		        text: msg,

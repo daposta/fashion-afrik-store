@@ -35,14 +35,12 @@ export class ProductService {
 
 
   saveProduct(data: any){
-   
      let token =  localStorage.getItem('auth_token');
       let headers = new Headers();
      
       headers.append('Authorization', 'JWT ' + token );
     //  headers.append('Content-Type', 'multipart/form-data');
-
-      let formData = new FormData();
+     let formData = new FormData();
         formData.append("name", data['name']);
         formData.append('description', data['description']);
         formData.append('category', data['category']);
@@ -50,16 +48,36 @@ export class ProductService {
         formData.append('sizes', data['sizes']);
         formData.append('tags', data['tags']);
         formData.append('banner_image', data['bannerImage']);
-        formData.append('other_images', data['otherImages']);
+        // formData.append('other_images', data['otherImages']);
+        if(data['otherImages']){
+             for (let i = 0; i < data['otherImages'].length; i++) {
+            formData.append("other_images", data['otherImages'][i], data['otherImages'][i].name);
+          }
+        }
+       
 
      this.http.post(this.productsUrl, formData, {headers}).subscribe(
-         data => {
-
+         res => {
+             let msg = JSON.parse(res['_body'])['message'];
+              $.toast({
+                  text: msg,
+                   position: 'top-center',
+                   'icon': 'success',
+                  showHideTransition: 'slide',
+              });
            
              this.router.navigateByUrl('products');
          },
-         error => console.log(error.json().message)
-      )
+         error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        $.toast({
+            text: msg,
+             position: 'top-center',
+             icon: 'error',
+             showHideTransition: 'slide',
+        });
+      })
 
   };
 

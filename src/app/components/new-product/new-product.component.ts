@@ -60,10 +60,9 @@ export class NewProductComponent implements OnInit {
   addDocument($event){
   
 
-    let  files = $event.target.files || $event.srcElement.files;
+    let  files = $event.target.files ;
      this.product.bannerImage = files[0];
-   
-
+    
   }
 
 
@@ -71,7 +70,8 @@ export class NewProductComponent implements OnInit {
   
 
     let  files = $event.target.files || $event.srcElement.files;
-      this.product.otherImages = files[0];
+      this.product.otherImages = files;//<Array<File>>(files);
+     
    
 
   }
