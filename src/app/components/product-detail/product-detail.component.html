@@ -85,7 +85,7 @@
                            </div>
                             <div class="other-images" style="padding: 20px">
                             <div class="item" *ngFor="let item of product.other_product_images" >
-                                <img src="{{host_address + item.doc}}" alt="">
+                                <img src="{{ item.doc}}" alt="">
                                 <span class="remove-img">&times;</span>
                             </div>
 
