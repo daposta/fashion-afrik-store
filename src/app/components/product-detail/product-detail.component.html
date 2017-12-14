@@ -124,6 +124,20 @@
                                     <label>Regular Price</label>
                                     <input type="text" class="form-control"  value="{{product.regular_price}}" [(ngModel)]="new_product.price"  [formControl]="productForm.controls['price']"  required>
                                 </div>
+                                 <div class="form-group">
+                                    <label>Is Clearance</label>
+                                    <input type="checkbox" [checked]="product.is_clearance" [(ngModel)]="new_product.is_clearance" [formControl]="productForm.controls['isClearance']" > 
+                                </div>
+
+                                 <div class="form-group">
+                                    <label>Discount Price</label>
+                                    <input type="text" class="form-control"  value="{{product.discount_price}}" [(ngModel)]="new_product.discount_price"  [formControl]="productForm.controls['discountPrice']"  required>
+                                </div>
+
+                                 <div class="form-group">
+                                    <label>Is New Arrival</label>
+                                   <input type="checkbox" [checked]="product.is_new_arrival"  [(ngModel)]="new_product.is_new_arrival"  [formControl]="productForm.controls['isNewArrival']" > 
+                                </div>
                                 <div class="form-group">
                                     <label>Category</label>
                                    <select class="form-control" [(ngModel)]="new_product.category"  

@@ -48,6 +48,9 @@ export class ProductService {
         formData.append('sizes', data['sizes']);
         formData.append('tags', data['tags']);
         formData.append('banner_image', data['bannerImage']);
+         formData.append('isNewArrival', data['isNewArrival']);
+          formData.append('isClearance', data['isClearance']);
+           formData.append('discountPrice', data['discountPrice']);
         // formData.append('other_images', data['otherImages']);
         if(data['otherImages']){
              for (let i = 0; i < data['otherImages'].length; i++) {

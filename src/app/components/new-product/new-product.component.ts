@@ -29,7 +29,10 @@ export class NewProductComponent implements OnInit {
   			'productCategory':['', Validators.required],
         'tags':['', Validators.required],
         'bannerImage':['', ], //[  FileValidator.validate]
-        'otherImages':['', ]
+        'otherImages':['', ],
+        'isClearance':['', ],
+        'isNewArrival':['', ],
+        'discountPrice':['', ],
       });
    }
 

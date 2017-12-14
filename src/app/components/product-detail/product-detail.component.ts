@@ -32,6 +32,9 @@ export class ProductDetailComponent implements OnInit {
         'price':['', Validators.required],
         'productCategory':['', Validators.required],
         'tags':['', Validators.required],
+        'isClearance':['', ],
+        'isNewArrival':['', ],
+        'discountPrice':['', ],
         
       });
   }
