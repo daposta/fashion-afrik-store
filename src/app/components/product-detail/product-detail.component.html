@@ -69,10 +69,10 @@
                         <div class="product-image-wrapper">
                            <!--  <img src="assets/dist/img/photo2.png" class="img-responsive" style="height:350px;" /> -->
 
-                             <img src="{{host_address + product.feature_image}}" class="img-responsive" style="height:350px;" />
+                             <img src="{{ product.feature_image}}" class="img-responsive" style="height:350px;" />
                              <div class="image-actions">
-                                 <a href="" class="remove-image"><i class="ion-close-round"></i></a>
-                                 <a href="" class="add-image"><i class="ion-plus-round"></i></a>
+                                 <a (click)="removeBannerImage(product.id)" class="remove-image"><i class="ion-close-round"></i></a>
+                                 <a (click)="addBannerImage()" class="add-image"><i class="ion-plus-round"></i></a>
                              </div>
                         </div>
                         

@@ -77,16 +77,38 @@ export class ProductDetailComponent implements OnInit {
 
   updateProduct(){
     this.new_product['id'] = this.product['id'];
-    // if( this.new_product['sizes']){
-    //     this.new_product['sizes'] = this.product['sizes_temp'] + this.new_product['sizes'];
-    // }
-    // if(this.new_product['tags']){
-    //     this.new_product['tags'] = this.product['tags_temp'] +  this.new_product['tags'];
-    // }
-    
     this.productSrv.updateProductInfo(this.new_product);
 
-  }
+  };
+
+
+  removeOtherImages(productID){
+    console.log(productID);
+    alert('remove other');
+  };
+
+
+  removeBannerImage(productID){
+     console.log(productID);
+       alert('remove banner');
+  };
+
+
+  addOtherImages(){
+    alert('add other');
+
+  };
+
+
+
+
+  addBannerImage(){
+    alert('add banner image');
+
+  };
+
+
+
 
 
 
