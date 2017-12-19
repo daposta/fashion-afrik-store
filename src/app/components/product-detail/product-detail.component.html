@@ -143,9 +143,18 @@
                                    <select class="form-control" [(ngModel)]="new_product.category"  
                                    [formControl]="productForm.controls['productCategory']" require>
                                        <option *ngFor="let item of categorys" [value]="item.slug" 
-                                       [selected]="product.category== item.id">{{item.name}}</option>
+                                       [selected]="product.category?.id=== item.id">{{item.name}}</option>
                                    </select>
                                 </div>
+                                 <div class="form-group">
+                                    <label>Product Type</label>
+                                   <select class="form-control" [(ngModel)]="new_product.productType"  
+                                   [formControl]="productForm.controls['productType']" require>
+                                       <option *ngFor="let item of productTypes" [value]="item.slug" 
+                                       [selected]="product.product_type?.id=== item.id">{{item.name}}</option>
+                                   </select>
+                                </div>
+
                                 <div class="form-group">
                                     <label>Size</label>
                                     <input type="text" class="form-control" value="{{product.sizes_temp}}" [(ngModel)]="new_product.sizes"  [formControl]="productForm.controls['sizes']"  required>

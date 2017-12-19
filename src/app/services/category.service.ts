@@ -3,6 +3,8 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import {Router} from '@angular/router';
 import { Globals } from '../shared/api';
 import 'rxjs/add/operator/toPromise';
+declare var $: any;
+
 
 @Injectable()
 export class CategoryService {
@@ -29,7 +31,16 @@ export class CategoryService {
          //  this.toasterService.pop('success', 'Disease saved', '');
              this.router.navigateByUrl('categorys');
          },
-         error => console.log(error.json().message)
+         error => {
+        
+        let msg = JSON.parse(error._body)['message'];
+        $.toast({
+            text: msg,
+             position: 'top-center',
+             icon: 'error',
+             showHideTransition: 'slide',
+        });
+      }
       )
 
   };

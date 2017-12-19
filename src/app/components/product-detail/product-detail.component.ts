@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { CategoryService } from '../../services/category.service';
+import { ProductTypeService } from '../../services/product-type.service';
+
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {FormBuilder,FormGroup, Validators} from '@angular/forms'
 import 'rxjs/add/operator/switchMap';
@@ -11,7 +13,7 @@ import { Globals } from '../../shared/api';
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
-  providers: [ProductService, CategoryService]
+  providers: [ProductService, CategoryService, ProductTypeService]
 })
 export class ProductDetailComponent implements OnInit {
   
@@ -19,18 +21,20 @@ export class ProductDetailComponent implements OnInit {
   new_product: Object= {};
   host_address: string =  this.globals.HOST_URL; 
   categorys: any[];
+   productTypes: any[];
   error: any;
   private formSubmitAttempt: boolean;
   productForm:FormGroup;
 
-  constructor(private productSrv : ProductService,private route: ActivatedRoute, private globals: Globals,
-    private categorySrv:CategoryService, fb: FormBuilder) { 
+  constructor(private productSrv : ProductService, private route: ActivatedRoute, private globals: Globals,
+    private categorySrv:CategoryService,  private productTypeSrv:ProductTypeService, fb: FormBuilder) { 
         this.productForm = fb.group({
         'name':['', Validators.required],
         'description':['', Validators.required],
         'sizes':['', Validators.required],
         'price':['', Validators.required],
         'productCategory':['', Validators.required],
+        'productType':['', Validators.required],
         'tags':['', Validators.required],
         'isClearance':['', ],
         'isNewArrival':['', ],
@@ -64,16 +68,24 @@ export class ProductDetailComponent implements OnInit {
            this.product['sizes_temp'] = sizes_temp;
            //set category as selected
           
-           this.product['category'] = data.category? data.category.id : null;
+           // this.product['category'] = data.category? data.category.id : null;
+           //  this.product['product_ty'] = data.category? data.category.id : null;
           
          }
 			 	);
        this.fetchCategorys();
+       this.fetchProductTypes();
   };
 
 
   fetchCategorys(){
     this.categorySrv.fetchCategories().then(response =>this.categorys = response.results  )
+    .catch(error=> this.error = error )
+  }
+
+
+  fetchProductTypes(){
+    this.productTypeSrv.fetchProductTypes().then(response =>this.productTypes = response.results  )
     .catch(error=> this.error = error )
   }
 

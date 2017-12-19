@@ -44,6 +44,7 @@ export class ProductService {
         formData.append("name", data['name']);
         formData.append('description', data['description']);
         formData.append('category', data['category']);
+        formData.append('productType', data['productType']);
         formData.append('price', data['price']);
         formData.append('sizes', data['sizes']);
         formData.append('tags', data['tags']);

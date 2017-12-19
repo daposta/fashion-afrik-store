@@ -1,0 +1,60 @@
+<div class="wrapper">
+    <app-header></app-header>
+    <app-sidebar></app-sidebar>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height: 916px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Create Product Type
+
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Create Product Type</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-warning">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Product Type Information</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <form role="form" [formGroup]="productTypeForm" (ngSubmit)="saveCategory()" novalidate>
+
+                             <div class="row">
+                                <!-- text input -->
+                                <div class="form-group col-sm-6">
+                                    <label> Name</label>
+                                    <input type="text" class="form-control" [(ngModel)]="productType.name" [formControl]="productTypeForm.controls['name']" required>
+
+                                      <div *ngIf="productTypeForm.controls['name'].hasError('required') && formSubmitAttempt" style="color: red">Product Type Name is required</div>
+                                </div>
+                            
+                            </div>
+                            
+
+                             <div class="row">
+                            
+                                <div class="form-group col-sm-6">
+                                    <input type="submit" class="btn btn-accent pull-right btn-flat" value="Publish"/>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+             
+                    </div>
+
+</section>
+    </div>
+
+</div>
+<app-footer></app-footer>

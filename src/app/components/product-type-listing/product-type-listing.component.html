@@ -1,0 +1,61 @@
+<div class="wrapper">
+    <app-header></app-header>
+    <app-sidebar></app-sidebar>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" style="min-height: 916px;">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Manage Product Types
+             
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="ion-home-android"></i> Home</a></li>
+                <li class="active">Manage Product Types</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content" style="background: #fff; padding: 0 30px">
+            <!-- Info boxes -->
+            <div class="row">
+                <div class="box-body">
+                    <a href="/new-product-type" class="btn btn-sm btn-accent text-bold pull-right">
+                         Add Product Type
+                    </a>
+                   <div class="clearfix"></div>
+                     <br><br>
+                    
+                    <div class="table-responsive">
+                        <table class="table datatable table-striped no-margin">
+                            <thead>
+                                <tr>
+                                    <th>Product Type</th>
+                                  
+                                    
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of productTypes">
+                                    <td class="very-bold">{{item.name}}</td>
+                                  
+                                  
+                                  
+                                </tr>
+                                
+                               
+                               
+                           
+                            </tbody>
+                        </table>
+                    </div>
+                  
+                    <!-- /.table-responsive -->
+                </div>
+                </div>
+            </section>
+        </div>
+
+            </div>
+            <app-footer></app-footer>

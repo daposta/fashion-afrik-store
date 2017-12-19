@@ -3,6 +3,8 @@ import {FormBuilder,FormGroup, Validators} from '@angular/forms'
 import {FileValidator} from '../../validators/file-input.validator'
 import { ProductService} from '../../services/product.service';
 import { CategoryService } from '../../services/category.service';
+import { ProductTypeService } from '../../services/product-type.service';
+
 
 declare var $: any;
 
@@ -10,23 +12,28 @@ declare var $: any;
   selector: 'app-new-product',
   templateUrl: './new-product.component.html',
   styleUrls: ['./new-product.component.css'],
-  providers: [ProductService, CategoryService ]
+  providers: [ProductService, CategoryService , ProductTypeService]
 })
 export class NewProductComponent implements OnInit {
   
   private formSubmitAttempt: boolean;
   productForm:FormGroup;
   categorys: any[];
+   productTypes: any[];
   error: any;
   product : any = {};
+  private clearance: boolean = false;
+  private newArrival: boolean = false;
 
-  constructor(fb: FormBuilder, private productSrv:ProductService, private categorySrv:CategoryService) {
+  constructor(fb: FormBuilder, private productSrv:ProductService, private productTypeSrv:ProductTypeService, 
+    private categorySrv:CategoryService) {
   			this.productForm = fb.group({
   			'name':['', Validators.required],
   			'description':['', Validators.required],
   			'sizes':['', Validators.required],
   			'price':['', Validators.required],
   			'productCategory':['', Validators.required],
+        'productType':['', Validators.required],
         'tags':['', Validators.required],
         'bannerImage':['', ], //[  FileValidator.validate]
         'otherImages':['', ],
@@ -39,7 +46,22 @@ export class NewProductComponent implements OnInit {
   ngOnInit() {
 
     this.fetchCategorys();
+     this.fetchProductTypes();
+    this.product['isNewArrival'] = this.newArrival;
+    this.product['isClearance'] = this.clearance;
+
   
+  }
+
+  clearanceChange(){
+    this.clearance = !this.clearance;
+    this.product['isClearance'] = this.clearance;
+   
+  }
+
+  arrivalChange(){
+    this.newArrival = !this.newArrival;
+    this.product['isNewArrival'] = this.newArrival;
   }
 
 
@@ -47,6 +69,11 @@ export class NewProductComponent implements OnInit {
 
   fetchCategorys(){
     this.categorySrv.fetchCategories().then(response =>this.categorys = response.results  )
+    .catch(error=> this.error = error )
+  }
+
+   fetchProductTypes(){
+    this.productTypeSrv.fetchProductTypes().then(response =>this.productTypes = response.results  )
     .catch(error=> this.error = error )
   }
 
