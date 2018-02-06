@@ -33,6 +33,7 @@
                                     <th>Product Image</th> -->
                                     <th>Item</th>
                                     <th>Category</th>
+                                     <th>Type</th>
                                     <th>Price</th>
                                     <th>Status</th>
 
@@ -48,6 +49,7 @@
                                     <td class="very-bold"><a href="/products/{{item.id}}">{{item.name}}</a>
                                     </td>
                                     <td class="very-bold">{{item.category?.name}}</td>
+                                     <td class="very-bold">{{item.product_type?.name}}</td>
                                     <td><del>N</del>{{item.regular_price | number}}</td>
                                     <td><span class="label label-success">In stock</span></td>
 

@@ -5,7 +5,6 @@ import {HttpModule,  Http } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
-
 import { 
   AuthGuardService as AuthGuard 
 } from './auth/auth-guard.service';
@@ -115,7 +114,7 @@ const appRoutes: Routes = [
     CategoryListingComponent,
     AccountActivationComponent,
     NewProductTypeComponent,
-    ProductTypeListingComponent
+    ProductTypeListingComponent,
   ],
   imports: [
     BrowserModule, HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}) ,

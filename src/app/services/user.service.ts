@@ -51,14 +51,7 @@ export class UserService {
 		         position: 'top-center',
 		         'icon': 'error'
 		    })
-			// if(!error.status){
-			// 	console.log(error);
-			// 	//this._toasterService.pop('error', "You are not connected to the server", '');
-			// }else{
-			// 	console.log(error);
-			// 	//this.evil = JSON.parse(error['_body']).non_field_errors[0];
-			// 	//this._toasterService.pop('error', this.evil, '');
-			// }
+			
 		
 			
 		})
