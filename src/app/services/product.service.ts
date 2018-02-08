@@ -45,6 +45,7 @@ export class ProductService {
         formData.append('description', data['description']);
         formData.append('category', data['category']);
         formData.append('productType', data['productType']);
+        formData.append('currency', data['currency']);
         formData.append('price', data['price']);
         formData.append('sizes', data['sizes']);
         formData.append('tags', data['tags']);
@@ -52,6 +53,8 @@ export class ProductService {
          formData.append('isNewArrival', data['isNewArrival']);
           formData.append('isClearance', data['isClearance']);
            formData.append('discountPrice', data['discountPrice']);
+           formData.append('colors', data['colors']);
+            formData.append('otherColors', data['otherColors']);
         // formData.append('other_images', data['otherImages']);
         if(data['otherImages']){
              for (let i = 0; i < data['otherImages'].length; i++) {

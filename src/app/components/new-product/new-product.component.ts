@@ -39,9 +39,9 @@ export class NewProductComponent implements OnInit {
   			this.productForm = fb.group({
   			'name':['', Validators.required],
   			'description':['', Validators.required],
-  			'sizes':['', Validators.required],
-        'colors':['', Validators.required],
-        'other_colors':['', Validators.required],
+  			'sizes':[[''], Validators.required],
+        'colors':[[''], Validators.required],
+        'otherColors':['', ],
   			'price':['', Validators.required],
   			'productCategory':['', Validators.required],
         'productType':['', Validators.required],
@@ -108,6 +108,7 @@ export class NewProductComponent implements OnInit {
     this.formSubmitAttempt = true;
      if (this.productForm.valid) {
            // console.log('form submitted');
+           console.log(this.product);
            this.productSrv.saveProduct(this.product);
         }
 

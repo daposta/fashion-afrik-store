@@ -143,8 +143,9 @@
                                     <label>Sizes</label>
                                     <!-- <input type="text" class="form-control" [(ngModel)]="product.sizes"  [formControl]="productForm.controls['sizes']"  required> -->
 
-                                    <select class="form-control" [(ngModel)]="product.category" [formControl]="productForm.controls['productCategory']" multiple>
-                                       <option *ngFor="let item of sizes" [value]="item.slug">{{item.name}}</option>
+                                    <select class="form-control" [(ngModel)]="product.sizes" [formControl]="productForm.controls['sizes']" multiple>
+                                        <option [value]="null" disabled>Choose your profile</option>
+                                       <option *ngFor="let item of sizes" [value]="item.name">{{item.name}}</option>
                                    </select>
 
                                     <div *ngIf="productForm.controls['sizes'].hasError('required') && formSubmitAttempt" style="color: red">Sizes are required</div>
@@ -160,17 +161,18 @@
                                  <div class="form-group col-sm-6">
                                     <label> Colors</label>   
                                    <!-- <input type="checkbox" [checked]="newArrival"  (change)="arrivalChange()"  [(ngModel)]="product.isNewArrival"  [formControl]="productForm.controls['isNewArrival']" >  -->
-                                   <select class="form-control" [(ngModel)]="product.category" [formControl]="productForm.controls['colors']" multiple>
+                                   <select class="form-control" [(ngModel)]="product.colors" [formControl]="productForm.controls['colors']" multiple>
                                        <option *ngFor="let item of colors" [value]="item.slug">{{item.name}}</option>
                                    </select>
-                                    
+
+                                      <div *ngIf="productForm.controls['colors'].hasError('required') && formSubmitAttempt" style="color: red">Colors are required</div>
                                 </div>
 
                                  <div class="form-group col-sm-6">
                                     <label>Other Colors</label>
-                                    <input type="text" class="form-control" [(ngModel)]="product.sizes"  [formControl]="productForm.controls['sizes']"  required>
+                                    <input type="text" class="form-control" [(ngModel)]="product.otherColors"  [formControl]="productForm.controls['otherColors']" >
 
-                                    <div *ngIf="productForm.controls['sizes'].hasError('required') && formSubmitAttempt" style="color: red">Product Sizes are required</div>
+                                   
                                 </div>
                                
 
