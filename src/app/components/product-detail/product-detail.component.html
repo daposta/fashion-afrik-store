@@ -121,6 +121,14 @@
                                     <textarea class="form-control" rows="4" value="{{product.description}}" [(ngModel)]="new_product.description"  [formControl]="productForm.controls['description']" required></textarea>
                                 </div>
                                  <div class="form-group">
+                                    <label>Currency</label>
+                                    <select class="form-control" [(ngModel)]="new_product.currency"  
+                                   [formControl]="productForm.controls['currency']" require>
+                                       <option *ngFor="let item of currencys" [value]="item.code" 
+                                       [selected]="product.currency?.id=== item.id">{{item.code}}</option>
+                                   </select>
+                                </div>
+                                 <div class="form-group">
                                     <label>Regular Price</label>
                                     <input type="text" class="form-control"  value="{{product.regular_price}}" [(ngModel)]="new_product.price"  [formControl]="productForm.controls['price']"  required>
                                 </div>
@@ -155,9 +163,28 @@
                                    </select>
                                 </div>
 
+                                 <div class="form-group">
+                                    <label>Colors</label>
+                                    <select class="form-control" [(ngModel)]="new_product.colors"  
+                                   [formControl]="productForm.controls['colors']" multiple="">
+                                       <option *ngFor="let item of colors" [value]="item.slug" 
+                                       [selected]="checkColorSelected(item.slug)">{{item.name}}</option>
+                                   </select>
+                                   <!--  <input type="text" class="form-control" value="{{product.sizes_temp}}" [(ngModel)]="new_product.sizes"  [formControl]="productForm.controls['sizes']"  required> -->
+                                </div>
+
+                                 <div class="form-group">
+                                    <label>Other Colors</label>
+                                    <input type="text" class="form-control" value="{{product.other_colors_temp}}" [(ngModel)]="new_product.mixed_colors"  [formControl]="productForm.controls['otherColors']"  required>
+                                </div>
+
                                 <div class="form-group">
                                     <label>Size</label>
-                                    <input type="text" class="form-control" value="{{product.sizes_temp}}" [(ngModel)]="new_product.sizes"  [formControl]="productForm.controls['sizes']"  required>
+                                    <select class="form-control" [(ngModel)]="new_product.sizes"  
+                                   [formControl]="productForm.controls['sizes']" multiple="">
+                                       <option *ngFor="let item of sizes" [value]="item.name" 
+                                       [selected]="checkSizeSelected(item.name)">{{item.name}}</option>
+                                   </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Tag</label> <br>

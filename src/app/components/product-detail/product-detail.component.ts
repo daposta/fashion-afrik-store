@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { CategoryService } from '../../services/category.service';
 import { ProductTypeService } from '../../services/product-type.service';
+import { CurrencyService } from '../../services/currency.service';
+import { ColorService } from '../../services/color.service';
+import { SizeService } from '../../services/size.service';
 
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {FormBuilder,FormGroup, Validators} from '@angular/forms'
@@ -13,7 +16,8 @@ import { Globals } from '../../shared/api';
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
-  providers: [ProductService, CategoryService, ProductTypeService]
+  providers: [ProductService, CategoryService, ProductTypeService, CurrencyService,
+  ColorService, SizeService]
 })
 export class ProductDetailComponent implements OnInit {
   
@@ -22,19 +26,27 @@ export class ProductDetailComponent implements OnInit {
   host_address: string =  this.globals.HOST_URL; 
   categorys: any[];
    productTypes: any[];
+    currencys: any[];
+   colors: any[];
+   sizes: any[];
   error: any;
   private formSubmitAttempt: boolean;
   productForm:FormGroup;
 
   constructor(private productSrv : ProductService, private route: ActivatedRoute, private globals: Globals,
-    private categorySrv:CategoryService,  private productTypeSrv:ProductTypeService, fb: FormBuilder) { 
+    private categorySrv:CategoryService,  private productTypeSrv:ProductTypeService, fb: FormBuilder, 
+     private currencySrv: CurrencyService, private colorSrv: ColorService,
+    private sizeSrv: SizeService) { 
         this.productForm = fb.group({
         'name':['', Validators.required],
         'description':['', Validators.required],
-        'sizes':['', Validators.required],
+        'sizes':[[''], Validators.required],
+        'colors':[[''], Validators.required],
+        'otherColors':['', ],
         'price':['', Validators.required],
         'productCategory':['', Validators.required],
         'productType':['', Validators.required],
+        'currency':['', Validators.required],
         'tags':['', Validators.required],
         'isClearance':['', ],
         'isNewArrival':['', ],
@@ -45,7 +57,7 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
 
-
+     
 	  	 this.route.params.switchMap((params: Params) => 
 			 	this.productSrv.findProductByUUID( params['id']))
 			 .subscribe(
@@ -59,23 +71,58 @@ export class ProductDetailComponent implements OnInit {
 
            this.product['tags_temp'] = tags_temp;
 
-           let sizes_temp = '';
-           data.sizes.forEach(item => {
+           let other_colors_temp = '';
+           data.mixed_colors.forEach(item => {
           
-             sizes_temp += item.name + ', ';
+             other_colors_temp += item.name + ', ';
            });
 
-           this.product['sizes_temp'] = sizes_temp;
+           this.product['other_colors_temp'] = other_colors_temp;
+
+           let colors_list = [];
+           data.colors.forEach(function(item:any){
+             colors_list.push(item.id);
+           });
+           this.product['colors_list'] = colors_list;
            //set category as selected
           
            // this.product['category'] = data.category? data.category.id : null;
            //  this.product['product_ty'] = data.category? data.category.id : null;
-          
+         
          }
+
 			 	);
+      
        this.fetchCategorys();
        this.fetchProductTypes();
+        this.currencySrv.fetchCurrencys().then(response => this.currencys = response.results)
+      this.colorSrv.fetchColors().then(response => this.colors = response.results)
+      this.sizeSrv.fetchSizes().then(response => this.sizes = response.results)
+      
+
   };
+
+
+  checkColorSelected(color) {
+    
+    if(this.product['colors']){
+      
+      return this.product['colors'].findIndex(selUser => selUser.slug === color) > -1;
+    }
+    
+  //return this.selectedUsers3.filter(selUser => selUser.id === user.id).length > 0;
+  }
+
+
+  checkSizeSelected(size) {
+    
+    if(this.product['sizes']){
+      
+      return this.product['sizes'].findIndex(selUser => selUser.name === size) > -1;
+    }
+    
+  //return this.selectedUsers3.filter(selUser => selUser.id === user.id).length > 0;
+  }
 
 
   fetchCategorys(){
