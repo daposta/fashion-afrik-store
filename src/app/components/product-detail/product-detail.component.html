@@ -161,6 +161,7 @@
                                        <option *ngFor="let item of productTypes" [value]="item.slug" 
                                        [selected]="product.product_type?.id=== item.id">{{item.name}}</option>
                                    </select>
+                                   
                                 </div>
 
                                  <div class="form-group">
@@ -170,7 +171,7 @@
                                        <option *ngFor="let item of colors" [value]="item.slug" 
                                        [selected]="checkColorSelected(item.slug)">{{item.name}}</option>
                                    </select>
-                                   <!--  <input type="text" class="form-control" value="{{product.sizes_temp}}" [(ngModel)]="new_product.sizes"  [formControl]="productForm.controls['sizes']"  required> -->
+                                   <div *ngIf="productForm.controls['colors'].hasError('required') && formSubmitAttempt" style="color: red">Colors are required</div>
                                 </div>
 
                                  <div class="form-group">
@@ -185,6 +186,7 @@
                                        <option *ngFor="let item of sizes" [value]="item.name" 
                                        [selected]="checkSizeSelected(item.name)">{{item.name}}</option>
                                    </select>
+                                    <div *ngIf="productForm.controls['sizes'].hasError('required') && formSubmitAttempt" style="color: red">Sizes are required</div>
                                 </div>
                                 <div class="form-group">
                                     <label>Tag</label> <br>
