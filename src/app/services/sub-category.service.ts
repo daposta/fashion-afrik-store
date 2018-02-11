@@ -5,34 +5,33 @@ import { Globals } from '../shared/api';
 import 'rxjs/add/operator/toPromise';
 declare var $: any;
 
-
 @Injectable()
-export class ProductTypeService {
-  
-  private productTypeURL =   this.globals.PRODUCT_TYPE_URL;
+export class SubCategoryService {
+
+ private subCategoryURL =   this.globals.SUB_CATEGORYS_URL;
   constructor(private http: Http, private globals: Globals,  private router:Router) { }
 
-  fetchProductTypes(){
+  fetchSubCategorys(){
   	  let v = this.page_header();
-    return this.http.get(this.productTypeURL, v)
+    return this.http.get(this.subCategoryURL, v)
               .toPromise()
               .then(response => response.json())
               .catch(this.handleError);
   };
 
-  findProductTypeByID(data: string){
+  findSubCategoryByID(data: string){
    
     let v = this.page_header();
-     return this.http.get(this.productTypeURL + data +'/', v)
+     return this.http.get(this.subCategoryURL + data +'/', v)
               .toPromise()
               .then(response => response.json())
               .catch(this.handleError);
   };
 
-  saveProductType(data: any){
+  saveSubCategory(data: any){
       let v = this.page_header();
      
-     this.http.post(this.productTypeURL, data, v).subscribe(
+     this.http.post(this.subCategoryURL, data, v).subscribe(
          res => {
               let msg = JSON.parse(res['_body'])['message'];
               $.toast({
@@ -42,7 +41,7 @@ export class ProductTypeService {
                   showHideTransition: 'slide',
               });
          
-             this.router.navigateByUrl('product-types');
+             this.router.navigateByUrl('sub-categorys');
          },
          error => {
         
@@ -58,11 +57,11 @@ export class ProductTypeService {
 
   };
 
-  updateProductTypeInfo(product:any= {}){
+  updateSubCategory(product:any= {}){
      let v = this.page_header();
     //let _data = JSON.stringify(product);
     if (product){
-        this.http.patch(this.productTypeURL + product.id + '/', product, v).subscribe(
+        this.http.patch(this.subCategoryURL + product.id + '/', product, v).subscribe(
            data => {
 
              //this.toasterService.pop('success', 'Client Info updated', '');
@@ -107,7 +106,6 @@ export class ProductTypeService {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   };
-
 
 
 }

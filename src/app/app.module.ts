@@ -47,6 +47,10 @@ import { CategoryListingComponent } from './components/category-listing/category
 import { AccountActivationComponent } from './components/account-activation/account-activation.component';
 import { NewProductTypeComponent } from './components/new-product-type/new-product-type.component';
 import { ProductTypeListingComponent } from './components/product-type-listing/product-type-listing.component';
+import { ProductTypeDetailComponent } from './components/product-type-detail/product-type-detail.component';
+import { SubCategoryDetailComponent } from './components/sub-category-detail/sub-category-detail.component';
+import { SubCategoryListingComponent } from './components/sub-category-listing/sub-category-listing.component';
+import { NewSubCategoryComponent } from './components/new-sub-category/new-sub-category.component';
 
 
 
@@ -65,6 +69,7 @@ const appRoutes: Routes = [
 
      { path: 'product-types', component: ProductTypeListingComponent ,  canActivate: [AuthGuard]},
     { path: 'new-product-type', component: NewProductTypeComponent ,  canActivate: [AuthGuard]},
+     { path: 'product-types/:id', component: ProductTypeDetailComponent ,  canActivate: [AuthGuard]},
 
     { path: 'products/:id', component: ProductDetailComponent ,  canActivate: [AuthGuard]},
     { path: 'orders', component: OrderListingComponent ,  canActivate: [AuthGuard]},
@@ -78,6 +83,10 @@ const appRoutes: Routes = [
     { path: 'payment-reports', component: PaymentReportsComponent ,  canActivate: [AuthGuard]},
     { path: 'sales-reports', component: SalesReportsComponent ,  canActivate: [AuthGuard]},
     { path: 'inventory-reports', component: InventoryReportsComponent ,  canActivate: [AuthGuard]},
+
+    { path: 'sub-categorys', component: SubCategoryListingComponent ,  canActivate: [AuthGuard]},
+    { path: 'new-sub-category', component: NewSubCategoryComponent ,  canActivate: [AuthGuard]},
+     { path: 'sub-categorys/:id', component: SubCategoryDetailComponent ,  canActivate: [AuthGuard]},
 
 ]
 
@@ -115,6 +124,10 @@ const appRoutes: Routes = [
     AccountActivationComponent,
     NewProductTypeComponent,
     ProductTypeListingComponent,
+    ProductTypeDetailComponent,
+    SubCategoryDetailComponent,
+    SubCategoryListingComponent,
+    NewSubCategoryComponent,
   ],
   imports: [
     BrowserModule, HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}) ,

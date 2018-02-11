@@ -6,7 +6,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Manage Product Types
+                Manage Sub-Categorys
              
             </h1>
             <ol class="breadcrumb">
@@ -20,8 +20,8 @@
             <!-- Info boxes -->
             <div class="row">
                 <div class="box-body">
-                    <a href="/new-product-type" class="btn btn-sm btn-accent text-bold pull-right">
-                         Add Product Type
+                    <a href="/new-sub-category" class="btn btn-sm btn-accent text-bold pull-right">
+                         Add Sub-Category
                     </a>
                    <div class="clearfix"></div>
                      <br><br>
@@ -30,15 +30,15 @@
                         <table class="table datatable table-striped no-margin">
                             <thead>
                                 <tr>
-                                    <th>Product Type</th>
+                                    <th>Sub-category</th>
                                   
                                     
 
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of productTypes">
-                                    <td class="very-bold"><a routerLink="/product-types/{{item.id}}">{{item.name}}</a></td>
+                                <tr *ngFor="let item of subs">
+                                    <td class="very-bold"><a routerLink="/sub-categorys/{{item.id}}">{{item.name}}</a></td>
                                   
                                   
                                   

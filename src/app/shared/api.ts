@@ -21,6 +21,5 @@ export class Globals{
     //FORGOT_PASS_URL = this.HOST_URL + '/client/api/forgot_password/';
     //RESET_PASS_URL = this.HOST_URL + '/client/api/reset_password/';
     ACCOUNT_ACTIVATION_URL =  this.HOST_URL + '/stores/api/activate/';
-
-    
+    SUB_CATEGORYS_URL =  this.HOST_URL + '/stores/api/product_type_categorys/';    
 }

@@ -13,25 +13,25 @@ export class NewCategoryComponent implements OnInit {
   private formSubmitAttempt: boolean;
   categoryForm:FormGroup;
   category: any= {};
-  parentCategorys: any[];
+  // parentCategorys: any[];
   error: any;
 
   constructor(fb: FormBuilder, private categorySrv:CategoryService) {
   		this.categoryForm = fb.group({
   			'name':['', Validators.required],
-  			'parent':['']
+  			// 'parent':['']
   		
       });
    }
 
   ngOnInit() {
-  	this.fetchCategorys();
+  //	this.fetchCategorys();
   }
 
-   fetchCategorys(){
-    this.categorySrv.fetchCategories().then(response =>this.parentCategorys = response.results  )
-    .catch(error=> this.error = error )
-  }
+  //  fetchCategorys(){
+  //   this.categorySrv.fetchCategories().then(response =>this.parentCategorys = response.results  )
+  //   .catch(error=> this.error = error )
+  // }
 
   saveCategory(){
     this.formSubmitAttempt = true;

@@ -14,10 +14,10 @@ export class ProductTypeListingComponent implements OnInit {
   constructor(private productTypeSrv:ProductTypeService) { }
 
   ngOnInit() {
-  	this.fetchCategorys()
+  	this.fetchProductTypes()
   }
 
-  fetchCategorys(){
+  fetchProductTypes(){
   	this.productTypeSrv.fetchProductTypes().then(response => this.productTypes = response.results)
   	.catch(err => this.error = err)
   }

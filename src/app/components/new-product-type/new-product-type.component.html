@@ -25,18 +25,32 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <form role="form" [formGroup]="productTypeForm" (ngSubmit)="saveCategory()" novalidate>
+                            <form role="form" [formGroup]="productTypeForm" (ngSubmit)="saveCategory(productTypeForm.value)" novalidate>
 
                              <div class="row">
                                 <!-- text input -->
+
+                                 <div class="form-group col-sm-6">
+                                    <label>Category</label>
+                                   <select class="form-control" [formControl]="productTypeForm.controls['category']" >
+                                      <option *ngFor="let item of parentCategorys" [value]="item.slug">{{item.name}}</option>
+                                   </select>
+                                    <div *ngIf="productTypeForm.controls['category'].hasError('required') && formSubmitAttempt" class="alert alert-danger">Category is required</div>
+                                </div>
+                                
                                 <div class="form-group col-sm-6">
                                     <label> Name</label>
-                                    <input type="text" class="form-control" [(ngModel)]="productType.name" [formControl]="productTypeForm.controls['name']" required>
+                                    <input type="text" class="form-control"  [formControl]="productTypeForm.controls['name']" required>
 
-                                      <div *ngIf="productTypeForm.controls['name'].hasError('required') && formSubmitAttempt" style="color: red">Product Type Name is required</div>
+                                      <div *ngIf="productTypeForm.controls['name'].hasError('required') && formSubmitAttempt" class="alert alert-danger">Product Type Name is required</div>
                                 </div>
-                            
+
+                               
+                              
+                               
                             </div>
+                            
+
                             
 
                              <div class="row">
