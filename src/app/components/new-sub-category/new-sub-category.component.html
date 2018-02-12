@@ -6,12 +6,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Create Product Type
+                Create Sub-Category
 
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Create Product Type</li>
+                <li class="active">Create Sub-Category</li>
             </ol>
         </section>
 
@@ -21,7 +21,7 @@
                 <div class="col-md-12">
                     <div class="box box-warning">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Product Type Information</h3>
+                            <h3 class="box-title">Sub-Category Information</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -29,6 +29,16 @@
 
                              <div class="row">
                                 <!-- text input -->
+
+                                 <div class="form-group col-sm-6">
+                                    <label>Category</label>
+                                   <select class="form-control" [formControl]="subCategoryForm.controls['category']" >
+                                      <option *ngFor="let item of categorys" [value]="item.slug">{{item.name}}</option>
+                                   </select>
+                                    <div *ngIf="subCategoryForm.controls['category'].hasError('required') 
+                                    && formSubmitAttempt" class="alert alert-danger">Category is required</div>
+                                </div>
+                                
 
                                  <div class="form-group col-sm-6">
                                     <label>Product Type</label>
@@ -39,12 +49,7 @@
                                     && formSubmitAttempt" class="alert alert-danger">Product Type is required</div>
                                 </div>
                                 
-                                <div class="form-group col-sm-6">
-                                    <label> Name</label>
-                                    <input type="text" class="form-control"  [formControl]="subCategoryForm.controls['name']" required>
-
-                                      <div *ngIf="subCategoryForm.controls['name'].hasError('required') && formSubmitAttempt" class="alert alert-danger">Product Type Name is required</div>
-                                </div>
+                               
 
                                
                               
@@ -55,6 +60,13 @@
                             
 
                              <div class="row">
+
+                                 <div class="form-group col-sm-6">
+                                    <label> Name</label>
+                                    <input type="text" class="form-control"  [formControl]="subCategoryForm.controls['name']" required>
+
+                                      <div *ngIf="subCategoryForm.controls['name'].hasError('required') && formSubmitAttempt" class="alert alert-danger">Product Type Name is required</div>
+                                </div>
                             
                                 <div class="form-group col-sm-6">
                                     <input type="submit" class="btn btn-accent pull-right btn-flat" value="Publish"/>

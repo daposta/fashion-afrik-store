@@ -25,34 +25,47 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <form role="form" [formGroup]="productTypeForm" (ngSubmit)="updateSubCategory(productTypeForm.value)" novalidate>
+                            <form role="form" [formGroup]="subCategoryForm" (ngSubmit)="updateSubCategory(subCategoryForm.value)" novalidate>
 
                              <div class="row">
                                 <!-- text input -->
+
+                                  <div class="form-group col-sm-6">
+                                    <label>Category</label>
+                                   <select class="form-control" [formControl]="subCategoryForm.controls['category']" >
+                                      <option *ngFor="let item of categorys" [selected]="subCategory.parent_category?.id === item.id" [value]="item.slug">{{item.name}}</option>
+                                   </select>
+                                  <!--   <div *ngIf="subCategoryForm.controls['category'].hasError('required') 
+                                    && formSubmitAttempt" class="alert alert-danger">Category is required</div> -->
+                                </div>
+
+
                                 <div class="form-group col-sm-6">
                                     <label> Name</label>
-                                    <input type="text" class="form-control" [(ngModel)]="subCategory.name"  [formControl]="productTypeForm.controls['name']" value="{{subCategory.name}}"  required>
-
-                                      <div *ngIf="productTypeForm.controls['name'].hasError('required') && formSubmitAttempt" class="alert alert-danger">Sub-Category Name is required</div>
+                                    <input type="text" class="form-control" [(ngModel)]="subCategory.name"  [formControl]="subCategoryForm.controls['name']" value="{{subCategory.name}}"  >
+<!-- 
+                                      <div *ngIf="subCategoryForm.controls['name'].hasError('required') && formSubmitAttempt" class="alert alert-danger">Sub-Category Name is required</div> -->
                                 </div>
 
                                  
                             
                             </div>
                            <!--  {{productType.category.0.id}} -->
-                            <div class="form-group col-sm-6">
-                                    <label>Category</label>
-                                   <select class="form-control" [formControl]="productTypeForm.controls['productType']" [(ngModel)]="subCategory.productType" >
-                                      <option *ngFor="let item of productTypes" [value]="item.slug" 
-                                      [selected]="pt === item.id">{{item.name}}</option>
-                                   </select>
-                                    <div *ngIf="productTypeForm.controls['productType'].hasError('required')
-                                     && formSubmitAttempt" class="alert alert-danger">Category is required</div>
-                                </div>
+                            
 
                            
 
                              <div class="row">
+
+                             <div class="form-group col-sm-6">
+                                    <label>Product Type</label>
+                                   <select class="form-control" [formControl]="subCategoryForm.controls['productType']" [(ngModel)]="subCategory.productType" >
+                                      <option *ngFor="let item of productTypes" [value]="item.slug" 
+                                      [selected]="pt == item.id">{{item.name}}</option>
+                                   </select>
+                                <!--     <div *ngIf="subCategoryForm.controls['productType'].hasError('required')
+                                     && formSubmitAttempt" class="alert alert-danger">Product type is required</div> -->
+                                </div>
                             
                                 <div class="form-group col-sm-6">
                                     <input type="submit" class="btn btn-accent pull-right btn-flat" value="Publish"/>

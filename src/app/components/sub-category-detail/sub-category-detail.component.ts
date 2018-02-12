@@ -4,6 +4,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 
 import { ProductTypeService } from '../../services/product-type.service';
 import { SubCategoryService } from '../../services/sub-category.service';
+import { CategoryService } from '../../services/category.service';
 
 
 
@@ -11,32 +12,33 @@ import { SubCategoryService } from '../../services/sub-category.service';
   selector: 'app-sub-category-detail',
   templateUrl: './sub-category-detail.component.html',
   styleUrls: ['./sub-category-detail.component.css'],
-  providers: [ ProductTypeService, SubCategoryService ]
+  providers: [ ProductTypeService, SubCategoryService , CategoryService]
 
 })
 export class SubCategoryDetailComponent implements OnInit {
 
   private formSubmitAttempt: boolean;
-  productTypeForm:FormGroup;
+  subCategoryForm:FormGroup;
   subCategory: any= {};
   productTypes: any[];
   items: any[] = [];
+  categorys: any[];
   error: any;
   pt:any;
   constructor(private fb: FormBuilder,private route: ActivatedRoute, 
-  	private productTypeSrv:ProductTypeService, private subCategorySrv:SubCategoryService) { }
+  	private productTypeSrv:ProductTypeService, private subCategorySrv:SubCategoryService,
+    private categorySrv:CategoryService) { }
 
    ngOnInit() {
-  	 this.productTypeForm = this.fb.group({
+  	 this.subCategoryForm = this.fb.group({
         'name':['', Validators.required],
          'productType':['', Validators.required],
-        //'subCategories': [],
+          'category':['', Validators.required],
         
 
       });
        this.fetchProductTypes();
-       console.log('pppppppp');
-       console.log(this.productTypes);
+       this.fetchCategorys();
 
   	 this.route.params.switchMap((params: Params) => 
 			 	this.subCategorySrv.findSubCategoryByID( params['id']))
@@ -61,14 +63,19 @@ export class SubCategoryDetailComponent implements OnInit {
   	.catch(err => this.error = err)
   }
 
-
+  fetchCategorys(){
+    this.categorySrv.fetchCategories().then(response =>this.categorys = response.results  )
+    .catch(error=> this.error = error )
+  }
 
    updateSubCategory(data){
     this.formSubmitAttempt = true;
-    if (this.productTypeForm.valid){
+    // if (this.subCategoryForm.valid){
+      console.log(this.subCategoryForm.controls['category'].value);
        this.subCategory['id'] = this.subCategory['id'];
+       this.subCategory['category'] = this.subCategoryForm.controls['category'].value;
   	    this.subCategorySrv.updateSubCategory(this.subCategory);
-       }
+       // }
   }
 
 }

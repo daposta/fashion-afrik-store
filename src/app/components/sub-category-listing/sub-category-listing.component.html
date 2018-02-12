@@ -30,15 +30,18 @@
                         <table class="table datatable table-striped no-margin">
                             <thead>
                                 <tr>
+
                                     <th>Sub-category</th>
                                   
-                                    
+                                    <th>Parent</th>
 
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let item of subs">
                                     <td class="very-bold"><a routerLink="/sub-categorys/{{item.id}}">{{item.name}}</a></td>
+
+                                    <td class="very-bold">{{item.parent_category?.name}}</td>
                                   
                                   
                                   
