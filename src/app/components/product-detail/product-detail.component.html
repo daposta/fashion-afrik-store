@@ -157,9 +157,19 @@
                                  <div class="form-group">
                                     <label>Product Type</label>
                                    <select class="form-control" [(ngModel)]="new_product.productType"  
-                                   [formControl]="productForm.controls['productType']" require>
+                                   [formControl]="productForm.controls['productType']" >
                                        <option *ngFor="let item of productTypes" [value]="item.slug" 
-                                       [selected]="product.product_type?.id=== item.id">{{item.name}}</option>
+                                       [selected]="new_product.product_type?.id=== item.id">{{item.name}}</option>
+                                   </select>
+                                   
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Sub-category</label>
+                                   <select class="form-control" [(ngModel)]="new_product.sub_category"  
+                                   [formControl]="productForm.controls['subCategory']" >
+                                       <option *ngFor="let item of subs" [value]="item.slug" 
+                                       [selected]="new_product.sub_category?.id=== item.id">{{item.name}}</option>
                                    </select>
                                    
                                 </div>

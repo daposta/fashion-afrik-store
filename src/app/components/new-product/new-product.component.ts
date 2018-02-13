@@ -7,6 +7,7 @@ import { ProductTypeService } from '../../services/product-type.service';
 import { CurrencyService } from '../../services/currency.service';
 import { ColorService } from '../../services/color.service';
 import { SizeService } from '../../services/size.service';
+import { SubCategoryService } from '../../services/sub-category.service';
 
 
 
@@ -17,7 +18,7 @@ declare var $: any;
   templateUrl: './new-product.component.html',
   styleUrls: ['./new-product.component.css'],
   providers: [ProductService, CategoryService , ProductTypeService, CurrencyService,
-  ColorService, SizeService]
+  ColorService, SizeService, SubCategoryService]
 })
 export class NewProductComponent implements OnInit {
   
@@ -28,6 +29,7 @@ export class NewProductComponent implements OnInit {
    currencys: any[];
    colors: any[];
    sizes: any[];
+    subs: any[];
   error: any;
   product : any = {};
   private clearance: boolean = false;
@@ -35,7 +37,7 @@ export class NewProductComponent implements OnInit {
 
   constructor(fb: FormBuilder, private productSrv:ProductService, private productTypeSrv:ProductTypeService, 
     private categorySrv:CategoryService, private currencySrv: CurrencyService, private colorSrv: ColorService,
-    private sizeSrv: SizeService) {
+    private sizeSrv: SizeService , private subCategorySrv: SubCategoryService) {
   			this.productForm = fb.group({
   			'name':['', Validators.required],
   			'description':['', Validators.required],
@@ -45,6 +47,7 @@ export class NewProductComponent implements OnInit {
   			'price':['', Validators.required],
   			'productCategory':['', Validators.required],
         'productType':['', Validators.required],
+        'subCategory':['', Validators.required],
         'currency':['', Validators.required],
         'tags':['', Validators.required],
         'bannerImage':['', ], //[  FileValidator.validate]
@@ -65,6 +68,7 @@ export class NewProductComponent implements OnInit {
     this.currencySrv.fetchCurrencys().then(response => this.currencys = response.results)
     this.colorSrv.fetchColors().then(response => this.colors = response.results)
     this.sizeSrv.fetchSizes().then(response => this.sizes = response.results)
+    this.fetchSubCategorys();
 
   
   }
@@ -102,6 +106,12 @@ export class NewProductComponent implements OnInit {
     this.productTypeSrv.fetchProductTypes().then(response =>this.productTypes = response.results  )
     .catch(error=> this.error = error )
   }
+
+   fetchSubCategorys(){
+    this.subCategorySrv.fetchSubCategorys().then(response => this.subs = response.results)
+    .catch(err => this.error = err)
+  }
+
 
   saveProduct(){
   

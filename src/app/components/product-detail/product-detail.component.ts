@@ -5,6 +5,8 @@ import { ProductTypeService } from '../../services/product-type.service';
 import { CurrencyService } from '../../services/currency.service';
 import { ColorService } from '../../services/color.service';
 import { SizeService } from '../../services/size.service';
+import { SubCategoryService } from '../../services/sub-category.service';
+
 
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {FormBuilder,FormGroup, Validators} from '@angular/forms'
@@ -17,7 +19,7 @@ import { Globals } from '../../shared/api';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
   providers: [ProductService, CategoryService, ProductTypeService, CurrencyService,
-  ColorService, SizeService]
+  ColorService, SizeService, SubCategoryService]
 })
 export class ProductDetailComponent implements OnInit {
   
@@ -29,6 +31,7 @@ export class ProductDetailComponent implements OnInit {
     currencys: any[];
    colors: any[];
    sizes: any[];
+   subs: any[];
   error: any;
   private formSubmitAttempt: boolean;
   productForm:FormGroup;
@@ -36,7 +39,7 @@ export class ProductDetailComponent implements OnInit {
   constructor(private productSrv : ProductService, private route: ActivatedRoute, private globals: Globals,
     private categorySrv:CategoryService,  private productTypeSrv:ProductTypeService, fb: FormBuilder, 
      private currencySrv: CurrencyService, private colorSrv: ColorService,
-    private sizeSrv: SizeService) { 
+    private sizeSrv: SizeService , private subCategorySrv: SubCategoryService) { 
         this.productForm = fb.group({
         'name':['', Validators.required],
         'description':['', Validators.required],
@@ -46,6 +49,7 @@ export class ProductDetailComponent implements OnInit {
         'price':['', Validators.required],
         'productCategory':['', Validators.required],
         'productType':['', Validators.required],
+         'subCategory':['', Validators.required],
         'currency':['', Validators.required],
         'tags':['', Validators.required],
         'isClearance':['', ],
@@ -95,12 +99,19 @@ export class ProductDetailComponent implements OnInit {
       
        this.fetchCategorys();
        this.fetchProductTypes();
+       this.fetchSubCategorys();
         this.currencySrv.fetchCurrencys().then(response => this.currencys = response.results)
       this.colorSrv.fetchColors().then(response => this.colors = response.results)
       this.sizeSrv.fetchSizes().then(response => this.sizes = response.results)
       
 
   };
+
+
+  fetchSubCategorys(){
+    this.subCategorySrv.fetchSubCategorys().then(response => this.subs = response.results)
+    .catch(err => this.error = err)
+  }
 
 
   checkColorSelected(color) {

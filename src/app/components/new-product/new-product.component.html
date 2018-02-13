@@ -57,6 +57,15 @@
                                     <div *ngIf="productForm.controls['productType'].hasError('required') && formSubmitAttempt" style="color: red">Product Type is required</div>
                                 </div>
 
+                                 <div class="form-group col-sm-6">
+                                    <label>Sub-Category</label>
+                                   <select class="form-control" [(ngModel)]="product.subCategory" [formControl]="productForm.controls['subCategory']" require>
+                                       <option *ngFor="let item of subs" [value]="item.slug">{{item.name}}</option>
+                                   </select>
+
+                                    <div *ngIf="productForm.controls['subCategory'].hasError('required') && formSubmitAttempt" style="color: red">Sub-Category is required</div>
+                                </div>
+
 
                                 <!-- textarea -->
                                 <div class="form-group col-sm-6">
