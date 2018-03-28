@@ -6,7 +6,7 @@ import { Globals } from '../shared/api';
 @Injectable()
 export class OrderService {
 
-  private ordersUrl = this.globals.ORDERS_URL; 
+  private ordersUrl = this.globals.ORDER_ITEMS_URL; 
   constructor(private http: Http, private globals: Globals,  private router:Router) { }
 
   fetchOrders(){

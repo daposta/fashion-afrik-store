@@ -51,6 +51,8 @@ import { ProductTypeDetailComponent } from './components/product-type-detail/pro
 import { SubCategoryDetailComponent } from './components/sub-category-detail/sub-category-detail.component';
 import { SubCategoryListingComponent } from './components/sub-category-listing/sub-category-listing.component';
 import { NewSubCategoryComponent } from './components/new-sub-category/new-sub-category.component';
+import { TermsComponent } from './components/terms/terms.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 
 
@@ -128,6 +130,8 @@ const appRoutes: Routes = [
     SubCategoryDetailComponent,
     SubCategoryListingComponent,
     NewSubCategoryComponent,
+    TermsComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule, HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}) ,

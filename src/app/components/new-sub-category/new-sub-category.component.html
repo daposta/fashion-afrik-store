@@ -32,7 +32,7 @@
 
                                  <div class="form-group col-sm-6">
                                     <label>Category</label>
-                                   <select class="form-control" [formControl]="subCategoryForm.controls['category']" >
+                                   <select class="form-control" [formControl]="subCategoryForm.controls['category']"  (change)="fetchProductTypeForCategory($event)">
                                       <option *ngFor="let item of categorys" [value]="item.slug">{{item.name}}</option>
                                    </select>
                                     <div *ngIf="subCategoryForm.controls['category'].hasError('required') 

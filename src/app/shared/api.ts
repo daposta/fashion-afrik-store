@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 Injectable()
 export class Globals{
-	HOST_URL =   'https://stores.vogueafriq.com/api';  // 'http://127.0.0.1:8000';//   
+	HOST_URL =   'https://stores.vogueafriq.com/api';  //  'http://127.0.0.1:8000';//  
 	LOGIN_URL =  this.HOST_URL + '/stores/api/login/';
     LOGOUT_URL = this.HOST_URL + '/stores/api/logout/';
     CATEGORYS_URL =  this.HOST_URL + '/stores/api/categorys/';
@@ -21,5 +21,7 @@ export class Globals{
     //FORGOT_PASS_URL = this.HOST_URL + '/client/api/forgot_password/';
     //RESET_PASS_URL = this.HOST_URL + '/client/api/reset_password/';
     ACCOUNT_ACTIVATION_URL =  this.HOST_URL + '/stores/api/activate/';
-    SUB_CATEGORYS_URL =  this.HOST_URL + '/stores/api/product_type_categorys/';    
+    SUB_CATEGORYS_URL =  this.HOST_URL + '/stores/api/product_type_categorys/'; 
+    ORDER_ITEMS_URL =  this.HOST_URL + '/stores/api/items/';
+   
 }

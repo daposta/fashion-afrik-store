@@ -37,13 +37,19 @@ export class NewSubCategoryComponent implements OnInit {
 
       });
 
-      this.fetchProductTypes();
+     // this.fetchProductTypes();
       this.fetchCategorys();
   }
 
-   fetchProductTypes(){
-  	this.productTypeSrv.fetchProductTypes().then(response => this.productTypes = response.results)
-  	.catch(err => this.error = err)
+  //  fetchProductTypes(){
+  // 	this.productTypeSrv.fetchProductTypes().then(response => this.productTypes = response.results)
+  // 	.catch(err => this.error = err)
+  // }
+
+  fetchProductTypeForCategory(event){
+    let category = event.target.src;
+    this.productTypeSrv.fetchProductTypes(category).then(response => this.productTypes = response.results)
+    .catch(err => this.error = err)
   }
 
    fetchCategorys(){

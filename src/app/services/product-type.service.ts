@@ -12,9 +12,14 @@ export class ProductTypeService {
   private productTypeURL =   this.globals.PRODUCT_TYPE_URL;
   constructor(private http: Http, private globals: Globals,  private router:Router) { }
 
-  fetchProductTypes(){
+  fetchProductTypes(category?:string){
   	  let v = this.page_header();
-    return this.http.get(this.productTypeURL, v)
+     // let _category = ''
+      let ptURL = this.productTypeURL
+      if(category){
+         ptURL = this.productTypeURL + category
+      }
+    return this.http.get(ptURL, v)
               .toPromise()
               .then(response => response.json())
               .catch(this.handleError);
