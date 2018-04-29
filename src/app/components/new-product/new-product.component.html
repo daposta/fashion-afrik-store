@@ -27,187 +27,145 @@
                         <div class="box-body">
                             <form role="form" [formGroup]="productForm" (ngSubmit)="saveProduct()" novalidate >
                                 <!-- text input -->
-                         <div class="row">
+                                <div class="row">
                                     <div class="form-group col-sm-6">
-                                    <label>Product Name</label>
-                                    <input type="text" class="form-control" [(ngModel)]="product.name" [formControl]="productForm.controls['name']" required>
-
-                                      <div *ngIf="productForm.controls['name'].hasError('required') && formSubmitAttempt" style="color: red">Product Name is required</div>
-                                </div>
-
-                                 <div class="form-group col-sm-6">
-                                    <label> Category</label>
-                                   <select class="form-control" [(ngModel)]="product.category" [formControl]="productForm.controls['productCategory']" require>
-                                       <option *ngFor="let item of categorys" [value]="item.slug">{{item.name}}</option>
-                                   </select>
-
-                                      <div *ngIf="productForm.controls['productCategory'].hasError('required') && formSubmitAttempt" style="color: red">Product Category is required</div>
-                                </div>
-                       </div>
-                             
-                           
-                            <div class="row">
-
-                                <div class="form-group col-sm-6">
-                                    <label> Product Type</label>
-                                   <select class="form-control" [(ngModel)]="product.productType" [formControl]="productForm.controls['productType']" require>
-                                       <option *ngFor="let item of productTypes" [value]="item.slug">{{item.name}}</option>
-                                   </select>
-
-                                    <div *ngIf="productForm.controls['productType'].hasError('required') && formSubmitAttempt" style="color: red">Product Type is required</div>
-                                </div>
-
-                                 <div class="form-group col-sm-6">
-                                    <label>Sub-Category</label>
-                                   <select class="form-control" [(ngModel)]="product.subCategory" [formControl]="productForm.controls['subCategory']" require>
-                                       <option *ngFor="let item of subs" [value]="item.slug">{{item.name}}</option>
-                                   </select>
-
-                                    <div *ngIf="productForm.controls['subCategory'].hasError('required') && formSubmitAttempt" style="color: red">Sub-Category is required</div>
-                                </div>
-
-
-                                <!-- textarea -->
-                                <div class="form-group col-sm-6">
-                                    <label>Description</label>   
-                                    <textarea class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" [(ngModel)]="product.description"  [formControl]="productForm.controls['description']" required></textarea>
-
-                                    <div *ngIf="productForm.controls['description'].hasError('required') && formSubmitAttempt" style="color: red">Product description is required</div>
-                                </div>
-
-                          
-
-                            </div>
-
-                            <div class="row">
-
-                             <div class="form-group col-sm-6">
-                                    <label>Currency</label>
-
-                                     <select class="form-control" [(ngModel)]="product.currency" [formControl]="productForm.controls['currency']" require>
-                                       <option *ngFor="let item of currencys" [value]="item.code">{{item.code}}</option>
-                                   </select>
-
-                                    <div *ngIf="productForm.controls['currency'].hasError('required') && formSubmitAttempt" style="color: red">Currency is required</div>
-                                </div>
-
-                              <div class="form-group col-sm-6">
-                                <label>Enter Price</label>
-                                <input type="text" class="form-control" [(ngModel)]="product.price"  [formControl]="productForm.controls['price']" (keypress)="numbersOnly($event)" required>
-
-                                 <div *ngIf="productForm.controls['price'].hasError('required') && formSubmitAttempt" style="color: red">Product price is required</div>
-                                </div>
-
-                               
-                          
-
-                            </div>
-
-                             <div class="row">
-
-                              <!-- textarea -->
-                                <div class="form-group col-sm-6">
-                                    <label>Is Clearance</label>   
-                                   <input type="checkbox" [checked]="clearance" (change)="clearanceChange()" [(ngModel)]="product.isClearance" [formControl]="productForm.controls['isClearance']" > 
-
+                                        <label>Product Name</label>
+                                        <input type="text" class="form-control" [(ngModel)]="product.name" [formControl]="productForm.controls['name']" required placeholder="Product Name">
+                                        
+                                        <div *ngIf="productForm.controls['name'].hasError('required') && formSubmitAttempt" style="color: red">Product Name is required</div>
+                                    </div>
                                     
+                                    <div class="form-group col-sm-6">
+                                        <label> Category</label>
+                                        <select class="form-control" [(ngModel)]="product.category" [formControl]="productForm.controls['productCategory']" require>
+                                            <option *ngFor="let item of categorys" [value]="item.slug">{{item.name}}</option>
+                                        </select>
+                                        
+                                        <div *ngIf="productForm.controls['productCategory'].hasError('required') && formSubmitAttempt" style="color: red">Product Category is required</div>
+                                    </div>
                                 </div>
-
-                             </div>
-
-
-                               <div class="row">
-
-                                <div class="form-group col-sm-6">
-                                <label>Discount Price</label>
-                                <input type="text" class="form-control" [(ngModel)]="product.discountPrice"  [formControl]="productForm.controls['discountPrice']"  (keypress)="numbersOnly($event)" >
-
-                              
-
-                                     </div>
-                                  
-                                  <div class="form-group col-sm-6">
-                                    <label>Banner/Feature Image</label>
-                                    <input  type="file" name="banner_image" class="single-file  form-control" [(ngModel)]="product.banner_image"  [formControl]="productForm.controls['bannerImage']" (change)="addDocument($event)"   /> 
-
-                                   <!--  <p *ngIf="productForm.controls.bannerImage.errors?.required" style="color: red">This field is required!</p> -->
-        
-
-                                    <div *ngIf="productForm.controls['bannerImage'].hasError('required')" style="color: red">Banner Image is required</div>
-                                </div>
-
                                 
-                               
-                               </div>
-                           
                                 <div class="row">
-                                 <div class="form-group col-sm-6">
-                                    <label>Is New Arrival</label>   
-                                   <input type="checkbox" [checked]="newArrival"  (change)="arrivalChange()"  [(ngModel)]="product.isNewArrival"  [formControl]="productForm.controls['isNewArrival']" > 
-
+                                    <div class="form-group col-sm-6">
+                                        <label> Product Type</label>
+                                        <select class="form-control" [(ngModel)]="product.productType" [formControl]="productForm.controls['productType']" require>
+                                            <option *ngFor="let item of productTypes" [value]="item.slug">{{item.name}}</option>
+                                        </select>
+                                        
+                                        <div *ngIf="productForm.controls['productType'].hasError('required') && formSubmitAttempt" style="color: red">Product Type is required</div>
+                                    </div>
                                     
+                                    <div class="form-group col-sm-6">
+                                        <label>Sub-Category</label>
+                                        <select class="form-control" [(ngModel)]="product.subCategory" [formControl]="productForm.controls['subCategory']" require>
+                                            <option *ngFor="let item of subs" [value]="item.slug">{{item.name}}</option>
+                                        </select>
+                                        
+                                        <div *ngIf="productForm.controls['subCategory'].hasError('required') && formSubmitAttempt" style="color: red">Sub-Category is required</div>
+                                    </div>
+                                    
+                                    <!-- textarea -->
+                                    <div class="form-group col-sm-6">
+                                        <label>Description</label>
+                                        <textarea class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" [(ngModel)]="product.description"  [formControl] ="productForm.controls['description']" required></textarea>
+                                        
+                                        <div *ngIf="productForm.controls['description'].hasError('required') && formSubmitAttempt" style="color: red">Product description is required</div>
+                                    </div>
                                 </div>
-
-                                 <div class="form-group col-sm-6">
-                                    <label>Sizes</label>
-                                    <!-- <input type="text" class="form-control" [(ngModel)]="product.sizes"  [formControl]="productForm.controls['sizes']"  required> -->
-
-                                    <select class="form-control" [(ngModel)]="product.sizes" [formControl]="productForm.controls['sizes']" multiple>
-                                        <option [value]="null" disabled>Choose your profile</option>
-                                       <option *ngFor="let item of sizes" [value]="item.name">{{item.name}}</option>
-                                   </select>
-
-                                    <div *ngIf="productForm.controls['sizes'].hasError('required') && formSubmitAttempt" style="color: red">Sizes are required</div>
-                                </div>
-                               
-
-                        
-                               
-                                </div>
-
-                                 <div class="row">
-
-                                 <div class="form-group col-sm-6">
-                                    <label> Colors</label>   
-                                   <!-- <input type="checkbox" [checked]="newArrival"  (change)="arrivalChange()"  [(ngModel)]="product.isNewArrival"  [formControl]="productForm.controls['isNewArrival']" >  -->
-                                   <select class="form-control" [(ngModel)]="product.colors" [formControl]="productForm.controls['colors']" multiple>
-                                       <option *ngFor="let item of colors" [value]="item.slug">{{item.name}}</option>
-                                   </select>
-
-                                      <div *ngIf="productForm.controls['colors'].hasError('required') && formSubmitAttempt" style="color: red">Colors are required</div>
-                                </div>
-
-                                 <div class="form-group col-sm-6">
-                                    <label>Other Colors</label>
-                                    <input type="text" class="form-control" [(ngModel)]="product.otherColors"  [formControl]="productForm.controls['otherColors']" >
-
-                                   
-                                </div>
-                               
-
-                        
-                               
-                                </div>
-
-
+                                
                                 <div class="row">
-
-                                <div class="form-group col-sm-6">
-                                    <label>Tags</label>
-                                    <input type="text" class="form-control" [(ngModel)]="product.tags"  [formControl]="productForm.controls['tags']"  required>
-
-                                    <div *ngIf="productForm.controls['tags'].hasError('required') && formSubmitAttempt" style="color: red">Product tags are required</div>
+                                    <div class="form-group col-sm-6">
+                                        <label>Currency</label>
+                                        <select class="form-control" [(ngModel)]="product.currency" [formControl]="productForm.controls['currency']" require>
+                                            <option *ngFor="let item of currencys" [value]="item.code">{{item.code}}</option>
+                                        </select>
+                                        
+                                        <div *ngIf="productForm.controls['currency'].hasError('required') && formSubmitAttempt" style="color: red">Currency is required</div>
+                                    </div>
+                                    
+                                    <div class="form-group col-sm-6">
+                                        <label>Enter Price</label>
+                                        <input type="text" class="form-control" [(ngModel)]="product.price"  [formControl]="productForm.controls['price']" (keypress)="numbersOnly($event)" required placeholder="Enter Price">
+                                        
+                                        <div *ngIf="productForm.controls['price'].hasError('required') && formSubmitAttempt" style="color: red">Product price is required</div>
+                                    </div>
                                 </div>
-
-                                <div class="form-group col-sm-6">
-                                    <label>Other Images</label>
-                                 
-                                     <input type="file" name="other_images" class="multi-file form-control" [(ngModel)]="product.other_images"  [formControl]="productForm.controls['otherImages']" multiple (change)="addOtherDocuments($event)"/> 
-
-                                 <!--  <div *ngIf="productForm.controls['otherImages'].hasError('required') && formSubmitAttempt" style="color: red">Other Images required</div> -->
+                                
+                                <div class="row">
+                                    <!-- textarea -->
+                                    <div class="form-group col-sm-6">
+                                        <label>Is Clearance</label>
+                                        <input type="checkbox" [checked]="clearance" (change)="clearanceChange()" [(ngModel)]="product.isClearance" [formControl]="productForm.controls['isClearance']" >
+                                    </div>
                                 </div>
+                                
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <label>Discount Price</label>
+                                        <input type="text" class="form-control" [(ngModel)]="product.discountPrice"  [formControl]="productForm.controls['discountPrice']"  (keypress)="numbersOnly($event)" placeholder="Discount Price">
+                                    </div>
+                                    
+                                    <div class="form-group col-sm-6">
+                                        <label>Banner/Feature Image</label>
+                                        <input  type="file" name="banner_image" class="single-file  form-control" [(ngModel)]="product.banner_image"  [formControl]="productForm.controls['bannerImage']" (change)="addDocument($event)"/>
+                                        
+                                        <!--  <p *ngIf="productForm.controls.bannerImage.errors?.required" style="color: red">This field is required!</p> -->
+                                        <div *ngIf="productForm.controls['bannerImage'].hasError('required')" style="color: red">Banner Image is required</div>
+                                    </div>
                                 </div>
-                               <!--  <div class="dropzone"></div> -->
+                                
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <label>Is New Arrival</label>
+                                        <input type="checkbox" [checked]="newArrival"  (change)="arrivalChange()"  [(ngModel)]="product.isNewArrival"  [formControl]="productForm.controls['isNewArrival']" >
+                                    </div>
+                                    
+                                    <div class="form-group col-sm-6">
+                                        <label>Sizes</label>
+                                        <!-- <input type="text" class="form-control" [(ngModel)]="product.sizes"  [formControl]="productForm.controls['sizes']"  required> -->
+                                        <select class="form-control" [(ngModel)]="product.sizes" [formControl]="productForm.controls['sizes']" multiple>
+                                            <option [value]="null" disabled>Choose your profile</option>
+                                            <option *ngFor="let item of sizes" [value]="item.name">{{item.name}}</option>
+                                        </select>
+                                        
+                                        <div *ngIf="productForm.controls['sizes'].hasError('required') && formSubmitAttempt" style="color: red">Sizes are required</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <label> Colors</label>
+                                        <!-- <input type="checkbox" [checked]="newArrival"  (change)="arrivalChange()"  [(ngModel)]="product.isNewArrival"  [formControl]="productForm.controls['isNewArrival']" >  -->
+                                        <select class="form-control" [(ngModel)]="product.colors" [formControl]="productForm.controls['colors']" multiple>
+                                            <option *ngFor="let item of colors" [value]="item.slug">{{item.name}}</option>
+                                        </select>
+                                        
+                                        <div *ngIf="productForm.controls['colors'].hasError('required') && formSubmitAttempt" style="color: red">Colors are required</div>
+                                    </div>
+                                    
+                                    <div class="form-group col-sm-6">
+                                        <label>Other Colors</label>
+                                        <input type="text" class="form-control" [(ngModel)]="product.otherColors"  [formControl]="productForm.controls['otherColors']">
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <label>Tags</label>
+                                        <input type="text" class="form-control" [(ngModel)]="product.tags"  [formControl]="productForm.controls['tags']"  required>
+                                        
+                                        <div *ngIf="productForm.controls['tags'].hasError('required') && formSubmitAttempt" style="color: red">Product tags are required</div>
+                                    </div>
+                                    
+                                    <div class="form-group col-sm-6">
+                                        <label>Other Images</label>
+                                        <input type="file" name="other_images" class="multi-file form-control" [(ngModel)]="product.other_images"  [formControl]="productForm.controls['otherImages']" multiple (change)="addOtherDocuments($event)"/>
+                                        
+                                        <!--  <div *ngIf="productForm.controls['otherImages'].hasError('required') && formSubmitAttempt" style="color: red">Other Images required</div> -->
+                                    </div>
+                                </div>
+                                
+                                <!--  <div class="dropzone"></div> -->
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-accent pull-right btn-flat" value="Publish"/>
                                     <div class="clearfix"></div>
@@ -217,11 +175,8 @@
                         <!-- /.box-body -->
                     </div>
                 </div>
-             
-                    </div>
-
-</section>
+            </div>
+        </section>
     </div>
-
 </div>
 <app-footer></app-footer>

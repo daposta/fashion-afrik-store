@@ -1,6 +1,6 @@
 .login-wrapper {
 	height: 100vh;
-	background: url('/assets/dist/img/fashion-hanger.jpg');
+	background: url('/assets/dist/img/ingrid-hall.jpg');
 	background-size: cover;
 	display: flex;
     justify-content: center;
@@ -8,10 +8,23 @@
 }
 
 .login-logo a {
-	color: #fff;
+	color: #666666;
     font-weight: 700;
     text-transform: lowercase;
     letter-spacing: -2px;
+    position: relative;
+    top: -40px;
+}
+
+.login-logo img {
+    height: 70px;
+    width: auto;
+    margin-top: 20px;
+    transition: .5s height;
+}
+
+.login-logo img:hover {
+    height: 75px;
 }
 
 a{
@@ -24,13 +37,54 @@ a{
 }
 
 .login-box-msg {
-	font-size: 20px
+    font-size: 18px;
+    font-weight: normal;
 }
 
 .login-box-body {
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 100px;
+    background: transparent;
+}
+
+.btn-accent:focus {
+    color: #FFF !important;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    background: lightgrey;
+    color: #000;
+    opacity: .5;
+}
+
+input.form-control::-webkit-input-placeholder {
+    color: #000;
+    opacity: .7;
+}
+
+.form-error {
+    display: inline-block;
+    animation: 2s alertAnim forwards;
+    position: absolute;
+    font-weight: 200;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+@keyframes alertAnim {
+    from {
+        opacity:0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity:1;
+        transform: translateX(0);
+    }
 }
 
 /*input[type=checkbox]{

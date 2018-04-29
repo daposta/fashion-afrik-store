@@ -15,6 +15,9 @@ declare var $: any;
 export class LoginComponent implements OnInit {
   user : any = {};
   loginForm:FormGroup;
+  emailRequired:string = 'Email is required';
+  emailInvalid:string = 'Email is invalid';
+  passwordRequired:string = 'Password is required';
   private formSubmitAttempt: boolean;
   
 
