@@ -1,0 +1,44 @@
+.footer {
+    margin: 0;
+}
+
+.footer .social-container {
+    padding: 10px;
+    color: #041935;
+    font-size: 28px;
+}
+
+.footer .social-container i {
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.footer .quickLinks {
+    width: 100%;
+    background: #041935;
+    color: #FFF;
+}
+
+.footer .quickLinks .row {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.footer .quickLinks .row .col {
+    border: 1px solid #ECF0F5;
+    height: 100px;
+    font-weight: bold;
+    padding: 35px;
+    cursor: pointer;
+}
+
+.footer .quickLinks .row a {
+    color: #FFF;
+    height: 100%;
+    width: 100%;
+}
+
+.footer .copyright {
+    padding: 10px;
+}
