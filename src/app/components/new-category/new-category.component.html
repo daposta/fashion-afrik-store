@@ -33,7 +33,7 @@
                                     <label>Category Name</label>
                                     <input type="text" class="form-control" [(ngModel)]="category.name" [formControl]="categoryForm.controls['name']" required>
 
-                                      <div *ngIf="categoryForm.controls['name'].hasError('required') && formSubmitAttempt" style="color: red">Category Name is required</div>
+                                      <div *ngIf="categoryForm.controls['name'].hasError('required') && formSubmitAttempt" class="form-error">Category Name is required</div>
                                 </div>
                             
                             </div>

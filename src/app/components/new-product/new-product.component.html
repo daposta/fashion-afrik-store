@@ -32,7 +32,7 @@
                                         <label>Product Name</label>
                                         <input type="text" class="form-control" [(ngModel)]="product.name" [formControl]="productForm.controls['name']" required placeholder="Product Name">
                                         
-                                        <div *ngIf="productForm.controls['name'].hasError('required') && formSubmitAttempt" style="color: red">Product Name is required</div>
+                                        <div *ngIf="productForm.controls['name'].hasError('required') && formSubmitAttempt" class="form-error">Product Name is required</div>
                                     </div>
                                     
                                     <div class="form-group col-sm-6">
@@ -41,7 +41,7 @@
                                             <option *ngFor="let item of categorys" [value]="item.slug">{{item.name}}</option>
                                         </select>
                                         
-                                        <div *ngIf="productForm.controls['productCategory'].hasError('required') && formSubmitAttempt" style="color: red">Product Category is required</div>
+                                        <div *ngIf="productForm.controls['productCategory'].hasError('required') && formSubmitAttempt" class="form-error">Product Category is required</div>
                                     </div>
                                 </div>
                                 
@@ -52,7 +52,7 @@
                                             <option *ngFor="let item of productTypes" [value]="item.slug">{{item.name}}</option>
                                         </select>
                                         
-                                        <div *ngIf="productForm.controls['productType'].hasError('required') && formSubmitAttempt" style="color: red">Product Type is required</div>
+                                        <div *ngIf="productForm.controls['productType'].hasError('required') && formSubmitAttempt" class="form-error">Product Type is required</div>
                                     </div>
                                     
                                     <div class="form-group col-sm-6">
@@ -61,7 +61,7 @@
                                             <option *ngFor="let item of subs" [value]="item.slug">{{item.name}}</option>
                                         </select>
                                         
-                                        <div *ngIf="productForm.controls['subCategory'].hasError('required') && formSubmitAttempt" style="color: red">Sub-Category is required</div>
+                                        <div *ngIf="productForm.controls['subCategory'].hasError('required') && formSubmitAttempt" class="form-error">Sub-Category is required</div>
                                     </div>
                                     
                                     <!-- textarea -->
@@ -69,7 +69,7 @@
                                         <label>Description</label>
                                         <textarea class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" [(ngModel)]="product.description"  [formControl] ="productForm.controls['description']" required></textarea>
                                         
-                                        <div *ngIf="productForm.controls['description'].hasError('required') && formSubmitAttempt" style="color: red">Product description is required</div>
+                                        <div *ngIf="productForm.controls['description'].hasError('required') && formSubmitAttempt" class="form-error">Product description is required</div>
                                     </div>
                                 </div>
                                 
@@ -80,14 +80,14 @@
                                             <option *ngFor="let item of currencys" [value]="item.code">{{item.code}}</option>
                                         </select>
                                         
-                                        <div *ngIf="productForm.controls['currency'].hasError('required') && formSubmitAttempt" style="color: red">Currency is required</div>
+                                        <div *ngIf="productForm.controls['currency'].hasError('required') && formSubmitAttempt" class="form-error">Currency is required</div>
                                     </div>
                                     
                                     <div class="form-group col-sm-6">
                                         <label>Enter Price</label>
                                         <input type="text" class="form-control" [(ngModel)]="product.price"  [formControl]="productForm.controls['price']" (keypress)="numbersOnly($event)" required placeholder="Enter Price">
                                         
-                                        <div *ngIf="productForm.controls['price'].hasError('required') && formSubmitAttempt" style="color: red">Product price is required</div>
+                                        <div *ngIf="productForm.controls['price'].hasError('required') && formSubmitAttempt" class="form-error">Product price is required</div>
                                     </div>
                                 </div>
                                 
@@ -109,8 +109,8 @@
                                         <label>Banner/Feature Image</label>
                                         <input  type="file" name="banner_image" class="single-file  form-control" [(ngModel)]="product.banner_image"  [formControl]="productForm.controls['bannerImage']" (change)="addDocument($event)"/>
                                         
-                                        <!--  <p *ngIf="productForm.controls.bannerImage.errors?.required" style="color: red">This field is required!</p> -->
-                                        <div *ngIf="productForm.controls['bannerImage'].hasError('required')" style="color: red">Banner Image is required</div>
+                                        <!--  <p *ngIf="productForm.controls.bannerImage.errors?.required" class="form-error">This field is required!</p> -->
+                                        <div *ngIf="productForm.controls['bannerImage'].hasError('required')" class="form-error">Banner Image is required</div>
                                     </div>
                                 </div>
                                 
@@ -128,7 +128,7 @@
                                             <option *ngFor="let item of sizes" [value]="item.name">{{item.name}}</option>
                                         </select>
                                         
-                                        <div *ngIf="productForm.controls['sizes'].hasError('required') && formSubmitAttempt" style="color: red">Sizes are required</div>
+                                        <div *ngIf="productForm.controls['sizes'].hasError('required') && formSubmitAttempt" class="form-error">Sizes are required</div>
                                     </div>
                                 </div>
                                 
@@ -140,7 +140,7 @@
                                             <option *ngFor="let item of colors" [value]="item.slug">{{item.name}}</option>
                                         </select>
                                         
-                                        <div *ngIf="productForm.controls['colors'].hasError('required') && formSubmitAttempt" style="color: red">Colors are required</div>
+                                        <div *ngIf="productForm.controls['colors'].hasError('required') && formSubmitAttempt" class="form-error">Colors are required</div>
                                     </div>
                                     
                                     <div class="form-group col-sm-6">
@@ -154,14 +154,14 @@
                                         <label>Tags</label>
                                         <input type="text" class="form-control" [(ngModel)]="product.tags"  [formControl]="productForm.controls['tags']"  required>
                                         
-                                        <div *ngIf="productForm.controls['tags'].hasError('required') && formSubmitAttempt" style="color: red">Product tags are required</div>
+                                        <div *ngIf="productForm.controls['tags'].hasError('required') && formSubmitAttempt" class="form-error">Product tags are required</div>
                                     </div>
                                     
                                     <div class="form-group col-sm-6">
                                         <label>Other Images</label>
                                         <input type="file" name="other_images" class="multi-file form-control" [(ngModel)]="product.other_images"  [formControl]="productForm.controls['otherImages']" multiple (change)="addOtherDocuments($event)"/>
                                         
-                                        <!--  <div *ngIf="productForm.controls['otherImages'].hasError('required') && formSubmitAttempt" style="color: red">Other Images required</div> -->
+                                        <!--  <div *ngIf="productForm.controls['otherImages'].hasError('required') && formSubmitAttempt" class="form-error">Other Images required</div> -->
                                     </div>
                                 </div>
                                 
