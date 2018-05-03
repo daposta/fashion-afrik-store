@@ -1,6 +1,6 @@
 .login-wrapper {
-	height: 100vh;
-	background: url('/assets/dist/img/fashion-hanger.jpg');
+    height: 100vh;
+	background: url('/assets/dist/img/ingrid-hall.jpg');
 	background-size: cover;
 	display: flex;
     justify-content: center;
@@ -8,10 +8,21 @@
 }
 
 .login-logo a {
-	color: #fff;
+	color: #666666;
     font-weight: 700;
     text-transform: lowercase;
     letter-spacing: -2px;
+}
+
+.login-logo img {
+    height: 70px;
+    width: auto;
+    margin-top: 20px;
+    transition: .5s height;
+}
+
+.login-logo img:hover {
+    height: 75px;
 }
 
 a{
@@ -19,8 +30,8 @@ a{
 }
 
 .form-control-feedback {
-    right: 10px;
-    color: #db362b;
+    right: 20px;
+    /* color: #db362b; */
 }
 
 .login-box {
@@ -29,7 +40,8 @@ a{
 }
 
 .login-box-msg {
-	font-size: 20px
+    font-size: 18px;
+    font-weight: normal;
 }
 
 .login-box-body {
@@ -37,4 +49,62 @@ a{
     border-radius: 10px;
     box-shadow: 0 0 100px;
     padding-bottom: 10px;
+    background: transparent;
+    margin-bottom: 20px;
+}
+
+.btn-accent {
+    background: #FF473A;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.btn-accent:focus {
+    color: #FFF;
+}
+
+@media only screen and (max-width:990px) {
+    .btn-accent {
+        width: 100% !important;
+    }
+
+    .login-wrapper {
+        height: 100%;
+    }
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    background: lightgrey;
+    color: #000;
+    opacity: .5;
+}
+
+input.form-control::-webkit-input-placeholder,
+textarea.form-control::-webkit-input-placeholder {
+    color: #000;
+    opacity: .7;
+}
+
+.form-error {
+    display: inline-block;
+    animation: 2s alertAnim forwards;
+    position: absolute;
+    font-weight: 200;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+@keyframes alertAnim {
+    from {
+        opacity:0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity:1;
+        transform: translateX(0);
+    }
 }

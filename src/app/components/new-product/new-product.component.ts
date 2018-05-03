@@ -68,9 +68,7 @@ export class NewProductComponent implements OnInit {
     this.currencySrv.fetchCurrencys().then(response => this.currencys = response.results)
     this.colorSrv.fetchColors().then(response => this.colors = response.results)
     this.sizeSrv.fetchSizes().then(response => this.sizes = response.results)
-    this.fetchSubCategorys();
-
-  
+    this.fetchSubCategorys();  
   }
 
   clearanceChange(){
@@ -101,8 +99,8 @@ export class NewProductComponent implements OnInit {
     this.categorySrv.fetchCategories().then(response =>this.categorys = response.results  )
     .catch(error=> this.error = error )
   }
-
-   fetchProductTypes(){
+  
+  fetchProductTypes(){
     this.productTypeSrv.fetchProductTypes().then(response =>this.productTypes = response.results  )
     .catch(error=> this.error = error )
   }
