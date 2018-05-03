@@ -1,17 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import {HttpModule,  Http } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { 
-  AuthGuardService as AuthGuard 
+import {
+  AuthGuardService as AuthGuard
 } from './auth/auth-guard.service';
 
 
-import { 
-  NoAuthGuardService as NoAuthGuard 
+import {
+  NoAuthGuardService as NoAuthGuard
 } from './auth/no-auth-guard.service';
 
 import { Globals } from './shared/api';
@@ -58,37 +58,37 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 
 
 const appRoutes: Routes = [
-  
-    { path: '', component: DashboardComponent ,  canActivate: [AuthGuard]  },
-    { path: 'login', component: LoginComponent ,  canActivate: [NoAuthGuard]},
-    { path: 'register', component: RegisterComponent ,  canActivate: [NoAuthGuard]},
-    { path: 'activate/:uid/:token', component: AccountActivationComponent, canActivate: [NoAuthGuard]},
-    { path: 'products', component: ProductListingComponent ,  canActivate: [AuthGuard]},
-    { path: 'new-product', component: NewProductComponent ,  canActivate: [AuthGuard]},
 
-     { path: 'categorys', component: CategoryListingComponent ,  canActivate: [AuthGuard]},
-    { path: 'new-category', component: NewCategoryComponent ,  canActivate: [AuthGuard]},
+  { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [NoAuthGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [NoAuthGuard] },
+  { path: 'activate/:uid/:token', component: AccountActivationComponent, canActivate: [NoAuthGuard] },
+  { path: 'products', component: ProductListingComponent, canActivate: [AuthGuard] },
+  { path: 'new-product', component: NewProductComponent, canActivate: [AuthGuard] },
 
-     { path: 'product-types', component: ProductTypeListingComponent ,  canActivate: [AuthGuard]},
-    { path: 'new-product-type', component: NewProductTypeComponent ,  canActivate: [AuthGuard]},
-     { path: 'product-types/:id', component: ProductTypeDetailComponent ,  canActivate: [AuthGuard]},
+  { path: 'categorys', component: CategoryListingComponent, canActivate: [AuthGuard] },
+  { path: 'new-category', component: NewCategoryComponent, canActivate: [AuthGuard] },
 
-    { path: 'products/:id', component: ProductDetailComponent ,  canActivate: [AuthGuard]},
-    { path: 'orders', component: OrderListingComponent ,  canActivate: [AuthGuard]},
-    { path: 'order/detail', component: OrderDetailComponent ,  canActivate: [AuthGuard]},
-    { path: 'settings', component: SettingsComponent , canActivate: [AuthGuard]},
-    { path: 'forgot-password', component: ForgotPasswordComponent , canActivate: [AuthGuard]},
-    { path: 'categorys', component: OrderListingComponent , canActivate: [AuthGuard]},
-    { path: 'new-category', component: NewCategoryComponent , canActivate: [AuthGuard]},
-    { path: 'inventory', component: InventoryListingComponent ,  canActivate: [AuthGuard]},
-    { path: 'inventory/detail', component: InventoryDetailComponent ,  canActivate: [AuthGuard]},
-    { path: 'payment-reports', component: PaymentReportsComponent ,  canActivate: [AuthGuard]},
-    { path: 'sales-reports', component: SalesReportsComponent ,  canActivate: [AuthGuard]},
-    { path: 'inventory-reports', component: InventoryReportsComponent ,  canActivate: [AuthGuard]},
+  { path: 'product-types', component: ProductTypeListingComponent, canActivate: [AuthGuard] },
+  { path: 'new-product-type', component: NewProductTypeComponent, canActivate: [AuthGuard] },
+  { path: 'product-types/:id', component: ProductTypeDetailComponent, canActivate: [AuthGuard] },
 
-    { path: 'sub-categorys', component: SubCategoryListingComponent ,  canActivate: [AuthGuard]},
-    { path: 'new-sub-category', component: NewSubCategoryComponent ,  canActivate: [AuthGuard]},
-     { path: 'sub-categorys/:id', component: SubCategoryDetailComponent ,  canActivate: [AuthGuard]},
+  { path: 'products/:id', component: ProductDetailComponent, canActivate: [AuthGuard] },
+  { path: 'orders', component: OrderListingComponent, canActivate: [AuthGuard] },
+  { path: 'order/detail', component: OrderDetailComponent, canActivate: [AuthGuard] },
+  { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
+  { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [AuthGuard] },
+  { path: 'categorys', component: OrderListingComponent, canActivate: [AuthGuard] },
+  { path: 'new-category', component: NewCategoryComponent, canActivate: [AuthGuard] },
+  { path: 'inventory', component: InventoryListingComponent, canActivate: [AuthGuard] },
+  { path: 'inventory/detail', component: InventoryDetailComponent, canActivate: [AuthGuard] },
+  { path: 'payment-reports', component: PaymentReportsComponent, canActivate: [AuthGuard] },
+  { path: 'sales-reports', component: SalesReportsComponent, canActivate: [AuthGuard] },
+  { path: 'inventory-reports', component: InventoryReportsComponent, canActivate: [AuthGuard] },
+
+  { path: 'sub-categorys', component: SubCategoryListingComponent, canActivate: [AuthGuard] },
+  { path: 'new-sub-category', component: NewSubCategoryComponent, canActivate: [AuthGuard] },
+  { path: 'sub-categorys/:id', component: SubCategoryDetailComponent, canActivate: [AuthGuard] },
 
 ]
 
@@ -134,7 +134,7 @@ const appRoutes: Routes = [
     ContactUsComponent,
   ],
   imports: [
-    BrowserModule, HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}) ,
+    BrowserModule, HttpModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),
   ],
   providers: [AuthGuard, NoAuthGuard, Globals],
   bootstrap: [AppComponent]
