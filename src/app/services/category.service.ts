@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import {Router} from '@angular/router';
 import { Globals } from '../shared/api';
+import { of } from 'rxjs/observable/of';
 import 'rxjs/add/operator/toPromise';
 declare var $: any;
 
@@ -13,13 +14,13 @@ export class CategoryService {
 
   constructor(private http: Http, private globals: Globals,  private router:Router) { }
 
-
   fetchCategories(){
-  	  let v = this.page_header();
-    return this.http.get(this.categoryURL, v)
-              .toPromise()
-              .then(response => response.json())
-              .catch(this.handleError);
+      let v = this.page_header();
+      return this.http.get(this.categoryURL, v)
+        .map(response => response.json())
+        .toPromise();
+        // .then(response => response.json())
+        // .catch(this.handleError);
   };
 
   saveCategory(data: any){
