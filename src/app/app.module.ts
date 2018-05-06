@@ -53,6 +53,7 @@ import { SubCategoryListingComponent } from './components/sub-category-listing/s
 import { NewSubCategoryComponent } from './components/new-sub-category/new-sub-category.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { AuthFooterComponent } from './components/auth-footer/auth-footer.component';
 
 
 
@@ -132,6 +133,7 @@ const appRoutes: Routes = [
     NewSubCategoryComponent,
     TermsComponent,
     ContactUsComponent,
+    AuthFooterComponent,
   ],
   imports: [
     BrowserModule, HttpModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),

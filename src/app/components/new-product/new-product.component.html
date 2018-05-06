@@ -39,7 +39,7 @@
 
                                     <div class="form-group col-sm-6">
                                         <label> Category</label>
-                                        <select class="form-control" [(ngModel)]="product.category" [formControl]="productForm.controls['productCategory']" require>
+                                        <select class="form-control" [(ngModel)]="product.productCategory" [formControl]="productForm.controls['productCategory']" require>
                                             <option *ngFor="let item of categorys" [value]="item.slug">{{item.name}}</option>
                                         </select>
 
@@ -54,12 +54,12 @@
                                             (keypress)="numbersOnly($event)">
                                     </div>
 
-                                    <div class="form-group col-sm-6">
+                                    <!-- <div class="form-group col-sm-6">
                                         <label>Main Image</label>
                                         <input type="file" name="banner_image" class="single-file  form-control" [(ngModel)]="product.banner_image" [formControl]="productForm.controls['bannerImage']" (change)="addDocument($event)" />
 
                                         <div *ngIf="productForm.controls['bannerImage'].hasError('required')" class="form-error">Banner Image is required</div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
 

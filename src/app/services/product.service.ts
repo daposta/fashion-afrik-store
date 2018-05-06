@@ -73,7 +73,7 @@ export class ProductService {
                 $.toast({
                     text: msg,
                     position: 'top-center',
-                    'icon': 'success',
+                    icon: 'success',
                     showHideTransition: 'slide',
                 });
 
@@ -81,14 +81,17 @@ export class ProductService {
             },
             error => {
 
+                console.log(error._body);
                 let msg = JSON.parse(error._body)['message'];
                 console.log(msg);
-                console.log(error._body);
                 $.toast({
                     text: msg,
                     position: 'top-center',
                     icon: 'error',
-                    showHideTransition: 'slide',
+                    loader: false,
+                    showHideTransition: 'plain',
+                    allowToastClose: false,
+                    hideAfter: 2000
                 });
             })
 

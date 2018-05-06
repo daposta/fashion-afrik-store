@@ -17,3 +17,11 @@
         transform: translateX(0);
     }
 }
+
+.jq-icon-error {
+    background-color: #444444 !important;
+}
+
+.jq-toast-loader {
+    display: none !important;
+}
