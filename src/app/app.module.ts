@@ -67,6 +67,8 @@ const appRoutes: Routes = [
   { path: 'products', component: ProductListingComponent, canActivate: [AuthGuard] },
   { path: 'new-product', component: NewProductComponent, canActivate: [AuthGuard] },
 
+  { path: 'my-profile', component: MyProfileComponent,canActivate: [AuthGuard] },
+
   { path: 'categorys', component: CategoryListingComponent, canActivate: [AuthGuard] },
   { path: 'new-category', component: NewCategoryComponent, canActivate: [AuthGuard] },
 
