@@ -45,12 +45,14 @@
         </div>
 
         <div class="col-md-3">
-          <button class="btn btn-accent" style="margin: 0; float: right; border: 0;">Edit Profile</button>
+          <a routerLink="/my-profile-edit">
+            <button class="btn btn-accent" style="margin: 0; float: right; border: 0;">Edit Profile</button>
+          </a>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-9">
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Account Info</h3>
@@ -58,6 +60,41 @@
                 <button type="button" class="btn btn-box-tool" data-widget="collapse">
                   <i class="fa fa-minus"></i>
                 </button>
+              </div>
+            </div>
+
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-8">
+                  <p class="p-r-10">
+                    <span>
+                      <span>Name:</span>
+                      <img src="/assets/dist/img/calendar.png" width="20px" style="margin: 0 10px;" alt=""> {{store.name}}
+                    </span>
+                  </p>
+
+                  <p class="p-r-10">
+                    <span>
+                      <span>Number:</span>
+                      <img src="/assets/dist/img/calendar.png" width="20px" style="margin: 0 10px;" alt=""> {{store.mobile}}
+                    </span>
+                  </p>
+
+                  <p class="p-r-10">
+                    <span>
+                      <span>Address:</span>
+                      <img src="/assets/dist/img/calendar.png" alt="" width="20px" style="margin: 0 10px;"> {{store.address1}}
+                    </span>
+                  </p>
+
+                  <p class="p-r-10">
+                    <span>
+                      <span>Description:</span>
+                      <img src="/assets/dist/img/calendar.png" alt="" width="20px" style="margin: 0 10px"> {{store.description}}
+                    </span>
+                  </p>
+
+                </div>
               </div>
             </div>
           </div>

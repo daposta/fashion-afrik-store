@@ -18,23 +18,23 @@
 
 @-webkit-keyframes colorchange {
     0% {
-        color: #041935;
+        color: #FF473A;
     }
     
     25% {
-        color: #0a3e84;
+        color: brown;
     }
-
+    
     55% {
-        color: #082f64;
+        color: #FF473A;
     }
     
     75% {
-        color:#041935;
+        color:brown;
     }
 
     100% {
-        color: #FFFFFF;
+        color: #FF473A;
     }
   }
 

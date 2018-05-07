@@ -21,13 +21,4 @@ export class MyProfileComponent implements OnInit {
     }
   }
 
-  getStoreProfile() {
-    // this.userSrv.getCurrentProfile().then(response => {
-    //   localStorage.setItem('store', JSON.stringify(response));
-    //   this.profile = JSON.parse(localStorage.getItem('store'));
-
-
-    // }).catch(err => this.error = err)
-  }
-
 }

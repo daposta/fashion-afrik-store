@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule, Http } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import {
   AuthGuardService as AuthGuard
@@ -54,6 +55,7 @@ import { NewSubCategoryComponent } from './components/new-sub-category/new-sub-c
 import { TermsComponent } from './components/terms/terms.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { AuthFooterComponent } from './components/auth-footer/auth-footer.component';
+import { MyProfileEditComponent } from './components/my-profile-edit/my-profile-edit.component';
 
 
 
@@ -67,7 +69,8 @@ const appRoutes: Routes = [
   { path: 'products', component: ProductListingComponent, canActivate: [AuthGuard] },
   { path: 'new-product', component: NewProductComponent, canActivate: [AuthGuard] },
 
-  { path: 'my-profile', component: MyProfileComponent,canActivate: [AuthGuard] },
+  { path: 'my-profile', component: MyProfileComponent, canActivate: [AuthGuard] },
+  { path: 'my-profile-edit', component: MyProfileEditComponent, canActivate: [AuthGuard] },
 
   { path: 'categorys', component: CategoryListingComponent, canActivate: [AuthGuard] },
   { path: 'new-category', component: NewCategoryComponent, canActivate: [AuthGuard] },
@@ -136,9 +139,10 @@ const appRoutes: Routes = [
     TermsComponent,
     ContactUsComponent,
     AuthFooterComponent,
+    MyProfileEditComponent,
   ],
   imports: [
-    BrowserModule, HttpModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),
+    BrowserModule, CommonModule, HttpModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),
   ],
   providers: [AuthGuard, NoAuthGuard, Globals],
   bootstrap: [AppComponent]
