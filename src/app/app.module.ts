@@ -83,7 +83,7 @@ const appRoutes: Routes = [
   { path: 'orders', component: OrderListingComponent, canActivate: [AuthGuard] },
   { path: 'order/detail', component: OrderDetailComponent, canActivate: [AuthGuard] },
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard] },
-  { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [AuthGuard] },
+  { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [NoAuthGuard] },
   { path: 'categorys', component: OrderListingComponent, canActivate: [AuthGuard] },
   { path: 'new-category', component: NewCategoryComponent, canActivate: [AuthGuard] },
   { path: 'inventory', component: InventoryListingComponent, canActivate: [AuthGuard] },
