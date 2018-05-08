@@ -13,7 +13,7 @@
                 <!-- <small>{{profile?.name}}</small> -->
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="ion ion-android-home"></i> Home</a></li>
+                <li><a routerLink=""><i class="ion ion-android-home"></i> Home</a></li>
                 <li class="active">Dashboard</li>
             </ol>
         </section>
@@ -204,7 +204,7 @@
                                     </thead>
                                     <tbody>
                                         <tr *ngFor="let item of latestOrdersList">
-                                          <!--   <td><a href="#" style="font-weight: 300">OR9842</a></td> -->
+                                          <!--   <td><a routerLink="" style="font-weight: 300">OR9842</a></td> -->
                                             <td>{{item.product.name}}</td>
                                             <td>{{item.quantity}}</td>
                                              <td>{{item?.color.name}}</td>
