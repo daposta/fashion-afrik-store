@@ -66,6 +66,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [NoAuthGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [NoAuthGuard] },
   { path: 'activate/:uid/:token', component: AccountActivationComponent, canActivate: [NoAuthGuard] },
+  { path: 'reset-password', component: ResetPasswordComponent, canActivate: [AuthGuard] },
   { path: 'products', component: ProductListingComponent, canActivate: [AuthGuard] },
   { path: 'new-product', component: NewProductComponent, canActivate: [AuthGuard] },
 
