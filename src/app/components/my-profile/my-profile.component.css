@@ -34,3 +34,20 @@
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
+
+.info-container {
+	margin-bottom: 45px;
+}
+
+.info-label {
+	display: block;
+	font-size: 13px;
+	font-weight: bold;
+	color: #D4D4D4;
+}
+
+.info-text {
+	font-size: 21px;
+	position: relative;
+	top: 10px;
+}
