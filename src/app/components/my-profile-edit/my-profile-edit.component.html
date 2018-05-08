@@ -34,21 +34,19 @@
             <div class="box-body">
               <div class="row">
                 <div class="col-md-12">
-                  <form [formGroup]="editProfileForm" (ngSubmit)="editProfile" novalidate>
+                  <form [formGroup]="editProfileForm" (ngSubmit)="editProfile()" novalidate>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group has-feedback" style="position: relative;">
-                          <label for="storeName">Store Name</label>
-                          <input type="text" name="storeName" class="form-control" placeholder="{{store.name}}" disabled>
-                          <!-- <span class="ion-ios-email-outline form-control-feedback"></span> -->
+                          <label for="storename">Store Name</label>
+                          <input type="text" name="storename" class="form-control" placeholder="{{store.name}}" disabled>
                         </div>
                       </div>
 
                       <div class="col-md-6">
                         <div class="form-group has-feedback" style="position: relative;">
-                          <label for="mobile">Mobile Number</label>
-                          <input type="text" name="mobile" class="form-control" placeholder="{{store.mobile}}">
-                          <!-- <span class="ion-ios-email-outline form-control-feedback"></span> -->
+                          <label for="mobilenumber">Mobile Number</label>
+                          <input type="text" name="mobilenumber" class="form-control" placeholder="{{store.mobile}}" [(ngModel)]="store.mobile" [formControl]="editProfileForm.controls['mobile']">
                         </div>
                       </div>
 

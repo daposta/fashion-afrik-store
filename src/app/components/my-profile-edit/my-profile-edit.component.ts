@@ -16,9 +16,9 @@ export class MyProfileEditComponent implements OnInit {
 
   constructor(fb: FormBuilder, public userSrv: UserService) {
     this.editProfileForm = fb.group({
-      'storeMobile': [''],
-      'storeAddress': [''],
-      'storeDescription': [''],
+      'mobile': [''],
+      'address': [''],
+      'description': [''],
     });
   }
 
@@ -29,5 +29,10 @@ export class MyProfileEditComponent implements OnInit {
       console.log(this.store);
     }
   }
+
+  // editProfile() {
+  //   this.formSubmitAttempt = true;
+  //   if (this.store.mobile || this.store.address || this.store.description)
+  // }
 
 }

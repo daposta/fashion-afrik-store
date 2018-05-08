@@ -70,21 +70,21 @@ export class NewProductComponent implements OnInit {
       this.currencys = response;
       console.log(this.currencys);
     })
-    .catch(error => this.error = error);
+      .catch(error => this.error = error);
 
     //fetchColors
     this.colorSrv.fetchColors().then((response: any) => {
       this.colors = response;
       console.log(this.colors);
     })
-    .catch(error => this.error = error);
-    
+      .catch(error => this.error = error);
+
     //fetchSize
     this.sizeSrv.fetchSizes().then((response: any) => {
       this.sizes = response;
       console.log(this.sizes);
     })
-    .catch(error => this.error = error);
+      .catch(error => this.error = error);
 
     this.fetchSubCategorys();
   }
