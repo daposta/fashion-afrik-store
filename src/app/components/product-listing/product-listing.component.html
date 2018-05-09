@@ -9,7 +9,12 @@
                 Manage Your Products
             </h3>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="ion-home-android"></i> Home</a></li>
+                <li>
+                    <a routerLink="#">
+                        <i class="ion-home-android"></i>
+                        Home
+                    </a>
+                </li>
                 <li class="active">Manage Your Products</li>
             </ol>
         </section>
@@ -18,50 +23,69 @@
         <section class="content">
             <!-- Info boxes -->
             <div class="row" style="background: #fff; padding: 0 30px">
-                <div class="box-body">
-                    <a routerLink="/new-product" class="btn btn-sm btn-accent text-bold pull-right">Create New Product
+                <div class="box-body" style="position: relative; min-height: 510px;">
+                    <input type="text" placeholder="Search" class="search form-control" [(ngModel)]="searchText" *ngIf="products">
+                    <a routerLink="/new-product" class="btn btn-sm btn-accent text-bold pull-right">
+                        Create New Product
                     </a>
-<div class="clearfix"></div>
-                     <br><br>
-                   
-                    
-                    <div class="table-responsive">
-                        <table class="table  table-striped no-margin">
-                            <thead>
-                                <tr>
-                                    <!-- <th>Product ID</th>
+                    <div class="clearfix"></div>
+                    <br>
+                    <br>
+
+
+                    <div *ngIf="products$ | async; else noProduct">
+                        <div class="table-responsive">
+                            <table class="table  table-striped no-margin">
+                                <thead>
+                                    <tr>
+                                        <!-- <th>Product ID</th>
                                     <th>Product Image</th> -->
-                                    <th>Item</th>
-                                    <th>Category</th>
-                                     <th>Type</th>
-                                    <th>Price</th>
-                                    <th>Status</th>
+                                        <th>Item</th>
+                                        <th>Category</th>
+                                        <th>Type</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let item of products">
-                                   <!--  <td>OR9842</a></td>
-                                    <td>
-                                        <img src="assets/dist/img/img-placeholder.png" alt="Product Image" width="40">
-                                    </td> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of products | filter : searchText">
+                                        <!--  <td>OR9842</a></td>
+                                        <td>
+                                            <img src="assets/dist/img/img-placeholder.png" alt="Product Image" width="40">
+                                        </td> -->
+                                        <!-- <div *ngIf=""> -->
 
-                                    <td class="very-bold"><a routerLink="/products/{{item.id}}">{{item.name}}</a>
-                                    </td>
-                                    <td class="very-bold">{{item.category?.name}}</td>
-                                     <td class="very-bold">{{item.product_type?.name}}</td>
-                                    <td><del>{{item.currency?.code}}</del>{{item.regular_price | number}}</td>
-                                    <td><span class="label label-success">In stock</span></td>
+                                        <td class="very-bold">
+                                            <a routerLink="/products/{{item.id}}">{{item.name}}</a>
+                                        </td>
+                                        <td class="very-bold">{{item.category?.name}}</td>
+                                        <td class="very-bold">{{item.product_type?.name}}</td>
+                                        <td>
+                                            <del>{{item.currency?.code}}</del>{{item.regular_price | number}}</td>
+                                        <td>
+                                            <span class="label label-success">In stock</span>
+                                        </td>
+                                        <!-- </div> -->
 
-                                </tr>
 
-                            </tbody>
-                        </table>
+                                    </tr>
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                    <ng-template #noProduct>
+                        <div class="text-center">
+                            <span class="no-item">No item :(</span>
+                        </div>
+                    </ng-template>
                     <!-- /.table-responsive -->
                 </div>
-                </div>
-            </section>
-            <!-- <app-footer></app-footer> -->
-        </div>
+            </div>
+        </section>
+        <!-- <app-footer></app-footer> -->
     </div>
+</div>

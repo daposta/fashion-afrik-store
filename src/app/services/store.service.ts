@@ -24,60 +24,31 @@ export class StoreService {
 
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    
-    return this.http.put(this.updateStoreUrl + this.storeId + '/', data, {headers})
+
+    return this.http.put(this.updateStoreUrl + this.storeId + '/', data, { headers })
       .subscribe(res => {
         let msg = JSON.parse(res['_body'])['message'];
         console.log(msg);
         console.log(res);
+        // $.toast({
+        //   text: msg,
+        //   position: 'top-center',
+        //   'icon': 'success',
+        //   showHideTransition: 'slide',
+        // });
       }, error => {
         let msg = JSON.parse(error._body)['message'];
         console.log(msg);
         console.log(error);
+        // $.toast({
+        //   text: msg,
+        //   position: 'top-center',
+        //   icon: 'error',
+        //   showHideTransition: 'slide',
+        // });
+
       })
   }
-
-//   fetchProducts() {
-//     let v = this.page_header();
-//     return this.http.get(this.productsUrl, v)
-//         .toPromise()
-//         .then(response => response.json())
-//         .catch(this.handleError);
-// };
-
-
-  // editStore(mobile: string, address: string, description: string, storeId: any) {
-  //   let tempStore = localStorage.getItem('store');
-  //   if (tempStore) {
-  //     this.store = JSON.parse(tempStore);
-  //     this.storeId = this.store.user;
-  //     console.log(this.storeId);
-  //   }
-
-  //   let headers = new Headers();
-  //   headers.append('Content-Type', 'application/json');
-  //   console.log(storeId);
-  //   return this.http.put(this.updateStoreUrl + this.storeId + '/', { headers })
-  //     .subscribe(res => {
-  //       let msg = JSON.parse(res['_body'])['message'];
-  //       console.log(res);
-  //       $.toast({
-  //         text: msg,
-  //         position: 'top-center',
-  //         'icon': 'success',
-  //         showHideTransition: 'slide',
-  //       });
-  //     }, error => {
-  //       let msg = JSON.parse(error._body)['message'];
-  //       console.log(error);
-  //       $.toast({
-  //         text: msg,
-  //         position: 'top-center',
-  //         icon: 'error',
-  //         showHideTransition: 'slide',
-  //       });
-  //     })
-  // };
 
   private page_header() {
     let data = localStorage.getItem('auth_token');

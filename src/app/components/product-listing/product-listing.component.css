@@ -1,3 +1,16 @@
 table td{
 	vertical-align: middle;
 }
+
+.search {
+	position: relative;
+	margin-top: 15px;
+	max-width: 250px;
+    display: inline-block;
+}
+
+.no-item {
+	position: relative;
+	top: 150px;
+	font-size: 32px;
+}

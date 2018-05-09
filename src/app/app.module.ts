@@ -5,6 +5,7 @@ import { HttpModule, Http } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FilterPipe} from './pipes/filter.pipe';
 
 import {
   AuthGuardService as AuthGuard
@@ -141,6 +142,7 @@ const appRoutes: Routes = [
     ContactUsComponent,
     AuthFooterComponent,
     MyProfileEditComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule, CommonModule, HttpModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),
