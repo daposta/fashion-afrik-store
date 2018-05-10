@@ -93,7 +93,7 @@ textarea.form-control::-webkit-input-placeholder {
     display: inline-block;
     animation: 2s alertAnim forwards;
     position: absolute;
-    font-weight: 200;
+    font-weight: 500;
     margin-top: 0;
     margin-bottom: 5px;
 }
