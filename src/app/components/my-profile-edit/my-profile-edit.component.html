@@ -39,28 +39,28 @@
                       <div class="col-md-6">
                         <div class="form-group has-feedback" style="position: relative;">
                           <label for="storename">Store Name</label>
-                          <input type="text" name="storename" class="form-control" placeholder="{{store.name}}" disabled>
+                          <input type="text" name="storename" class="form-control" placeholder="{{storeData.name}}" disabled>
                         </div>
                       </div>
 
                       <div class="col-md-6">
                         <div class="form-group has-feedback" style="position: relative;">
                           <label for="mobilenumber">Mobile Number</label>
-                          <input type="text" name="mobilenumber" class="form-control" placeholder="{{store.mobile}}" [(ngModel)]="store.mobile" [formControl]="editProfileForm.controls['mobile']">
+                          <input type="text" name="mobilenumber" class="form-control" placeholder="{{storeData.mobile}}" [(ngModel)]="store.mobile" [formControl]="editProfileForm.controls['mobile']">
                         </div>
                       </div>
 
                       <div class="col-md-6">
                         <div class="form-group has-feedback" style="position: relative;">
                           <label for="address">Store Address</label>
-                          <textarea name="address" id="" cols="30" rows="10" class="form-control" placeholder="{{store.address1}}"></textarea>
+                          <textarea name="address" id="" cols="30" rows="10" class="form-control" placeholder="{{storeData.address1}}"></textarea>
                         </div>
                       </div>
 
                       <div class="col-md-6">
                         <div class="form-group has-feedback" style="position: relative">
                           <label for="description">Store Description</label>
-                          <textarea name="description" id="" cols="30" rows="10" class="form-control" placeholder="{{store.description}}"></textarea>
+                          <textarea name="description" id="" cols="30" rows="10" class="form-control" placeholder="{{storeData.description}}"></textarea>
                         </div>
                       </div>
 

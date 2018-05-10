@@ -39,8 +39,9 @@
 
                                     <div class="form-group col-sm-6">
                                         <label> Category</label>
-                                        <select class="form-control" [(ngModel)]="product.productCategory" [formControl]="productForm.controls['productCategory']" require>
-                                            <option *ngFor="let item of categorys" [value]="item.slug">{{item.name}}</option>
+                                        <select class="form-control" #q (change)="changed(q.value)" [(ngModel)]="product.productCategory" [formControl]="productForm.controls['productCategory']" require>
+                                            <option *ngFor="let item of categorys" [value]="item.slug">{{item.name}}
+                                            </option>
                                         </select>
 
                                         <div *ngIf="productForm.controls['productCategory'].hasError('required') && formSubmitAttempt" class="form-error">Product Category is required</div>
@@ -67,8 +68,9 @@
                                 <div class="row">
                                     <div class="form-group col-sm-6">
                                         <label> Product Type</label>
-                                        <select class="form-control" [(ngModel)]="product.productType" [formControl]="productForm.controls['productType']" require>
-                                            <option *ngFor="let item of productTypes" [value]="item.slug">{{item.name}}</option>
+                                        <select class="form-control" #t (change)="changedProduct(t.value)" [(ngModel)]="product.productType" [formControl]="productForm.controls['productType']" require>
+                                            <!-- <option *ngFor="let item of productTypes" [value]="item.slug">{{item.name}}</option> -->
+                                            <option *ngFor="let item of newProductType" [value]="item.slug">{{item.name}}</option>
                                         </select>
 
                                         <div *ngIf="productForm.controls['productType'].hasError('required') && formSubmitAttempt" class="form-error">Product Type is required</div>
@@ -76,8 +78,12 @@
 
                                     <div class="form-group col-sm-6">
                                         <label>Sub-Category</label>
-                                        <select class="form-control" [(ngModel)]="product.subCategory" [formControl]="productForm.controls['subCategory']" require>
+                                        <!-- <select class="form-control" [(ngModel)]="product.subCategory" [formControl]="productForm.controls['subCategory']" require>
                                             <option *ngFor="let item of subs" [value]="item.slug">{{item.name}}</option>
+                                        </select> -->
+                                        <select class="form-control" [(ngModel)]="product.subCategory" [formControl]="productForm.controls['subCategory']" require>
+                                            <!-- <option *ngFor="let item of subs" [value]="item.slug">{{item.name}}</option> -->
+                                            <option *ngFor="let item of newSubCategorys" [value]="item.slug">{{item.name}}</option>
                                         </select>
 
                                         <div *ngIf="productForm.controls['subCategory'].hasError('required') && formSubmitAttempt" class="form-error">Sub-Category is required</div>

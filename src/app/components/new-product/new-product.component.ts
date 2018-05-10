@@ -34,6 +34,15 @@ export class NewProductComponent implements OnInit {
   product: any = {};
   private clearance: boolean = false;
   private newArrival: boolean = false;
+  category: any = {};
+  productType: any = {};
+  subCategory: any = {};
+  newSubCategory: any[];
+  newSubCategorys: any[];
+  newProductType: any[];
+  // public allProductTypes: ProductType[];
+  // public allSubs: Category[];
+  product_type: any;
 
   constructor(fb: FormBuilder, private productSrv: ProductService, private productTypeSrv: ProductTypeService,
     private categorySrv: CategoryService, private currencySrv: CurrencyService, private colorSrv: ColorService,
@@ -68,21 +77,21 @@ export class NewProductComponent implements OnInit {
     //fetchCurrencys
     this.currencySrv.fetchCurrencys().then((response: any) => {
       this.currencys = response;
-      console.log(this.currencys);
+      // console.log(this.currencys);
     })
       .catch(error => this.error = error);
 
     //fetchColors
     this.colorSrv.fetchColors().then((response: any) => {
       this.colors = response;
-      console.log(this.colors);
+      // console.log(this.colors);
     })
       .catch(error => this.error = error);
 
     //fetchSize
     this.sizeSrv.fetchSizes().then((response: any) => {
       this.sizes = response;
-      console.log(this.sizes);
+      // console.log(this.sizes);
     })
       .catch(error => this.error = error);
 
@@ -118,7 +127,7 @@ export class NewProductComponent implements OnInit {
   fetchCategorys() {
     this.categorySrv.fetchCategories().then((response: any) => {
       this.categorys = response;
-      console.log(this.categorys);
+      // console.log(this.categorys);
     })
       .catch(error => this.error = error)
   }
@@ -131,7 +140,7 @@ export class NewProductComponent implements OnInit {
   fetchProductTypes() {
     this.productTypeSrv.fetchProductTypes().then((response: any) => {
       this.productTypes = response;
-      console.log(this.productTypes);
+      // console.log(this.productTypes);
     })
       .catch(error => this.error = error)
   }
@@ -144,7 +153,7 @@ export class NewProductComponent implements OnInit {
   fetchSubCategorys() {
     this.subCategorySrv.fetchSubCategorys().then((response: any) => {
       this.subs = response;
-      console.log(this.subs);
+      // console.log(this.subs);
     })
       .catch(error => this.error = error)
   }
@@ -154,7 +163,7 @@ export class NewProductComponent implements OnInit {
     this.formSubmitAttempt = true;
     if (this.productForm.valid) {
       // console.log('form submitted');
-      console.log(this.product);
+      // console.log(this.product);
       this.productSrv.saveProduct(this.product);
     }
 
@@ -169,6 +178,23 @@ export class NewProductComponent implements OnInit {
   addOtherDocuments($event) {
     let files = $event.target.files || $event.srcElement.files;
     this.product.otherImages = files;//<Array<File>>(files);
+  }
+
+  changed(value) {
+    var cat = this.categorys.filter(data => data.slug == value);
+    this.newProductType = cat[0].product_types;
+  }
+
+  changedProduct(value) {
+    this.newSubCategorys = [];
+    let newSubCAt = [];
+    var product = this.newProductType.filter(data => data.slug == value);
+    var subCat = product[0].sub_categorys;
+    for (var j = 0; j < subCat.length; j++) {
+      newSubCAt.push(subCat[j]);
+      // console.log(newSubCAt);
+    }
+    this.newSubCategorys = newSubCAt;
   }
 
 }

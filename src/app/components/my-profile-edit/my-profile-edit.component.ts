@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EditProfileService } from '../../services/edit-profile.service';
 import { StoreService } from '../../services/store.service';
+import { Globals } from '../../shared/api';
 
 declare var $: any;
 
@@ -8,14 +10,16 @@ declare var $: any;
   selector: 'app-my-profile-edit',
   templateUrl: './my-profile-edit.component.html',
   styleUrls: ['./my-profile-edit.component.css'],
-  providers: [StoreService]
+  providers: [StoreService, EditProfileService]
 })
 export class MyProfileEditComponent implements OnInit {
   store: any = {};
+  storeData: any = {};
+  storeId: any;
   editProfileForm: FormGroup;
   private formSubmitAttempt: boolean;
 
-  constructor(fb: FormBuilder, private storeSrv: StoreService) {
+  constructor(fb: FormBuilder, private storeSrv: StoreService, private editProfileSrv: EditProfileService) {
     this.editProfileForm = fb.group({
       'mobile': [''],
       'address': [''],
@@ -27,9 +31,17 @@ export class MyProfileEditComponent implements OnInit {
   ngOnInit() {
     let tempStore = localStorage.getItem('store');
     if (tempStore) {
-      this.store = JSON.parse(tempStore);
-      console.log(this.store);
+      this.storeData = JSON.parse(tempStore);
+      this.storeId = this.storeData.user;
+      console.log(this.storeData);
+      console.log(this.storeId);
     }
+  }
+
+  editProfile() {
+    console.log('profileEdit');
+    this.storeId = this.store['id'];
+    this.editProfileSrv.updateStoreInfo(this.storeId);
   }
 
   // editProfile() {
@@ -39,19 +51,11 @@ export class MyProfileEditComponent implements OnInit {
   //   }
   // }
 
-  editProfile() {
-    let success = <HTMLInputElement>document.getElementById('feedback_success');
-    success.innerHTML = '';
-    success.style.display = 'None';
-    let err = <HTMLInputElement>document.getElementById('feedback_err');
-    err.innerHTML = '';
-    err.style.display = 'None';
-
-    this.formSubmitAttempt = true;
-    if (this.editProfileForm.valid) {
-      this.storeSrv.editStore(this.store);
-    }
-
-  }
+  // editProfile() {
+  //   this.formSubmitAttempt = true;
+  //   if (this.editProfileForm.valid) {
+  //     this.storeSrv.editStore(this.store);
+  //   }
+  // }
 
 }
