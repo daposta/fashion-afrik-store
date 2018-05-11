@@ -8,27 +8,27 @@
         float: left;
     }
 
-       .other-images .item img {
-    width: 80px;
-    height: 80px;
+    .other-images .item img {
+        width: 80px;
+        height: 80px;
     }
 
     .other-images .item .remove-img {
-            font-size: 30px;
-    position: absolute;
-    background: red;
-    color: #fff;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 50%;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-    margin: auto;
-    opacity: 0;
-    transition: .2s ease-in;
+        font-size: 30px;
+        position: absolute;
+        background: red;
+        color: #fff;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 50%;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        opacity: 0;
+        transition: .2s ease-in;
     }
 
     .other-images .item:hover .remove-img {
@@ -48,12 +48,12 @@
     <div class="content-wrapper" style="min-height: 916px;">
         <!-- Content Header (Page header) -->
         <section class="content-header">
-            <h1>
-                Manage Product <span class="very-bold product-ref">#79281</span> 
-
-            </h1>
+            <h1>Manage Product</h1>
             <ol class="breadcrumb">
-                <li><a routerLink="#"><i class="ion-android-home"></i> Home</a></li>
+                <li>
+                    <a routerLink="#">
+                        <i class="ion-android-home"></i> Home</a>
+                </li>
                 <li class="active">Manage Product</li>
             </ol>
         </section>
@@ -66,150 +66,135 @@
                         <div class="box-header with-border">
                             <h3 class="box-title">Featured Image</h3>
                         </div>
-                        <div class="product-image-wrapper">
-                           <!--  <img src="assets/dist/img/photo2.png" class="img-responsive" style="height:350px;" /> -->
+                        <div class="product-image-wrapper" *ngFor="let item of products">
+                            <!--  <img src="assets/dist/img/photo2.png" class="img-responsive" style="height:350px;" /> -->
 
-                             <img src="{{ product.feature_image}}" class="img-responsive" style="height:350px;" />
-                             <div class="image-actions">
-                                 <a (click)="removeBannerImage(product.id)" class="remove-image"><i class="ion-close-round"></i></a>
-                                 <a (click)="addBannerImage()" class="add-image"><i class="ion-plus-round"></i></a>
-                             </div>
-                        </div>
-                        
+                            <img src="{{item.feature_image}}" class="img-responsive" style="height:350px;" />
+                            <div class="image-actions">
+                                <a (click)="removeBannerImage(product.id)" class="remove-image">
+                                    <i class="ion-close-round"></i>
+                                </a>
+                                <a (click)="addBannerImage()" class="add-image">
+                                    <i class="ion-plus-round"></i>
+                                </a>
+                            </div>
                         </div>
 
-                        <div class="box">
-                            <h2 style="padding-left: 20px" class="box-title">Other Images</h2>
-                           <div style="padding-left: 20px">
-                                <input type="file" name="blah" class="single-file">
-                           </div>
-                            <div class="other-images" style="padding: 20px">
-                            <div class="item" *ngFor="let item of product.other_product_images" >
-                                <img src="{{ item.doc}}" alt="">
+                    </div>
+
+                    <div class="box">
+                        <h2 style="padding-left: 20px" class="box-title">Other Images</h2>
+                        <div style="padding-left: 20px">
+                            <input type="file" name="blah" class="single-file">
+                        </div>
+                        <div class="other-images" style="padding: 20px">
+                            <div class="item" *ngFor="let item of product.other_images">
+                                <img src="{{ item.other_images}}" alt="">
                                 <span class="remove-img">&times;</span>
                             </div>
-
-                            <!-- <div class="item">
-                                <img src="http://placehold.it/80x80" alt="">
-                            </div>
-
-                            <div class="item">
-                                <img src="http://placehold.it/80x80" alt="">
-                            </div>
-
-                            <div class="item">
-                                <img src="http://placehold.it/80x80" alt="">
-                            </div> -->
-                        </div>
                         </div>
                     </div>
+                </div>
                 <div class="col-md-6">
                     <div class="box box-warning">
                         <div class="box-header with-border">
                             <h3 class="box-title">Product Information</h3>
                         </div>
                         <div class="box-body">
-                            <form role="form" [formGroup]="productForm" (ngSubmit)="updateProduct()" novalidate >
+                            <form role="form" [formGroup]="productForm" (ngSubmit)="updateProduct()" novalidate>
                                 <!-- text input -->
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input type="text" class="form-control"  value="{{product.name}}" 
-                                    [(ngModel)]="new_product.name" [formControl]="productForm.controls['name']" required>
+                                    <input type="text" class="form-control" value="{{product.name}}" [(ngModel)]="new_product.name" [formControl]="productForm.controls['name']"
+                                        required>
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" rows="4" value="{{product.description}}" [(ngModel)]="new_product.description"  [formControl]="productForm.controls['description']" required></textarea>
+                                    <textarea class="form-control" rows="4" value="{{product.description}}" [(ngModel)]="new_product.description" [formControl]="productForm.controls['description']"
+                                        required></textarea>
                                 </div>
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label>Currency</label>
-                                    <select class="form-control" [(ngModel)]="new_product.currency"  
-                                   [formControl]="productForm.controls['currency']" require>
-                                       <option *ngFor="let item of currencys" [value]="item.code" 
-                                       [selected]="product.currency?.id=== item.id">{{item.code}}</option>
-                                   </select>
+                                    <select class="form-control" [(ngModel)]="new_product.currency" [formControl]="productForm.controls['currency']" require>
+                                        <option *ngFor="let item of currencys" [value]="item.code" [selected]="product.currency?.id=== item.id">{{item.code}}</option>
+                                    </select>
                                 </div>
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label>Regular Price</label>
-                                    <input type="text" class="form-control"  value="{{product.regular_price}}" [(ngModel)]="new_product.price"  [formControl]="productForm.controls['price']"  required>
+                                    <input type="text" class="form-control" value="{{product.regular_price}}" [(ngModel)]="new_product.price" [formControl]="productForm.controls['price']"
+                                        required>
                                 </div>
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label>Is Clearance</label>
-                                    <input type="checkbox" [checked]="product.is_clearance" [(ngModel)]="new_product.is_clearance" [formControl]="productForm.controls['isClearance']" > 
+                                    <input type="checkbox" [checked]="product.is_clearance" [(ngModel)]="new_product.is_clearance" [formControl]="productForm.controls['isClearance']">
                                 </div>
 
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label>Discount Price</label>
-                                    <input type="text" class="form-control"  value="{{product.discount_price}}" [(ngModel)]="new_product.discount_price"  [formControl]="productForm.controls['discountPrice']"  required>
+                                    <input type="text" class="form-control" value="{{product.discount_price}}" [(ngModel)]="new_product.discount_price" [formControl]="productForm.controls['discountPrice']"
+                                        required>
                                 </div>
 
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label>Is New Arrival</label>
-                                   <input type="checkbox" [checked]="product.is_new_arrival"  [(ngModel)]="new_product.is_new_arrival"  [formControl]="productForm.controls['isNewArrival']" > 
+                                    <input type="checkbox" [checked]="product.is_new_arrival" [(ngModel)]="new_product.is_new_arrival" [formControl]="productForm.controls['isNewArrival']">
                                 </div>
                                 <div class="form-group">
                                     <label>Category</label>
-                                   <select class="form-control" [(ngModel)]="new_product.category"  
-                                   [formControl]="productForm.controls['productCategory']" require>
-                                       <option *ngFor="let item of categorys" [value]="item.slug" 
-                                       [selected]="product.category?.id=== item.id">{{item.name}}</option>
-                                   </select>
+                                    <select class="form-control" [(ngModel)]="new_product.category" [formControl]="productForm.controls['productCategory']" require>
+                                        <option *ngFor="let item of categorys" [value]="item.slug" [selected]="product.category?.id=== item.id">{{item.name}}</option>
+                                    </select>
                                 </div>
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label>Product Type</label>
-                                   <select class="form-control" [(ngModel)]="new_product.productType"  
-                                   [formControl]="productForm.controls['productType']" >
-                                       <option *ngFor="let item of productTypes" [value]="item.slug" 
-                                       [selected]="new_product.product_type?.id=== item.id">{{item.name}}</option>
-                                   </select>
-                                   
+                                    <select class="form-control" [(ngModel)]="new_product.productType" [formControl]="productForm.controls['productType']">
+                                        <option *ngFor="let item of productTypes" [value]="item.slug" [selected]="new_product.product_type?.id=== item.id">{{item.name}}</option>
+                                    </select>
+
                                 </div>
 
                                 <div class="form-group">
                                     <label>Sub-category</label>
-                                   <select class="form-control" [(ngModel)]="new_product.sub_category"  
-                                   [formControl]="productForm.controls['subCategory']" >
-                                       <option *ngFor="let item of subs" [value]="item.slug" 
-                                       [selected]="new_product.sub_category?.id=== item.id">{{item.name}}</option>
-                                   </select>
-                                   
+                                    <select class="form-control" [(ngModel)]="new_product.sub_category" [formControl]="productForm.controls['subCategory']">
+                                        <option *ngFor="let item of subs" [value]="item.slug" [selected]="new_product.sub_category?.id=== item.id">{{item.name}}</option>
+                                    </select>
+
                                 </div>
 
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label>Colors</label>
-                                    <select class="form-control" [(ngModel)]="new_product.colors"  
-                                   [formControl]="productForm.controls['colors']" multiple="">
-                                       <option *ngFor="let item of colors" [value]="item.slug" 
-                                       [selected]="checkColorSelected(item.slug)">{{item.name}}</option>
-                                   </select>
-                                   <div *ngIf="productForm.controls['colors'].hasError('required') && formSubmitAttempt" style="color: red">Colors are required</div>
+                                    <select class="form-control" [(ngModel)]="new_product.colors" [formControl]="productForm.controls['colors']" multiple="">
+                                        <option *ngFor="let item of colors" [value]="item.slug" [selected]="checkColorSelected(item.slug)">{{item.name}}</option>
+                                    </select>
+                                    <div *ngIf="productForm.controls['colors'].hasError('required') && formSubmitAttempt" style="color: red">Colors are required</div>
                                 </div>
 
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label>Other Colors</label>
-                                    <input type="text" class="form-control" value="{{product.other_colors_temp}}" [(ngModel)]="new_product.mixed_colors"  [formControl]="productForm.controls['otherColors']"  required>
+                                    <input type="text" class="form-control" value="{{product.other_colors_temp}}" [(ngModel)]="new_product.mixed_colors" [formControl]="productForm.controls['otherColors']"
+                                        required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Size</label>
-                                    <select class="form-control" [(ngModel)]="new_product.sizes"  
-                                   [formControl]="productForm.controls['sizes']" multiple="">
-                                       <option *ngFor="let item of sizes" [value]="item.name" 
-                                       [selected]="checkSizeSelected(item.name)">{{item.name}}</option>
-                                   </select>
+                                    <select class="form-control" [(ngModel)]="new_product.sizes" [formControl]="productForm.controls['sizes']" multiple="">
+                                        <option *ngFor="let item of sizes" [value]="item.name" [selected]="checkSizeSelected(item.name)">{{item.name}}</option>
+                                    </select>
                                     <div *ngIf="productForm.controls['sizes'].hasError('required') && formSubmitAttempt" style="color: red">Sizes are required</div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Tag</label> <br>
-                                    <input type="text" class="form-control" value="{{product.tags_temp}}" 
-                                    [(ngModel)]="new_product.tags"  [formControl]="productForm.controls['tags']"  required>
+                                    <label>Tag</label>
+                                    <br>
+                                    <input type="text" class="form-control" value="{{product.tags_temp}}" [(ngModel)]="new_product.tags" [formControl]="productForm.controls['tags']"
+                                        required>
                                 </div>
                                 <input type="submit" class="btn btn-accent" value="Update">
-                                </form>
-                        </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            
+            </div>
+
         </section>
-</div>
+    </div>
 </div>

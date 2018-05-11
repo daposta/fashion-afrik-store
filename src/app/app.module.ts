@@ -145,7 +145,7 @@ const appRoutes: Routes = [
     FilterPipe,
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }), CommonModule, HttpModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),
+    BrowserModule, CommonModule, HttpModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),
   ],
   providers: [AuthGuard, NoAuthGuard, Globals],
   bootstrap: [AppComponent]

@@ -9,8 +9,9 @@ declare var $: any;
 })
 export class ProductListingComponent implements OnInit {
   
-  products: any[];
+  products: any[] = [];
   error: any;
+  public search: any = '';
 
   constructor(private productSrv:ProductService) { }
 
@@ -23,9 +24,12 @@ export class ProductListingComponent implements OnInit {
   	
   }
 
-  fetchProducts(){
-  	this.productSrv.fetchProducts().then(response=> this.products = response.results)
-  	.catch(err => this.error = err)
+  fetchProducts() {
+    this.productSrv.fetchProducts().then((response: any) => {
+      this.products = response;
+      console.log(this.products);
+    })
+    .catch(error => this.error = error)
   }
 
 }

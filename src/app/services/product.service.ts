@@ -18,19 +18,20 @@ export class ProductService {
     fetchProducts() {
         let v = this.page_header();
         return this.http.get(this.productsUrl, v)
-            .toPromise()
-            .then(response => response.json())
-            .catch(this.handleError);
+            .map(response => response.json())
+            .toPromise();
+        // .then(response => response.json())
+        // .catch(this.handleError);
     };
-
 
     findProductByUUID(data: string) {
 
         let v = this.page_header();
         return this.http.get(this.productsUrl + data + '/', v)
+            .map(response => response.json())
             .toPromise()
-            .then(response => response.json())
-            .catch(this.handleError);
+            // .then(response => response.json())
+            // .catch(this.handleError);
     };
 
 
