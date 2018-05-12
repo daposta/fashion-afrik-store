@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   emailInvalid: string = 'Email is invalid';
   passwordRequired: string = 'Password is required';
   private formSubmitAttempt: boolean;
+  private loading: boolean;
 
 
   constructor(fb: FormBuilder, private userSrv: UserService) {
@@ -46,5 +47,17 @@ export class LoginComponent implements OnInit {
       this.userSrv.login(this.user.email, this.user.password);
     }
   }
+
+  // login() {
+  //   this.formSubmitAttempt = true;
+  //   if(this.user.email, this.user.password) {
+  //     this.loading = true;
+  //     this.userSrv.login(this.user.email, this.user.password).subscribe(
+  //       data => {
+  //         console.log(data);
+  //       }
+  //     )
+  //   }
+  // }
 
 }

@@ -3,6 +3,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
 import { Globals } from '../shared/api';
 import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
 
 declare var $: any;
 
@@ -19,6 +20,7 @@ export class UserService {
 
 
 	private loggedIn = false;
+	public loading: boolean = false;
 
 
 	constructor(private http: Http, private router: Router, private globals: Globals) { }
@@ -26,8 +28,9 @@ export class UserService {
 	login(email: string, password: string) {
 		//this.logout();
 		let headers = new Headers();
+		this.loading = true;
 		headers.append('Content-Type', 'application/json');
-		// headers.append('Access-Control-Allow-Origin', '*') 
+		// headers.append('Access-Control-Allow-Origin', '*')
 		return this.http.post(this.loginUrl, JSON.stringify({ email, password }), { headers })
 			.subscribe(res => {
 				let data = res.json();
@@ -35,29 +38,31 @@ export class UserService {
 				if (data.token) {
 					localStorage.setItem('auth_token', data.token);
 					localStorage.setItem('user', JSON.stringify(data.user));
+					this.loading = false;
 					window.location.href = '/';
-
 				}
 				else {
+					this.loading = false;
 					this.router.navigateByUrl('/login');
 				}
 
 			}, error => {
 
 				let msg = JSON.parse(error._body)['message'];
-
+				this.loading = false;
 				$.toast({
 					text: msg,
 					position: 'top-center',
 					'icon': 'error'
 				})
-
-
-
 			})
-
-
 	};
+
+	// login<T>(email: string, password: string): Observable<T> {
+	// 	let headers = new Headers();
+	// 	headers.append('Content-Type', 'application/json');
+	// 	return this.http.post(this.loginUrl, JSON.stringify({email, password}), {headers});
+	// }
 
 
 	logout() {
