@@ -20,7 +20,9 @@
             <form [formGroup]="registrationForm" (ngSubmit)="register()" novalidate>
                 <div class="row">
                     <div class="form-group has-feedback col-md-6">
-                        <label for="storename">Store name</label>
+                        <label for="storename">Store name
+                            <small style="color: red; position: relative; left: 5px;">*</small>
+                        </label>
                         <input type="text" name="storename" class="form-control" placeholder="Store Name" [(ngModel)]="store.name" [formControl]="registrationForm.controls['storeName']"
                             required>
                         <span class="ion-ios-person-outline form-control-feedback"></span>
@@ -29,25 +31,31 @@
                     </div>
 
                     <div class="form-group has-feedback col-md-6">
-                        <label for="whatdoyousell">What do you sell?</label>
+                        <label for="whatdoyousell">What do you sell?
+                            <small style="color: red; position: relative; left: 5px;">*</small>
+                        </label>
                         <input type="text" class="form-control" placeholder="What do you sell?" [(ngModel)]="store.description" [formControl]="registrationForm.controls['description']"
                             required>
                         <span class="ion-cash form-control-feedback"></span>
 
-                        <!-- <textarea class="form-control" name="whatdoyousell"  placeholder="What do you sell?"  [(ngModel)]="store.description"  [formControl]="registrationForm.controls['description']"   required></textarea> -->
-
                         <div *ngIf="registrationForm.controls['description'].hasError('required') && formSubmitAttempt" class="form-error">Store description is required</div>
                     </div>
+
                     <div class="form-group has-feedback col-md-6">
-                        <label for="mobilenumber">Mobile Number</label>
+                        <label for="mobilenumber">Mobile Number
+                            <small style="color: red; position: relative; left: 5px;">*</small>
+                        </label>
                         <input type="text" name="mobilenumber" class="form-control" placeholder="Mobile Number" [(ngModel)]="store.mobile" [formControl]="registrationForm.controls['mobile']"
                             required>
                         <span class="ion-ios-telephone-outline form-control-feedback"></span>
 
                         <div *ngIf="registrationForm.controls['mobile'].hasError('required') && formSubmitAttempt" class="form-error">Mobile is required</div>
                     </div>
+
                     <div class="form-group has-feedback col-md-6">
-                        <label for="email">Email</label>
+                        <label for="email">Email
+                            <small style="color: red; position: relative; left: 5px;">*</small>
+                        </label>
                         <input type="text" name="email" class="form-control" placeholder="Email" [(ngModel)]="store.email" [formControl]="registrationForm.controls['email']"
                             pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" required>
                         <span class="ion-ios-email-outline form-control-feedback"></span>
@@ -56,15 +64,20 @@
                     </div>
 
                     <div class="form-group has-feedback col-md-6">
-                        <label for="password">Password</label>
+                        <label for="password">Password
+                            <small style="color: red; position: relative; left: 5px;">*</small>
+                        </label>
                         <input type="password" class="form-control" placeholder="Password" [(ngModel)]="store.password" [formControl]="registrationForm.controls['password']"
                             required>
                         <span class="ion-ios-locked-outline form-control-feedback"></span>
 
                         <div *ngIf="registrationForm.controls['password'].hasError('required') && formSubmitAttempt" class="form-error">Password is required</div>
                     </div>
+
                     <div class="form-group has-feedback col-md-6">
-                        <label for="confirmPassword">Confirm Password</label>
+                        <label for="confirmPassword">Confirm Password
+                            <small style="color: red; position: relative; left: 5px;">*</small>
+                        </label>
                         <input type="password" class="form-control" placeholder="Confirm Password" [formControl]="registrationForm.controls['confirmPassword']"
                             required>
                         <span class="ion-ios-locked-outline form-control-feedback"></span>
@@ -82,7 +95,9 @@
                     </label>
                 </div>
 
-                <button type="submit" class="btn  btn-accent btn-block btn-flat b-r-10">Create Account</button>
+                <button type="submit" class="btn  btn-accent btn-block btn-flat b-r-10">Create Account
+                    <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+                </button>
                 <br>
                 <p>Already have an account?
                     <a routerLink="/login" class="" style="font-weight: 700; margin: 10px 0; font-size: 12px;">Login</a>

@@ -8,6 +8,7 @@ import { CurrencyService } from '../../services/currency.service';
 import { ColorService } from '../../services/color.service';
 import { SizeService } from '../../services/size.service';
 import { SubCategoryService } from '../../services/sub-category.service';
+import { Router } from '@angular/router';
 
 
 
@@ -20,6 +21,7 @@ declare var $: any;
   providers: [ProductService, CategoryService, ProductTypeService, CurrencyService,
     ColorService, SizeService, SubCategoryService]
 })
+
 export class NewProductComponent implements OnInit {
 
   private formSubmitAttempt: boolean;
@@ -40,13 +42,12 @@ export class NewProductComponent implements OnInit {
   newSubCategory: any[];
   newSubCategorys: any[];
   newProductType: any[];
-  // public allProductTypes: ProductType[];
-  // public allSubs: Category[];
   product_type: any;
+  private loading: boolean;
 
   constructor(fb: FormBuilder, private productSrv: ProductService, private productTypeSrv: ProductTypeService,
     private categorySrv: CategoryService, private currencySrv: CurrencyService, private colorSrv: ColorService,
-    private sizeSrv: SizeService, private subCategorySrv: SubCategoryService) {
+    private sizeSrv: SizeService, private subCategorySrv: SubCategoryService, private router: Router) {
     this.productForm = fb.group({
       'name': ['', Validators.required],
       'description': ['', Validators.required],
@@ -59,7 +60,7 @@ export class NewProductComponent implements OnInit {
       'subCategory': ['', Validators.required],
       'currency': ['', Validators.required],
       'tags': ['', Validators.required],
-      'bannerImage': ['',], //[  FileValidator.validate]
+      'bannerImage': ['',],
       'otherImages': ['',],
       'isClearance': ['',],
       'isNewArrival': ['',],
@@ -96,6 +97,11 @@ export class NewProductComponent implements OnInit {
       .catch(error => this.error = error);
 
     this.fetchSubCategorys();
+  }
+
+  ngAfterViewInit() {
+    $('.single-file').filer();
+    $('.multi-file').filer();
   }
 
   clearanceChange() {
@@ -162,10 +168,69 @@ export class NewProductComponent implements OnInit {
 
     this.formSubmitAttempt = true;
     if (this.productForm.valid) {
-      // console.log('form submitted');
-      // console.log(this.product);
-      this.productSrv.saveProduct(this.product);
+      this.loading = true;
+      this.productSrv.saveProduct(this.product).subscribe(
+        res => {
+          console.log(res);
+          // let msg = JSON.parse(res['_body'])['message'];
+          // console.log(msg);
+          // console.log(res['_body']);
+          $.toast({
+            text: res,
+            position: 'top-center',
+            icon: 'success',
+            showHideTransition: 'slide',
+          });
+          this.loading = false;
+          this.router.navigateByUrl('/products');
+        },
+        error => {
+          this.loading = false;
+          console.log(error);
+          // let msg = JSON.parse(error._body)['message'];
+          // console.log(msg);
+          $.toast({
+            text: error.error.message,
+            position: 'top-center',
+            icon: 'error',
+            loader: false,
+            showHideTransition: 'plain',
+            allowToastClose: false,
+            hideAfter: 2000
+          });
+        })
     }
+
+    // this.http.post(this.productsUrl, formData, { headers }).subscribe(
+    //         res => {
+    //             console.log(formData);
+    //             let msg = JSON.parse(res['_body'])['message'];
+    //             console.log(msg);
+    //             console.log(res['_body']);
+    //             $.toast({
+    //                 text: msg,
+    //                 position: 'top-center',
+    //                 icon: 'success',
+    //                 showHideTransition: 'slide',
+    //             });
+
+    //             this.router.navigateByUrl('products');
+    //         },
+    //         error => {
+
+    //             console.log(error._body);
+    //             let msg = JSON.parse(error._body)['message'];
+    //             console.log(msg);
+    //             $.toast({
+    //                 text: msg,
+    //                 position: 'top-center',
+    //                 icon: 'error',
+    //                 loader: false,
+    //                 showHideTransition: 'plain',
+    //                 allowToastClose: false,
+    //                 hideAfter: 2000
+    //             });
+    //         })
 
   };
 
@@ -196,5 +261,10 @@ export class NewProductComponent implements OnInit {
     }
     this.newSubCategorys = newSubCAt;
   }
+
+  private handleError(error: any) {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
+  };
 
 }

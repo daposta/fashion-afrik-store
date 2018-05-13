@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 declare var $: any;
 
@@ -16,8 +17,9 @@ export class RegisterComponent implements OnInit {
   store: any = {};
   registrationForm: FormGroup;
   private formSubmitAttempt: boolean;
+  private loading: boolean;
 
-  constructor(fb: FormBuilder, private userSrv: UserService) {
+  constructor(fb: FormBuilder, private userSrv: UserService, private router: Router) {
 
     this.registrationForm = fb.group({
       'storeName': ['', Validators.required],
@@ -53,11 +55,31 @@ export class RegisterComponent implements OnInit {
 
     this.formSubmitAttempt = true;
     if (this.registrationForm.valid) {
+      this.loading = true;
 
-      this.userSrv.register(this.store);
-      //this.productSrv.saveProduct(this.product);
+      this.userSrv.register(this.store)
+        .subscribe(res => {
+          console.log(res);
+          let msg = 'Successful, Login to continue';
+          this.loading = false;
+          $.toast({
+            text: msg,
+            position: 'top-center',
+            'icon': 'success',
+            showHideTransition: 'slide',
+          });
+          this.router.navigateByUrl('/login');
+        }, err => {
+          this.loading = false;
+          console.log(err);
+          // $.toast({
+          //   text: err,
+          //   position: 'top-center',
+          //   'icon': 'error',
+          //   showHideTransition: 'slide',
+          // });
+        })
     }
 
   }
-
 }

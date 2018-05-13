@@ -7,6 +7,10 @@
     margin-bottom: 5px;
 }
 
+.img-error {
+  margin-top: -15px;
+}
+
 @keyframes alertAnim {
     from {
         opacity:0;

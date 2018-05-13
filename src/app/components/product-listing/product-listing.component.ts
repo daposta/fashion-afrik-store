@@ -5,31 +5,33 @@ declare var $: any;
   selector: 'app-product-listing',
   templateUrl: './product-listing.component.html',
   styleUrls: ['./product-listing.component.css'],
-   providers: [ ProductService ]
+  providers: [ProductService]
 })
 export class ProductListingComponent implements OnInit {
-  
+
   products: any[] = [];
   error: any;
   public search: any = '';
 
-  constructor(private productSrv:ProductService) { }
+  constructor(private productSrv: ProductService) { }
 
   ngOnInit() {
-  	this.fetchProducts();
+    this.fetchProducts();
     // $('[type=file]').filer();
   }
 
-  productDetail(){
-  	
+  productDetail() {
+
   }
 
   fetchProducts() {
-    this.productSrv.fetchProducts().then((response: any) => {
-      this.products = response;
-      console.log(this.products);
-    })
-    .catch(error => this.error = error)
+    this.productSrv.fetchProducts().subscribe(
+      res => {
+        this.products = res;
+        console.log(this.products);
+      }, err => {
+        console.log(err);
+      })
   }
 
 }

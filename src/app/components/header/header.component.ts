@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
+
 
 declare var $: any;
 
@@ -14,8 +16,9 @@ export class HeaderComponent implements OnInit {
   error: any;
   user: any = {};
   profile: any;
+  loggedIn: boolean;
   bodyClasses: string = "skin-blue sidebar-mini";
-  constructor(public userSrv: UserService) { }
+  constructor(public userSrv: UserService, private router: Router) { }
 
   ngOnInit() {
     let tempUser = localStorage.getItem('user');
@@ -31,18 +34,21 @@ export class HeaderComponent implements OnInit {
   }
 
   getStoreProfile() {
-    this.userSrv.getCurrentProfile().then(response => {
-      localStorage.setItem('store', JSON.stringify(response));
+    this.userSrv.getCurrentProfile().subscribe(res => {
+      let data = res;
+      // console.log(data);
+      localStorage.setItem('store', JSON.stringify(res));
       this.profile = JSON.parse(localStorage.getItem('store'));
-
-
-    }).catch(err => this.error = err)
+    })
   }
 
 
   logout() {
+    localStorage.clear();
+    this.loggedIn = false;
+    this.router.navigate(['/login']);
 
-    this.userSrv.logout();
+    // this.userSrv.logout();
   }
 
 }

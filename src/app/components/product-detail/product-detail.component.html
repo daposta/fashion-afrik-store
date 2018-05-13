@@ -23,10 +23,8 @@
                         <div class="box-header with-border">
                             <h3 class="box-title">Featured Image</h3>
                         </div>
-                        <div class="product-image-wrapper" *ngFor="let item of products">
-                            <!--  <img src="assets/dist/img/photo2.png" class="img-responsive" style="height:350px;" /> -->
-
-                            <img src="{{item.feature_image}}" class="img-responsive" style="height:350px;" />
+                        <div class="product-image-wrapper">
+                            <img [src]="feature_image" class="img-responsive" style="height:200px; margin: 0 auto; width: auto; padding: 10px;" />
                             <div class="image-actions">
                                 <a (click)="removeBannerImage(product.id)" class="remove-image">
                                     <i class="ion-close-round"></i>
@@ -45,8 +43,8 @@
                             <input type="file" name="blah" class="single-file">
                         </div>
                         <div class="other-images" style="padding: 20px">
-                            <div class="item" *ngFor="let item of product.other_images">
-                                <img src="{{ item.other_images}}" alt="">
+                            <div class="item" *ngFor="let item of allOther_images">
+                                <img src="{{item}}" alt="" style="height: 150px; width: 150px; object-fit: contain; padding: 10px; margin: 10px; border: 1px solid teal">
                                 <span class="remove-img">&times;</span>
                             </div>
                         </div>

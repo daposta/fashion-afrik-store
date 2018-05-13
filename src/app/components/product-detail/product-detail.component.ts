@@ -6,6 +6,7 @@ import { CurrencyService } from '../../services/currency.service';
 import { ColorService } from '../../services/color.service';
 import { SizeService } from '../../services/size.service';
 import { SubCategoryService } from '../../services/sub-category.service';
+import { FindProductByIdService } from '../../services/find-product-by-id.service';
 
 
 import { Router, ActivatedRoute, Params } from '@angular/router';
@@ -19,7 +20,7 @@ import { Globals } from '../../shared/api';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
   providers: [ProductService, CategoryService, ProductTypeService, CurrencyService,
-    ColorService, SizeService, SubCategoryService]
+    ColorService, SizeService, SubCategoryService, FindProductByIdService]
 })
 export class ProductDetailComponent implements OnInit {
 
@@ -35,11 +36,13 @@ export class ProductDetailComponent implements OnInit {
   error: any;
   private formSubmitAttempt: boolean;
   productForm: FormGroup;
+  feature_image: string;
+  allOther_images: string[] = [];
 
   constructor(private productSrv: ProductService, private route: ActivatedRoute, private globals: Globals,
     private categorySrv: CategoryService, private productTypeSrv: ProductTypeService, fb: FormBuilder,
     private currencySrv: CurrencyService, private colorSrv: ColorService,
-    private sizeSrv: SizeService, private subCategorySrv: SubCategoryService) {
+    private sizeSrv: SizeService, private subCategorySrv: SubCategoryService, private findProductByIdSrv: FindProductByIdService) {
     this.productForm = fb.group({
       'name': ['', Validators.required],
       'description': ['', Validators.required],
@@ -63,15 +66,25 @@ export class ProductDetailComponent implements OnInit {
 
 
     this.route.params.switchMap((params: Params) =>
-      this.productSrv.findProductByUUID(params['id']))
+      this.findProductByIdSrv.findProductByUUID(params['id']))
       .subscribe(
         data => {
           this.product = data;
+          console.log(this.product);
+          // console.log(data.tags);
           let tags_temp = '';
           data.tags.forEach(item => {
-
+            
             tags_temp += item.name + ', ';
           });
+          
+          // console.log(data.other_images);
+          // console.log(data.tags);
+          
+          data.other_images.forEach(item => {
+            this.allOther_images.push(item.image);
+            // console.log(this.allOther_images);
+          })
 
           this.product['tags_temp'] = tags_temp;
 
@@ -92,6 +105,8 @@ export class ProductDetailComponent implements OnInit {
 
           // this.product['category'] = data.category? data.category.id : null;
           //  this.product['product_ty'] = data.category? data.category.id : null;
+          this.feature_image = data.feature_image;
+          this.feature_image = this.globals.HOST_URL + this.feature_image;
 
         }
 
@@ -148,11 +163,11 @@ export class ProductDetailComponent implements OnInit {
   }
 
 
-  updateProduct() {
-    this.new_product['id'] = this.product['id'];
-    this.productSrv.updateProductInfo(this.new_product);
+  // updateProduct() {
+  //   this.new_product['id'] = this.product['id'];
+  //   this.productSrv.updateProductInfo(this.new_product);
 
-  };
+  // };
 
 
   removeOtherImages(productID) {

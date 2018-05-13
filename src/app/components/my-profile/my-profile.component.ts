@@ -17,7 +17,7 @@ export class MyProfileComponent implements OnInit {
     let tempStore = localStorage.getItem('store');
     if (tempStore) {
       this.store = JSON.parse(tempStore);
-      console.log(this.store);
+      // console.log(this.store);
     }
   }
 

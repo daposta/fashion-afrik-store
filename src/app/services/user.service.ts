@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
 import { Globals } from '../shared/api';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
 
 declare var $: any;
-
 
 
 @Injectable()
@@ -23,112 +24,56 @@ export class UserService {
 	public loading: boolean = false;
 
 
-	constructor(private http: Http, private router: Router, private globals: Globals) { }
+	// constructor(private http: Http, private router: Router, private globals: Globals) { }
+	constructor(private http: HttpClient, private router: Router, private globals: Globals) { }
 
-	login(email: string, password: string) {
-		//this.logout();
-		let headers = new Headers();
-		this.loading = true;
-		headers.append('Content-Type', 'application/json');
-		// headers.append('Access-Control-Allow-Origin', '*')
-		return this.http.post(this.loginUrl, JSON.stringify({ email, password }), { headers })
-			.subscribe(res => {
-				let data = res.json();
+	login(email: string, password: string): Observable<any> {
+		const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
 
-				if (data.token) {
-					localStorage.setItem('auth_token', data.token);
-					localStorage.setItem('user', JSON.stringify(data.user));
-					this.loading = false;
-					window.location.href = '/';
-				}
-				else {
-					this.loading = false;
-					this.router.navigateByUrl('/login');
-				}
-
-			}, error => {
-
-				let msg = JSON.parse(error._body)['message'];
-				this.loading = false;
-				$.toast({
-					text: msg,
-					position: 'top-center',
-					'icon': 'error'
-				})
-			})
+		return this.http.post(this.loginUrl, JSON.stringify({ email, password }), { headers });
 	};
 
-	// login<T>(email: string, password: string): Observable<T> {
-	// 	let headers = new Headers();
-	// 	headers.append('Content-Type', 'application/json');
-	// 	return this.http.post(this.loginUrl, JSON.stringify({email, password}), {headers});
-	// }
-
-
-	logout() {
-		let v = this.page_header();
-		// localStorage.clear();
-		// this.router.navigate(['/login']);
-
-		this.http.post(this.logoutUrl, {}, v).subscribe(res => {
-			localStorage.clear();
-			this.loggedIn = false;
-			this.router.navigate(['/login']);
-		}, (err) => {
-			localStorage.clear();
-			this.router.navigate(['/login']);
-
-		})
-
-	};
-
-
-	register(data: any) {
-
-		//let error =  <HTMLInputElement>document.getElementById('feedback_success');
+	register(data: any): Observable<any> {
+		const headers = new HttpHeaders({'Content-Type': 'application/json'})
 		return this.http.post(this.registerUrl, data)
-			.subscribe(res => {
+	}
 
-				let msg = JSON.parse(res['_body'])['message'];
-				$.toast({
-					text: msg,
-					position: 'top-center',
-					'icon': 'success',
-					showHideTransition: 'slide',
-				});
-
-
-			}, error => {
-
-				let msg = JSON.parse(error._body)['message'];
-				$.toast({
-					text: msg,
-					position: 'top-center',
-					icon: 'error',
-					showHideTransition: 'slide',
-				});
-
+	getCurrentProfile(): Observable<any> {
+		let data = localStorage.getItem('auth_token');
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json', 'Authorization': 'JWT' + ' ' + data
 			})
+		};
 
+		return this.http.get(this.userProfileUrl, httpOptions)
+			.catch(this.handleError);
 	};
-
 
 	activateAccount(data: any) {
 		console.log(data);
 		return this.http.get(this.activationUrl + data['uid'] + '/' + data['token'] + '/')
 			.toPromise()
-			.then(response => response.json())
+			.then(response => response)
 			.catch(this.handleError);
 	};
 
-	getCurrentProfile() {
+	// logout() {
+	// 	let v = this.page_header();
+	// 	// localStorage.clear();
+	// 	// this.router.navigate(['/login']);
 
-		let v = this.page_header();
-		return this.http.get(this.userProfileUrl, v)
-			.toPromise()
-			.then(response => response.json())
-		//.catch(this.handleError);
-	};
+	// 	this.http.post(this.logoutUrl, {}, v).subscribe(res => {
+	// 		localStorage.clear();
+	// 		this.loggedIn = false;
+	// 		this.router.navigate(['/login']);
+	// 	}, (err) => {
+	// 		localStorage.clear();
+	// 		this.router.navigate(['/login']);
+
+	// 	})
+
+	// };
 
 	private page_header() {
 		let data = localStorage.getItem('auth_token');

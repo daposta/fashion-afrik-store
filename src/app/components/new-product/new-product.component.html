@@ -206,7 +206,7 @@
                                         <input type="file" name="banner_image" class="single-file  form-control" [(ngModel)]="product.banner_image" [formControl]="productForm.controls['bannerImage']"
                                             (change)="addDocument($event)" />
 
-                                        <div *ngIf="productForm.controls['bannerImage'].hasError('required')" class="form-error">Banner Image is required</div>
+                                        <div *ngIf="productForm.controls['bannerImage'].hasError('required') && formSubmitAttempt" class="form-error img-error">Banner Image is required</div>
                                     </div>
 
                                     <div class="form-group col-md-6">
@@ -216,12 +216,16 @@
                                         <input type="file" name="other_images" class="multi-file form-control" [(ngModel)]="product.other_images" [formControl]="productForm.controls['otherImages']"
                                             multiple (change)="addOtherDocuments($event)" />
 
-                                        <div *ngIf="productForm.controls['otherImages'].hasError('required') && formSubmitAttempt" class="form-error">Other Images required</div>
+                                        <div *ngIf="productForm.controls['otherImages'].hasError('required') && formSubmitAttempt" class="form-error img-error">Other Images required</div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="submit" class="btn btn-accent pull-right btn-flat" value="Publish" />
+                                    <!-- <input type="submit" class="btn btn-accent pull-right btn-flat" value="Publish" /> -->
+                                    <button type="submit" class="btn  btn-accent pull-right btn-flat" style="background: #FF473A;">
+                                        Publish
+                                        <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+                                    </button> <br>
                                     <div class="clearfix"></div>
                                 </div>
                             </form>

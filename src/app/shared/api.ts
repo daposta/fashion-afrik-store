@@ -27,4 +27,5 @@ export class Globals{
     LATEST_ORDERS_URL =  this.HOST_URL + '/stores/api/latest_orders/';
     RECENT_PRODUCTS_URL =  this.HOST_URL + '/stores/api/recent_products/';
     UPDATE_STORE_URL = this.HOST_URL + '/admin/api/stores/';
+    STORE_PRODUCTS_URL = this.HOST_URL + '/admin/api/stores/';
 }
