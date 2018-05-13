@@ -34,7 +34,12 @@
     max-width: 100% !important;
 }
 
-input[type='checkbox']{ height: 0; width: 0; }
+input[type='checkbox'] {
+  height: 0;
+  width: 0;
+  position: absolute;
+  opacity: 0;
+}
 
 input[type='checkbox'] + label{
     position: relative;

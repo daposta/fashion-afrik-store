@@ -35,7 +35,7 @@ export class UserService {
 
 	register(data: any): Observable<any> {
 		const headers = new HttpHeaders({'Content-Type': 'application/json'})
-		return this.http.post(this.registerUrl, data)
+		return this.http.post(this.registerUrl, JSON.stringify(data), { headers })
 	}
 
 	getCurrentProfile(): Observable<any> {
