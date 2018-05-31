@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 declare var $: any;
 
@@ -12,42 +13,48 @@ declare var $: any;
 })
 export class ResetPasswordComponent implements OnInit {
   store: any = {};
-  resetPasswordForm: FormGroup;
-  private formSubmitAttempt: boolean;
-  
-  // oldPasswordRequired: string = 'Password is required';
-  // newPasswordRequired: string = 'Set a new password'
-  // confirmNewPasswordRequired: string = 'Confirm new password';
-  // newPasswordMismatch: string = 'Password mismatch';
+  checkPasswordForm: FormGroup;
+  formSubmitAttempt: boolean;
+  loading: boolean;
 
-  constructor(fb: FormBuilder, private userSrv: UserService) {
-    this.resetPasswordForm = fb.group({
-      'oldPassword': ['', Validators.required],
-      'newPassword': ['', Validators.required],
-      'confirmNewPassword': ['', Validators.required],
-    }, { validator: this.checkPasswords });
-  };
-
-  checkPasswords(group: FormGroup) {
-    let pass = group.controls.newPassword.value;
-    let confirmPass = group.controls.confirmNewPassword.value;
-    return pass === confirmPass ? null : { notSame: true };
+  constructor(fb: FormBuilder, private userSrv: UserService, private router: Router) {
+    this.checkPasswordForm = fb.group({
+      'password': ['', Validators.required],
+    });
   };
 
   ngOnInit() {
   }
 
-  resetPassword() {
-    // let success = <HTMLInputElement>document.getElementById('feedback_success');
-    // success.innerHTML = '';
-    // success.style.display = 'None';
-    // let err = <HTMLInputElement>document.getElementById('feedback_err');
-    // err.innerHTML = '';
-    // err.style.display = 'None';
-
+  checkPassword() {
     this.formSubmitAttempt = true;
-    if(this.resetPasswordForm.valid) {
-      console.log('success');
+    if (this.store.password) {
+      this.loading = true;
+      this.userSrv.checkPassword(this.store.password)
+        .subscribe(res => {
+          this.loading = false;
+          // console.log(res.valid);
+          if (res.valid === true) {
+            $.toast({
+              text: 'Password check successful',
+              position: 'top-center',
+              icon: 'success',
+              showHideTransition: 'slide',
+            })
+            this.router.navigateByUrl('/change-password');
+          } else {
+            $.toast({
+              text: 'Password check failed',
+              position: 'top-center',
+              icon: 'error',
+              showHideTransition: 'slide',
+            });
+          }
+
+        }, err => {
+          this.loading = false;
+          console.log(err);
+        })
     }
   }
 

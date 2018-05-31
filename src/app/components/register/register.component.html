@@ -7,8 +7,6 @@
             </a>
         </div>
 
-
-
         <!-- /.login-logo -->
         <div class="login-box-body" style="max-width: 800px;">
             <p class="login-box-msg very-bold">Create a merchant account</p>
@@ -16,49 +14,34 @@
             <div id="feedback_err" [style.display]="'none'" style="background-color: red;"></div>
             <div id="feedback_success" [style.display]="'none'" style="background-color: green;"></div>
 
-
             <form [formGroup]="registrationForm" (ngSubmit)="register()" novalidate>
                 <div class="row">
                     <div class="form-group has-feedback col-md-6">
-                        <label for="storename">Store name
+                        <label for="first_name">First Name
                             <small style="color: red; position: relative; left: 5px;">*</small>
                         </label>
-                        <input type="text" name="storename" class="form-control" placeholder="Store Name" [(ngModel)]="store.name" [formControl]="registrationForm.controls['storeName']"
+                        <input type="text" name="first_name" class="form-control" placeholder="First Name" [(ngModel)]="user.first_name" [formControl]="registrationForm.controls['first_name']"
                             required>
-                        <span class="ion-ios-person-outline form-control-feedback"></span>
 
-                        <div *ngIf="registrationForm.controls['storeName'].hasError('required') && formSubmitAttempt" class="form-error">Store name is required</div>
+                        <div *ngIf="registrationForm.controls['first_name'].hasError('required') && formSubmitAttempt" class="form-error">First name is required</div>
                     </div>
 
                     <div class="form-group has-feedback col-md-6">
-                        <label for="whatdoyousell">What do you sell?
+                        <label for="last_name">Last Name
                             <small style="color: red; position: relative; left: 5px;">*</small>
                         </label>
-                        <input type="text" class="form-control" placeholder="What do you sell?" [(ngModel)]="store.description" [formControl]="registrationForm.controls['description']"
+                        <input type="text" name="last_name" class="form-control" placeholder="Last Name" [(ngModel)]="user.last_name" [formControl]="registrationForm.controls['last_name']"
                             required>
-                        <span class="ion-cash form-control-feedback"></span>
 
-                        <div *ngIf="registrationForm.controls['description'].hasError('required') && formSubmitAttempt" class="form-error">Store description is required</div>
-                    </div>
-
-                    <div class="form-group has-feedback col-md-6">
-                        <label for="mobilenumber">Mobile Number
-                            <small style="color: red; position: relative; left: 5px;">*</small>
-                        </label>
-                        <input type="text" name="mobilenumber" class="form-control" placeholder="Mobile Number" [(ngModel)]="store.mobile" [formControl]="registrationForm.controls['mobile']"
-                            required>
-                        <span class="ion-ios-telephone-outline form-control-feedback"></span>
-
-                        <div *ngIf="registrationForm.controls['mobile'].hasError('required') && formSubmitAttempt" class="form-error">Mobile is required</div>
+                        <div *ngIf="registrationForm.controls['last_name'].hasError('required') && formSubmitAttempt" class="form-error">Last name is required</div>
                     </div>
 
                     <div class="form-group has-feedback col-md-6">
                         <label for="email">Email
                             <small style="color: red; position: relative; left: 5px;">*</small>
                         </label>
-                        <input type="text" name="email" class="form-control" placeholder="Email" [(ngModel)]="store.email" [formControl]="registrationForm.controls['email']"
+                        <input type="text" name="email" class="form-control" placeholder="Email" [(ngModel)]="user.email" [formControl]="registrationForm.controls['email']"
                             pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" required>
-                        <span class="ion-ios-email-outline form-control-feedback"></span>
 
                         <div *ngIf="registrationForm.controls['email'].hasError('required') && formSubmitAttempt" class="form-error">Email is required</div>
                     </div>
@@ -67,9 +50,8 @@
                         <label for="password">Password
                             <small style="color: red; position: relative; left: 5px;">*</small>
                         </label>
-                        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="store.password" [formControl]="registrationForm.controls['password']"
+                        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="user.password" [formControl]="registrationForm.controls['password']"
                             required>
-                        <span class="ion-ios-locked-outline form-control-feedback"></span>
 
                         <div *ngIf="registrationForm.controls['password'].hasError('required') && formSubmitAttempt" class="form-error">Password is required</div>
                     </div>
@@ -80,22 +62,58 @@
                         </label>
                         <input type="password" class="form-control" placeholder="Confirm Password" [formControl]="registrationForm.controls['confirmPassword']"
                             required>
-                        <span class="ion-ios-locked-outline form-control-feedback"></span>
 
                         <div *ngIf="registrationForm.controls['confirmPassword'].hasError('required') && formSubmitAttempt" class="form-error">Password Confirmation is required</div>
                         <div *ngIf="registrationForm.hasError('notSame') && formSubmitAttempt" class="form-error">Password fields do not match</div>
                     </div>
+
+                    <div class="form-group has-feedback col-md-6">
+                        <label for="mobilenumber">Mobile Number
+                            <small style="color: red; position: relative; left: 5px;">*</small>
+                        </label>
+                        <input type="text" name="mobilenumber" class="form-control" placeholder="Mobile Number" [(ngModel)]="user.mobile" [formControl]="registrationForm.controls['mobile']"
+                            required>
+
+                        <div *ngIf="registrationForm.controls['mobile'].hasError('required') && formSubmitAttempt" class="form-error">Mobile is required</div>
+                    </div>
+
+                    <!--  -->
+                    <div class="form-group col-sm-6">
+                        <input type="checkbox" [checked]="is_customer" (change)="is_customerChange()" [(ngModel)]="user.is_customer" [formControl]="registrationForm.controls['is_customer']"
+                            id="is_customerId" class="accountType" name="accountType">
+                        <label for="is_customerId" class="checkboxLabel">
+                            <span></span>
+                            Customer Account
+                        </label>
+                        <!-- {{user.is_customer}} -->
+                    </div>
+
+                    <!-- <div *ngIf="registrationForm.controls['accountType'].hasError('required') && formSubmitAttempt" class="form-error">Account Type is required</div> -->
+
+                    <div class="form-group col-sm-6">
+                        <input type="checkbox" [checked]="is_store" (change)="is_storeChange()" [(ngModel)]="user.is_store" [formControl]="registrationForm.controls['is_store']"
+                            id="is_storeId" class="accountType" name="accountType">
+                        <label for="is_storeId" class="checkboxLabel">
+                            <span></span>
+                            Store Account
+                        </label>
+                        <!-- {{user.is_store}} -->
+                    </div>
                 </div>
                 <div class="form-group has-feedback">
                     <label>
-                        <input type="checkbox" [formControl]="registrationForm.controls['agreedToTerms']" required> I agree to the
-                        <a style="color: brown" routerLink="#">store owner agreement</a>
+                        <input type="checkbox" [formControl]="registrationForm.controls['agreedToTerms']" id="tnc" required>
+                        <label for="tnc" class="checkboxLabel">
+                            <span></span>
+                            I agree to the &nbsp;<a style="color: brown" routerLink="#">store owner agreement</a>
+                        </label>
 
                         <div *ngIf="registrationForm.controls['agreedToTerms'].hasError('required') && formSubmitAttempt" class="form-error">You must agree to terms</div>
                     </label>
                 </div>
 
-                <button type="submit" class="btn  btn-accent btn-block btn-flat b-r-10">Create Account
+                <button type="submit" class="btn  btn-accent btn-block btn-flat b-r-10" [disabled]="loading">
+                    Create Account
                     <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
                 </button>
                 <br>
@@ -103,13 +121,6 @@
                     <a routerLink="/login" class="" style="font-weight: 700; margin: 10px 0; font-size: 12px;">Login</a>
                 </p>
             </form>
-
-
-
-
-
-
-
         </div>
         <!-- /.login-box-body -->
         <auth-footer></auth-footer>

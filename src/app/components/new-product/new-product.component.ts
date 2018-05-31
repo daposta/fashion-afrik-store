@@ -6,6 +6,7 @@ import { CategoryService } from '../../services/category.service';
 import { ProductTypeService } from '../../services/product-type.service';
 import { CurrencyService } from '../../services/currency.service';
 import { ColorService } from '../../services/color.service';
+import { TagsService } from '../../services/tags.service';
 import { SizeService } from '../../services/size.service';
 import { SubCategoryService } from '../../services/sub-category.service';
 import { Router } from '@angular/router';
@@ -19,35 +20,37 @@ declare var $: any;
   templateUrl: './new-product.component.html',
   styleUrls: ['./new-product.component.css'],
   providers: [ProductService, CategoryService, ProductTypeService, CurrencyService,
-    ColorService, SizeService, SubCategoryService]
+    ColorService, SizeService, SubCategoryService, TagsService]
 })
 
 export class NewProductComponent implements OnInit {
 
-  private formSubmitAttempt: boolean;
+  formSubmitAttempt: boolean;
   productForm: FormGroup;
-  categorys: any[];
+  categorys: any;
   productTypes: any[];
   currencys: any[];
+  tags: any[];
   colors: any[];
   sizes: any[];
   subs: any[];
   error: any;
   product: any = {};
-  private clearance: boolean = false;
-  private newArrival: boolean = false;
+  clearance: boolean = false;
+  newArrival: boolean = false;
   category: any = {};
-  productType: any = {};
-  subCategory: any = {};
+  productType: any;
+  subCategory: any[];
   newSubCategory: any[];
   newSubCategorys: any[];
   newProductType: any[];
   product_type: any;
-  private loading: boolean;
+  loading: boolean;
+  // category: any;
 
   constructor(fb: FormBuilder, private productSrv: ProductService, private productTypeSrv: ProductTypeService,
     private categorySrv: CategoryService, private currencySrv: CurrencyService, private colorSrv: ColorService,
-    private sizeSrv: SizeService, private subCategorySrv: SubCategoryService, private router: Router) {
+    private sizeSrv: SizeService, private subCategorySrv: SubCategoryService, private router: Router, private tagsSrv: TagsService) {
     this.productForm = fb.group({
       'name': ['', Validators.required],
       'description': ['', Validators.required],
@@ -55,9 +58,9 @@ export class NewProductComponent implements OnInit {
       'colors': [[''], Validators.required],
       'otherColors': ['',],
       'price': ['', Validators.required],
-      'productCategory': ['', Validators.required],
-      'productType': ['', Validators.required],
-      'subCategory': ['', Validators.required],
+      'l1category': ['', Validators.required],
+      'l2category': ['', Validators.required],
+      'l3category': ['', Validators.required],
       'currency': ['', Validators.required],
       'tags': ['', Validators.required],
       'bannerImage': ['',],
@@ -71,32 +74,33 @@ export class NewProductComponent implements OnInit {
   ngOnInit() {
 
     this.fetchCategorys();
-    this.fetchProductTypes();
+    this.fetchTags();
     this.product['isNewArrival'] = this.newArrival;
     this.product['isClearance'] = this.clearance;
+    // this.fetchProductTypes();
 
     //fetchCurrencys
-    this.currencySrv.fetchCurrencys().then((response: any) => {
-      this.currencys = response;
-      // console.log(this.currencys);
-    })
-      .catch(error => this.error = error);
+    this.currencySrv.fetchCurrencys().subscribe((res: any) => {
+        this.currencys = res;
+      }, err => {
+        console.log(err);
+      })
 
     //fetchColors
-    this.colorSrv.fetchColors().then((response: any) => {
-      this.colors = response;
+    this.colorSrv.fetchColors().subscribe((res: any) => {
+      this.colors = res;
       // console.log(this.colors);
+    }, err => {
+      console.log(err);      
     })
-      .catch(error => this.error = error);
 
     //fetchSize
-    this.sizeSrv.fetchSizes().then((response: any) => {
-      this.sizes = response;
+    this.sizeSrv.fetchSizes().subscribe((res: any) => {
+      this.sizes = res;
       // console.log(this.sizes);
+    }, err => {
+      console.log(err);
     })
-      .catch(error => this.error = error);
-
-    this.fetchSubCategorys();
   }
 
   ngAfterViewInit() {
@@ -124,62 +128,51 @@ export class NewProductComponent implements OnInit {
     }
   }
 
-  // fetchCategorys(){
-  //   this.categorySrv.fetchCategories().then(response =>this.categorys = response.results  )
-  //   .catch(error=> this.error = error )
-  //   console.log(this.categorys);
-  // }
-
   fetchCategorys() {
-    this.categorySrv.fetchCategories().then((response: any) => {
-      this.categorys = response;
-      // console.log(this.categorys);
-    })
-      .catch(error => this.error = error)
+    this.categorySrv.fetchCategories()
+      .subscribe(res => {
+        // console.log(res);
+        this.categorys = res;
+      }, err => {
+        console.log(err);
+      })
   }
 
-  // fetchProductTypes() {
-  //   this.productTypeSrv.fetchProductTypes().then(response => this.productTypes = response.results)
-  //     .catch(error => this.error = error)
-  // }
-
-  fetchProductTypes() {
-    this.productTypeSrv.fetchProductTypes().then((response: any) => {
-      this.productTypes = response;
-      // console.log(this.productTypes);
-    })
-      .catch(error => this.error = error)
+  fetchTags() {
+    this.tagsSrv.fetchTags().subscribe(
+      res => {
+        console.log(res);
+        this.tags = res;
+      }, err => {
+        console.log(err);
+      }
+    )
   }
 
   // fetchSubCategorys() {
-  //   this.subCategorySrv.fetchSubCategorys().then(response => this.subs = response.results)
-  //     .catch(err => this.error = err)
+  //   this.subCategorySrv.fetchSubCategorys().then((response: any) => {
+  //     this.subs = response;
+  //     // console.log(this.subs);
+  //   })
+  //     .catch(error => this.error = error)
   // }
 
-  fetchSubCategorys() {
-    this.subCategorySrv.fetchSubCategorys().then((response: any) => {
-      this.subs = response;
-      // console.log(this.subs);
-    })
-      .catch(error => this.error = error)
-  }
-
   saveProduct() {
-
     this.formSubmitAttempt = true;
     if (this.productForm.valid) {
+      console.log(this.product);
       this.loading = true;
       this.productSrv.saveProduct(this.product).subscribe(
         res => {
           console.log(res);
-          // let msg = JSON.parse(res['_body'])['message'];
-          // console.log(msg);
-          // console.log(res['_body']);
           $.toast({
             text: res,
             position: 'top-center',
             icon: 'success',
-            showHideTransition: 'slide',
+            loader: false,
+            showHideTransition: 'plain',
+            allowToastClose: false,
+            hideAfter: 2000,
           });
           this.loading = false;
           this.router.navigateByUrl('/products');
@@ -187,8 +180,6 @@ export class NewProductComponent implements OnInit {
         error => {
           this.loading = false;
           console.log(error);
-          // let msg = JSON.parse(error._body)['message'];
-          // console.log(msg);
           $.toast({
             text: error.error.message,
             position: 'top-center',
@@ -200,38 +191,6 @@ export class NewProductComponent implements OnInit {
           });
         })
     }
-
-    // this.http.post(this.productsUrl, formData, { headers }).subscribe(
-    //         res => {
-    //             console.log(formData);
-    //             let msg = JSON.parse(res['_body'])['message'];
-    //             console.log(msg);
-    //             console.log(res['_body']);
-    //             $.toast({
-    //                 text: msg,
-    //                 position: 'top-center',
-    //                 icon: 'success',
-    //                 showHideTransition: 'slide',
-    //             });
-
-    //             this.router.navigateByUrl('products');
-    //         },
-    //         error => {
-
-    //             console.log(error._body);
-    //             let msg = JSON.parse(error._body)['message'];
-    //             console.log(msg);
-    //             $.toast({
-    //                 text: msg,
-    //                 position: 'top-center',
-    //                 icon: 'error',
-    //                 loader: false,
-    //                 showHideTransition: 'plain',
-    //                 allowToastClose: false,
-    //                 hideAfter: 2000
-    //             });
-    //         })
-
   };
 
   addDocument($event) {
@@ -245,21 +204,33 @@ export class NewProductComponent implements OnInit {
     this.product.otherImages = files;//<Array<File>>(files);
   }
 
-  changed(value) {
-    var cat = this.categorys.filter(data => data.slug == value);
-    this.newProductType = cat[0].product_types;
+  fetchProductTypeForCategory(event) {
+    this.category = event.target.value;
+    // console.log(this.category);
+    this.productForm.patchValue({ 'l2category': '', 'l3category': '' })
+    this.categorySrv.fetchProductTypesParam(this.category)
+      .subscribe(res => {
+        this.productTypes = res;
+        console.log(this.productTypes);
+      }, err => {
+        console.log(err);
+      })
   }
 
-  changedProduct(value) {
-    this.newSubCategorys = [];
-    let newSubCAt = [];
-    var product = this.newProductType.filter(data => data.slug == value);
-    var subCat = product[0].sub_categorys;
-    for (var j = 0; j < subCat.length; j++) {
-      newSubCAt.push(subCat[j]);
-      // console.log(newSubCAt);
-    }
-    this.newSubCategorys = newSubCAt;
+  fetchSubCatForTypes(event) {
+    this.productType = event.target.value;
+    let productType = this.productType;
+    let category = this.category
+    // console.log(productType);
+    // console.log(category);
+    this.categorySrv.fetchSubCatTypesParam(productType, category)
+      .subscribe(res => {
+        this.subCategory = res;
+        console.log(this.subCategory);
+      }, err => {
+        console.log(err);
+
+      })
   }
 
   private handleError(error: any) {

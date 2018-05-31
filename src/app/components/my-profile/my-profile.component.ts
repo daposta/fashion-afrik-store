@@ -10,6 +10,7 @@ import { UserService } from '../../services/user.service';
 export class MyProfileComponent implements OnInit {
 
   store: any = {};
+  user: any = {};
 
   constructor(public userSrv: UserService) { }
 
@@ -18,6 +19,11 @@ export class MyProfileComponent implements OnInit {
     if (tempStore) {
       this.store = JSON.parse(tempStore);
       // console.log(this.store);
+    };
+
+    let tempUser = localStorage.getItem('user');
+    if (tempUser) {
+      this.user = JSON.parse(tempUser);
     }
   }
 

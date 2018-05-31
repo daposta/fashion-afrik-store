@@ -24,7 +24,8 @@
                             <h3 class="box-title">Featured Image</h3>
                         </div>
                         <div class="product-image-wrapper">
-                            <img [src]="feature_image" class="img-responsive" style="height:200px; margin: 0 auto; width: auto; padding: 10px;" />
+                            <img src="{{product.banner_image}}" class="img-responsive" style="height:200px; margin: 0 auto; width: auto; padding: 10px;"
+                            />
                             <div class="image-actions">
                                 <a (click)="removeBannerImage(product.id)" class="remove-image">
                                     <i class="ion-close-round"></i>
@@ -59,91 +60,112 @@
                             <form role="form" [formGroup]="productForm" (ngSubmit)="updateProduct()" novalidate>
                                 <!-- text input -->
                                 <div class="form-group">
-                                    <label>Title</label>
-                                    <input type="text" class="form-control" value="{{product.name}}" [(ngModel)]="new_product.name" [formControl]="productForm.controls['name']"
-                                        required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea class="form-control" rows="4" value="{{product.description}}" [(ngModel)]="new_product.description" [formControl]="productForm.controls['description']"
-                                        required></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Currency</label>
-                                    <select class="form-control" [(ngModel)]="new_product.currency" [formControl]="productForm.controls['currency']" require>
-                                        <option *ngFor="let item of currencys" [value]="item.code" [selected]="product.currency?.id=== item.id">{{item.code}}</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Regular Price</label>
-                                    <input type="text" class="form-control" value="{{product.regular_price}}" [(ngModel)]="new_product.price" [formControl]="productForm.controls['price']"
-                                        required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Is Clearance</label>
-                                    <input type="checkbox" [checked]="product.is_clearance" [(ngModel)]="new_product.is_clearance" [formControl]="productForm.controls['isClearance']">
+                                    <label>Product ID</label>
+                                    <input type="text" class="form-control" [(ngModel)]="new_product.id" [formControl]="productForm.controls['id']" readonly>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Discount Price</label>
-                                    <input type="text" class="form-control" value="{{product.discount_price}}" [(ngModel)]="new_product.discount_price" [formControl]="productForm.controls['discountPrice']"
-                                        required>
+                                    <label>Product Name</label>
+                                    <input type="text" class="form-control" [(ngModel)]="new_product.name" [formControl]="productForm.controls['name']" required>
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Is New Arrival</label>
-                                    <input type="checkbox" [checked]="product.is_new_arrival" [(ngModel)]="new_product.is_new_arrival" [formControl]="productForm.controls['isNewArrival']">
-                                </div>
                                 <div class="form-group">
                                     <label>Category</label>
-                                    <select class="form-control" [(ngModel)]="new_product.category" [formControl]="productForm.controls['productCategory']" require>
-                                        <option *ngFor="let item of categorys" [value]="item.slug" [selected]="product.category?.id=== item.id">{{item.name}}</option>
+                                    <select class="form-control" [(ngModel)]="new_product.category" [formControl]="productForm.controls['productCategory']" (change)="fetchProductTypeForCategory($event)"
+                                        require>
+                                        <option *ngFor="let item of categorys" [selected]="product.l1category?.id === item.id" [value]="item.slug">{{item.name}}</option>
                                     </select>
                                 </div>
+
                                 <div class="form-group">
                                     <label>Product Type</label>
-                                    <select class="form-control" [(ngModel)]="new_product.productType" [formControl]="productForm.controls['productType']">
-                                        <option *ngFor="let item of productTypes" [value]="item.slug" [selected]="new_product.product_type?.id=== item.id">{{item.name}}</option>
+                                    <select class="form-control" [(ngModel)]="new_product.productType" [formControl]="productForm.controls['productType']" (change)="fetchSubCatForTypes($event)">
+                                        <option *ngFor="let item of productTypes" [selected]="product.l2category?.id === item.id">{{item.name}}</option>
                                     </select>
-
                                 </div>
 
                                 <div class="form-group">
                                     <label>Sub-category</label>
                                     <select class="form-control" [(ngModel)]="new_product.sub_category" [formControl]="productForm.controls['subCategory']">
-                                        <option *ngFor="let item of subs" [value]="item.slug" [selected]="new_product.sub_category?.id=== item.id">{{item.name}}</option>
+                                        <option *ngFor="let item of subs" [selected]="product.l3category?.id === item.id">{{item.name}}</option>
                                     </select>
-
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Colors</label>
-                                    <select class="form-control" [(ngModel)]="new_product.colors" [formControl]="productForm.controls['colors']" multiple="">
-                                        <option *ngFor="let item of colors" [value]="item.slug" [selected]="checkColorSelected(item.slug)">{{item.name}}</option>
-                                    </select>
-                                    <div *ngIf="productForm.controls['colors'].hasError('required') && formSubmitAttempt" style="color: red">Colors are required</div>
+                                    <label>Description</label>
+                                    <textarea class="form-control" rows="4" [(ngModel)]="new_product.description" [formControl]="productForm.controls['description']"
+                                        required></textarea>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Other Colors</label>
-                                    <input type="text" class="form-control" value="{{product.other_colors_temp}}" [(ngModel)]="new_product.mixed_colors" [formControl]="productForm.controls['otherColors']"
-                                        required>
+                                    <label>Currency</label>
+                                    <select class="form-control" [(ngModel)]="new_product.currency" [formControl]="productForm.controls['currency']" require>
+                                        <option *ngFor="let currency of currencys" [value]="currency.code">{{currency.code}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Enter Price</label>
+                                    <input type="text" class="form-control" [(ngModel)]="new_product.store_price" [formControl]="productForm.controls['store_price']" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Size</label>
                                     <select class="form-control" [(ngModel)]="new_product.sizes" [formControl]="productForm.controls['sizes']" multiple="">
-                                        <option *ngFor="let item of sizes" [value]="item.name" [selected]="checkSizeSelected(item.name)">{{item.name}}</option>
+                                        <option *ngFor="let item of sizes" [selected]="checkSizeSelected(item.name)" [value]="item.slug">{{item.name}}</option>
                                     </select>
                                     <div *ngIf="productForm.controls['sizes'].hasError('required') && formSubmitAttempt" style="color: red">Sizes are required</div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label>Colors</label>
+                                    <select class="form-control" [(ngModel)]="new_product.colors" [formControl]="productForm.controls['colors']" multiple="">
+                                        <option *ngFor="let item of colors" [selected]="checkColorSelected(item.name)" [value]="item.slug">{{item.name}}</option>
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                     <label>Tag</label>
-                                    <br>
-                                    <input type="text" class="form-control" value="{{product.tags_temp}}" [(ngModel)]="new_product.tags" [formControl]="productForm.controls['tags']"
+                                    <select class="form-control" [(ngModel)]="new_product.tags" [formControl]="productForm.controls['tags']" multiple>
+                                        <option *ngFor="let tag of tags" [selected]="checkTagSelected(tag.name)" [value]="tag.slug">{{tag.name}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Other Colors</label>
+                                    <input type="text" class="form-control" [(ngModel)]="new_product.mixed_colors" [formControl]="productForm.controls['otherColors']"
                                         required>
                                 </div>
-                                <input type="submit" class="btn btn-accent" value="Update">
+
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <input type="checkbox" [checked]="product.is_new_arrival" [(ngModel)]="new_product.is_new_arrival" [formControl]="productForm.controls['isNewArrival']"
+                                            id="nArrival">
+                                        <label for="nArrival">
+                                            <span></span>
+                                            Is New Arrival
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <input type="checkbox" [checked]="product.is_clearance" [(ngModel)]="new_product.is_clearance" [formControl]="productForm.controls['isClearance']"
+                                            id="nClearance">
+                                        <label for="nClearance">
+                                            <span></span>
+                                            Is Clearance
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Discount Price</label>
+                                    <input type="text" class="form-control" [(ngModel)]="new_product.discount_price" [formControl]="productForm.controls['discountPrice']"
+                                        required>
+                                </div>
+
+                                <button type="submit" class="btn btn-accent" [disabled]="loading">
+                                    Update
+                                    <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+                                </button>
                             </form>
                         </div>
                     </div>

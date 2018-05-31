@@ -1,0 +1,65 @@
+<div class="col-md-12 login-wrapper">
+  <div class="login-box">
+    <div class="login-logo">
+      <a routerLink="/">
+        <img src="assets/dist/img/vogueBg3.png" alt="" class="vogueBg">
+      </a>
+    </div>
+
+    <!-- /.login-logo -->
+    <div class="login-box-body" style="max-width: 800px;">
+      <p class="login-box-msg very-bold">Create store profile</p>
+
+
+      <form [formGroup]="createStoreForm" (ngSubmit)="createStore()" novalidate>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="user">Unique User ID
+              <small style="color: red; position: relative; left: 5px;">*</small>
+            </label>
+            <input type="text" name="user" class="form-control" [formControl]="createStoreForm.controls['user']" readonly>
+
+            <div *ngIf="createStoreForm.controls['user'].hasError('required') && formSubmitAttempt" class="form-error">Store user is required</div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="storename">Store name
+              <small style="color: red; position: relative; left: 5px;">*</small>
+            </label>
+            <input type="text" name="name" class="form-control" placeholder="Store Name" [(ngModel)]="storeProfile.name" [formControl]="createStoreForm.controls['name']"
+              required>
+
+            <div *ngIf="createStoreForm.controls['name'].hasError('required') && formSubmitAttempt" class="form-error">Store name is required</div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="whatdoyousell">What do you sell?
+              <small style="color: red; position: relative; left: 5px;">*</small>
+            </label>
+            <input type="text" class="form-control" placeholder="What do you sell?" [(ngModel)]="storeProfile.description" [formControl]="createStoreForm.controls['description']"
+              required>
+
+            <div *ngIf="createStoreForm.controls['description'].hasError('required') && formSubmitAttempt" class="form-error">Store description is required</div>
+          </div>
+
+          <div class="form-group col-md-12">
+            <label for="address">Address
+              <small style="color: red; position: relative; left: 5px">*</small>
+            </label>
+            <textarea type="text" class="form-control" placeholder="What is your address?" [(ngModel)]="storeProfile.address" [formControl]="createStoreForm.controls['address']"
+              required style="height: 100px; resize: none; line-height: 2rem;"></textarea>
+
+            <div *ngIf="createStoreForm.controls['address'].hasError('required') && formSubmitAttempt" class="form-error">Store Address is required</div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn  btn-accent btn-block btn-flat b-r-10" [disabled]="loading">
+          Create Store Profile
+          <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+        </button>
+      </form>
+    </div>
+    <!-- /.login-box-body -->
+    <auth-footer></auth-footer>
+  </div>
+</div>

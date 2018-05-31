@@ -1,14 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Headers, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
 import { Globals } from '../shared/api';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-
-import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Observable';
-
-declare var $: any;
-
 
 @Injectable()
 export class UserService {
@@ -17,14 +12,11 @@ export class UserService {
 	private logoutUrl = this.globals.LOGOUT_URL;
 	private registerUrl = this.globals.REGISTER_URL;
 	private userProfileUrl = this.globals.CURRENT_PROFILE_URL;
-	private activationUrl = this.globals.ACCOUNT_ACTIVATION_URL;
+	private checkPwUrl = this.globals.CHECK_PASSWORD_URL;
+	private userUrl = this.globals.USER_URL;
 
+	authToken = localStorage.getItem('auth_token');
 
-	private loggedIn = false;
-	public loading: boolean = false;
-
-
-	// constructor(private http: Http, private router: Router, private globals: Globals) { }
 	constructor(private http: HttpClient, private router: Router, private globals: Globals) { }
 
 	login(email: string, password: string): Observable<any> {
@@ -34,61 +26,45 @@ export class UserService {
 	};
 
 	register(data: any): Observable<any> {
-		const headers = new HttpHeaders({'Content-Type': 'application/json'})
-		return this.http.post(this.registerUrl, JSON.stringify(data), { headers })
+
+		return this.http.post(this.registerUrl, data)
 	}
 
 	getCurrentProfile(): Observable<any> {
-		let data = localStorage.getItem('auth_token');
 		const httpOptions = {
 			headers: new HttpHeaders({
-				'Content-Type': 'application/json', 'Authorization': 'JWT' + ' ' + data
+				'Content-Type': 'application/json', 'Authorization': 'JWT ' + this.authToken
 			})
 		};
 
 		return this.http.get(this.userProfileUrl, httpOptions)
-			.catch(this.handleError);
 	};
 
-	activateAccount(data: any) {
-		console.log(data);
-		return this.http.get(this.activationUrl + data['uid'] + '/' + data['token'] + '/')
-			.toPromise()
-			.then(response => response)
-			.catch(this.handleError);
-	};
+	checkPassword(password: string): Observable<any> {
+		let formData = new FormData();
+		formData.append('password', password);
 
-	// logout() {
-	// 	let v = this.page_header();
-	// 	// localStorage.clear();
-	// 	// this.router.navigate(['/login']);
+		const headers = new HttpHeaders({ 'Authorization': 'JWT ' + this.authToken })
 
-	// 	this.http.post(this.logoutUrl, {}, v).subscribe(res => {
-	// 		localStorage.clear();
-	// 		this.loggedIn = false;
-	// 		this.router.navigate(['/login']);
-	// 	}, (err) => {
-	// 		localStorage.clear();
-	// 		this.router.navigate(['/login']);
-
-	// 	})
-
-	// };
-
-	private page_header() {
-		let data = localStorage.getItem('auth_token');
-		let headers = new Headers();
-		let opt: RequestOptions;
-		headers.append('Authorization', 'JWT ' + data);
-		opt = new RequestOptions({ headers: headers });
-		return opt;
+		return this.http.post(this.checkPwUrl, formData, { headers })
 	}
 
+	resetPassword(password: string): Observable<any> {
+		let formData = new FormData();
+		formData.append('password', password);
 
-	private handleError(error: any) {
-		console.error('An error occurred', error);
-		return Promise.reject(error.message || error);
-	};
+		const headers = new HttpHeaders({ 'Authorization': 'JWT ' + this.authToken })
 
+		return this.http.patch(this.userUrl, formData, { headers })
+	}
+
+	logout(): Observable<any> {
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Content-Type': 'application/json', 'Authorization': 'JWT ' + this.authToken
+			})
+		};
+		return this.http.get(this.logoutUrl, httpOptions)
+	}
 
 }

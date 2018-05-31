@@ -1,60 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
-import { Router } from '@angular/router';
+import { Headers, RequestOptions } from '@angular/http';
 import { Globals } from '../shared/api';
-import 'rxjs/add/operator/toPromise';
-
-declare var $: any;
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class EditProfileService {
 
-  private updateStoreUrl = this.globals.UPDATE_STORE_URL;
+  private storesUrl = this.globals.STORES_URL;
   tempStoreData: any = {};
   storeId: any;
 
-  constructor(private http: Http, private globals: Globals, private router: Router) { }
+  constructor(private http: HttpClient, private globals: Globals) { }
 
-  updateStoreInfo(store: any = {}) {
+
+  updateStoreInfo(store: any): Observable<any> {
+
+    let authToken = localStorage.getItem('auth_token');
+    console.log(authToken)
+
     let tempStore = localStorage.getItem('store');
     if (tempStore) {
       this.tempStoreData = JSON.parse(tempStore);
-      this.storeId = this.tempStoreData.user;
-      console.log(this.storeId);
-    }
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    let v = this.page_header();
+      this.storeId = this.tempStoreData.id;
+      // console.log(this.storeId);
+    };
+    
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json', 'Authorization': 'JWT ' + authToken
+      })
+    };
 
-    if(store) {
-      this.http.put(this.updateStoreUrl + this.storeId + '/', store, {headers})
-        .subscribe(
-          data => {
-            let msg  = JSON.parse(data['_body'])['message'];
-            console.log(msg);
-            console.log(data);
-          },
-          error => {
-            let msg = JSON.parse(error._body)['message'];
-            console.log(msg);
-            console.log(error);
-          }
-        )
-    }
-  };
+    return this.http.patch(this.storesUrl + this.storeId + '/', store, httpOptions)
 
-  private page_header() {
-    let data = localStorage.getItem('auth_token');
-    let headers = new Headers();
-    let opt: RequestOptions;
-    headers.append('Authorization', 'JWT ' + data);
-    opt = new RequestOptions({ headers: headers });
-    return opt;
   }
-
-  private handleError(error: any) {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  };
 
 }

@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
 
   error: any;
   user: any = {};
+  store: any = {};
   profile: any;
   loggedIn: boolean;
   bodyClasses: string = "skin-blue sidebar-mini";
@@ -25,7 +26,13 @@ export class HeaderComponent implements OnInit {
     if (tempUser) {
       this.user = JSON.parse(tempUser);
     }
-    this.getStoreProfile();
+
+    let tempStore = localStorage.getItem('store');
+    if (tempStore) {
+      this.store = JSON.parse(tempStore);
+      // console.log(this.store);
+    }
+    // this.getStoreProfile();
 
 
     document.body.classList.add("skin-blue");
@@ -33,22 +40,33 @@ export class HeaderComponent implements OnInit {
     //document.body.classList.add("wysihtml5 - supported");
   }
 
-  getStoreProfile() {
-    this.userSrv.getCurrentProfile().subscribe(res => {
-      let data = res;
-      // console.log(data);
-      localStorage.setItem('store', JSON.stringify(res));
-      this.profile = JSON.parse(localStorage.getItem('store'));
-    })
-  }
+  // getStoreProfile() {
+  //   this.userSrv.getCurrentProfile().subscribe(res => {
+  //     let data = res;
+  //     // console.log(data);
+  //     localStorage.setItem('store', JSON.stringify(res));
+  //     this.profile = JSON.parse(localStorage.getItem('store'));
+  //   })
+  // }
 
+
+  // logout() {
+  //   localStorage.clear();
+  //   this.loggedIn = false;
+  //   this.router.navigate(['/login']);
+
+  //   // this.userSrv.logout();
+  // }
 
   logout() {
-    localStorage.clear();
-    this.loggedIn = false;
-    this.router.navigate(['/login']);
-
-    // this.userSrv.logout();
+    this.userSrv.logout()
+      .subscribe(res => {
+        localStorage.clear();
+        this.router.navigate(['/login']);
+      }, (err) => {
+        localStorage.clear();
+        this.router.navigate(['/login']);
+      })
   }
 
 }

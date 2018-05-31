@@ -24,11 +24,11 @@
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Profile Information</h3>
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                    <i class="fa fa-minus"></i>
-                  </button>
-                </div>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
             </div>
 
             <div class="box-body">
@@ -39,35 +39,47 @@
                       <div class="col-md-6">
                         <div class="form-group has-feedback" style="position: relative;">
                           <label for="storename">Store Name</label>
-                          <input type="text" name="storename" class="form-control" placeholder="{{storeData.name}}" disabled>
+                          <input type="text" name="storename" class="form-control" [formControl]="editProfileForm.controls['name']"
+                            readonly>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group" style="position: relative;">
+                          <label for="storeUserId">Store ID</label>
+                          <input type="text" name="storeUserId" class="form-control" [formControl]="editProfileForm.controls['storeId']" readonly>
                         </div>
                       </div>
 
                       <div class="col-md-6">
                         <div class="form-group has-feedback" style="position: relative;">
-                          <label for="mobilenumber">Mobile Number</label>
-                          <input type="text" name="mobilenumber" class="form-control" placeholder="{{storeData.mobile}}" [(ngModel)]="store.mobile" [formControl]="editProfileForm.controls['mobile']">
+                          <label for="mobile">Mobile Number</label>
+                          <input type="text" name="mobile" class="form-control" [formControl]="editProfileForm.controls['mobile']"
+                            readonly>
                         </div>
                       </div>
 
                       <div class="col-md-6">
                         <div class="form-group has-feedback" style="position: relative;">
                           <label for="address">Store Address</label>
-                          <textarea name="address" id="" cols="30" rows="10" class="form-control" placeholder="{{storeData.address1}}"></textarea>
+                          <input name="address" id="" cols="30" rows="10" class="form-control" value="{{storeData.address}}" [(ngModel)]="storeProfile.address"
+                            [formControl]="editProfileForm.controls['address']">
                         </div>
                       </div>
 
                       <div class="col-md-6">
                         <div class="form-group has-feedback" style="position: relative">
                           <label for="description">Store Description</label>
-                          <textarea name="description" id="" cols="30" rows="10" class="form-control" placeholder="{{storeData.description}}"></textarea>
+                          <input name="description" id="" cols="30" rows="10" class="form-control" value="{{storeData.description}}" [(ngModel)]="storeProfile.description"
+                            [formControl]="editProfileForm.controls['description']">
                         </div>
                       </div>
 
-                      <input type="text" name="storeUserId" [(ngModel)]="store.userId" [formControl]="editProfileForm.controls['storeUserId']" value="{{store.user}}" hidden>
-
                       <div class="btn-container" style="float: right; margin-right: 15px;">
-                        <button type="submit" class="btn btn-accent btn-flat b-r-10">Edit Profile</button>
+                        <button type="submit" class="btn btn-accent btn-flat b-r-10" [disabled]="loading">
+                          Edit Profile
+                          <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+                        </button>
                       </div>
                     </div>
                   </form>

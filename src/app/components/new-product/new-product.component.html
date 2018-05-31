@@ -43,13 +43,13 @@
                                         <label>Category
                                             <small style="color: red; position: relative; left: 5px;">*</small>
                                         </label>
-                                        <select class="form-control" #q (change)="changed(q.value)" [(ngModel)]="product.productCategory" [formControl]="productForm.controls['productCategory']"
+                                        <select class="form-control" [formControl]="productForm.controls['l1category']" (change)="fetchProductTypeForCategory($event)" [(ngModel)]="product.l1category">
                                             require>
                                             <option *ngFor="let item of categorys" [value]="item.slug">{{item.name}}
                                             </option>
                                         </select>
 
-                                        <div *ngIf="productForm.controls['productCategory'].hasError('required') && formSubmitAttempt" class="form-error">Product Category is required</div>
+                                        <div *ngIf="productForm.controls['l1category'].hasError('required') && formSubmitAttempt" class="form-error">Product Category is required</div>
                                     </div>
                                 </div>
 
@@ -58,23 +58,23 @@
                                         <label>Product Type
                                             <small style="color: red; position: relative; left: 5px;">*</small>
                                         </label>
-                                        <select class="form-control" #t (change)="changedProduct(t.value)" [(ngModel)]="product.productType" [formControl]="productForm.controls['productType']"
+                                        <select class="form-control" (change)="fetchSubCatForTypes($event)" [(ngModel)]="product.l2category" [formControl]="productForm.controls['l2category']"
                                             require>
-                                            <option *ngFor="let item of newProductType" [value]="item.slug">{{item.name}}</option>
+                                            <option *ngFor="let item of productTypes" [value]="item.slug">{{item.name}}</option>
                                         </select>
 
-                                        <div *ngIf="productForm.controls['productType'].hasError('required') && formSubmitAttempt" class="form-error">Product Type is required</div>
+                                        <div *ngIf="productForm.controls['l2category'].hasError('required') && formSubmitAttempt" class="form-error">Product Type is required</div>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>Sub-Category
                                             <small style="color: red; position: relative; left: 5px;">*</small>
                                         </label>
-                                        <select class="form-control" [(ngModel)]="product.subCategory" [formControl]="productForm.controls['subCategory']" required>
-                                            <option *ngFor="let item of newSubCategorys" [value]="item.slug">{{item.name}}</option>
+                                        <select class="form-control" [(ngModel)]="product.l3category" [formControl]="productForm.controls['l3category']" required>
+                                            <option *ngFor="let item of subCategory" [value]="item.slug">{{item.name}}</option>
                                         </select>
 
-                                        <div *ngIf="productForm.controls['subCategory'].hasError('required') && formSubmitAttempt" class="form-error">Sub-Category is required</div>
+                                        <div *ngIf="productForm.controls['l3category'].hasError('required') && formSubmitAttempt" class="form-error">Sub-Category is required</div>
                                     </div>
                                 </div>
 
@@ -124,7 +124,7 @@
                                         </label>
                                         <select class="form-control" [(ngModel)]="product.sizes" [formControl]="productForm.controls['sizes']" multiple>
                                             <option [value]="null" disabled>Choose your profile</option>
-                                            <option *ngFor="let item of sizes" [value]="item.name">{{item.name}}</option>
+                                            <option *ngFor="let item of sizes" [value]="item.slug">{{item.name}}</option>
                                         </select>
 
                                         <div *ngIf="productForm.controls['sizes'].hasError('required') && formSubmitAttempt" class="form-error">Sizes are required</div>
@@ -147,14 +147,16 @@
                                         <label>Tags
                                             <small style="color: red; position: relative; left: 5px;">*</small>
                                         </label>
-                                        <input type="text" class="form-control" [(ngModel)]="product.tags" [formControl]="productForm.controls['tags']" required>
+                                        <!-- <input type="text" class="form-control" [(ngModel)]="product.tags" [formControl]="productForm.controls['tags']" required> -->
+                                        <select class="form-control" [(ngModel)]="product.tags" [formControl]="productForm.controls['tags']" multiple>
+                                            <option *ngFor="let tag of tags" [value]="tag.slug">{{tag.name}}</option>
+                                        </select>
 
                                         <div *ngIf="productForm.controls['tags'].hasError('required') && formSubmitAttempt" class="form-error">Product tags are required</div>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label>Other Colors
-                                            <!-- <small style="color: grey; position: relative; left: 5px;">(optional)</small> -->
                                         </label>
                                         <input type="text" class="form-control" [(ngModel)]="product.otherColors" [formControl]="productForm.controls['otherColors']">
                                     </div>
@@ -169,9 +171,6 @@
                                                 <label for="nArrival">
                                                     <span></span>
                                                     Is New Arrival
-                                                    <ins>
-                                                        <i>Is New Arrival</i>
-                                                    </ins>
                                                 </label>
                                             </div>
 
@@ -181,9 +180,6 @@
                                                 <label for="nClearance" class="checkboxLabel">
                                                     <span></span>
                                                     Is Clearance
-                                                    <ins>
-                                                        <i>Is Clearance</i>
-                                                    </ins>
                                                 </label>
                                             </div>
                                         </div>
@@ -191,7 +187,6 @@
 
                                     <div class="form-group col-md-6">
                                         <label>Discount Price
-                                            <!-- <small style="color: grey; position: relative; left: 5px;">(optional)</small> -->
                                         </label>
                                         <input type="text" class="form-control" [(ngModel)]="product.discountPrice" [formControl]="productForm.controls['discountPrice']"
                                             (keypress)="numbersOnly($event)" placeholder="Discount Price">
@@ -225,7 +220,8 @@
                                     <button type="submit" class="btn  btn-accent pull-right btn-flat" style="background: #FF473A;">
                                         Publish
                                         <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
-                                    </button> <br>
+                                    </button>
+                                    <br>
                                     <div class="clearfix"></div>
                                 </div>
                             </form>

@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 
 declare var $: any;
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,8 +18,8 @@ export class LoginComponent implements OnInit {
   emailRequired: string = 'Email is required';
   emailInvalid: string = 'Email is invalid';
   passwordRequired: string = 'Password is required';
-  private formSubmitAttempt: boolean;
-  private loading: boolean;
+  formSubmitAttempt: boolean;
+  loading: boolean;
 
 
   constructor(fb: FormBuilder, private userSrv: UserService, private router: Router) {
@@ -48,26 +47,35 @@ export class LoginComponent implements OnInit {
       this.userSrv.login(this.user.email, this.user.password)
         .subscribe(res => {
           let data = res;
-          console.log(res)
+          // console.log(res.data.user);
+          // console.log(res.data.store);
+          localStorage.setItem('auth_token', res.data.token);
+          localStorage.setItem('user', JSON.stringify(res.data.user));
+          localStorage.setItem('store', JSON.stringify(res.data.store));
 
-          if (data.token) {
-            localStorage.setItem('auth_token', data.token);
-            localStorage.setItem('user', JSON.stringify(data.user));
+          if (res.data.store == null || undefined) {
+            this.loading = false;
+            this.router.navigateByUrl('/store-profile');
+          } else if (res.data.store !== null || undefined) {
             this.loading = false;
             window.location.href = '/';
-          }
-          else {
+          } else {
             this.loading = false;
             this.router.navigateByUrl('/login');
           }
-
         }, err => {
-          let msg = err.error.message;
+          // let msg = err.error.message;
+          console.log(err);
           this.loading = false;
+          let msg = err.error.message;
           $.toast({
             text: msg,
             position: 'top-center',
-            'icon': 'error'
+            icon: 'error',
+            loader: false,
+            allowToastClose: false,
+            showHideTransition: 'plain',
+            hideAfter: 2000
           })
         })
 

@@ -1,64 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
-import { Router } from '@angular/router';
+import { Headers, RequestOptions } from '@angular/http';
 import { Globals } from '../shared/api';
-import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/toPromise';
-declare var $: any;
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable'
 
 
 @Injectable()
 export class CategoryService {
 
-  private categoryURL = this.globals.CATEGORYS_URL;
+  categoryURL = this.globals.CATEGORYS_URL;
+  productTypeURL = this.globals.PRODUCT_TYPE_URL;
+  subCategoryURL = this.globals.SUB_CATEGORYS_URL;
+  authToken = localStorage.getItem('auth_token');
 
-  constructor(private http: Http, private globals: Globals, private router: Router) { }
+  constructor(private http: HttpClient, private globals: Globals) { }
 
-  fetchCategories() {
-    let v = this.page_header();
-    return this.http.get(this.categoryURL, v)
-      .map(response => response.json())
-      .toPromise();
-  };
+  fetchProductTypesParam(category): Observable<any> {
+    const headers = new HttpHeaders({ 'Authorization': 'JWT ' + this.authToken })
 
-  saveCategory(data: any) {
-    let _data = JSON.stringify(data);
-    let v = this.page_header();
-    this.http.post(this.categoryURL, data, v).subscribe(
-      data => {
+    let params = new HttpParams().set('l1category', category)
 
-        //  this.toasterService.pop('success', 'Disease saved', '');
-        this.router.navigateByUrl('categorys');
-      },
-      error => {
+    return this.http.get(this.productTypeURL, { headers: headers, params })
+  }
 
-        let msg = JSON.parse(error._body)['message'];
-        $.toast({
-          text: msg,
-          position: 'top-center',
-          icon: 'error',
-          showHideTransition: 'slide',
-        });
-      }
-    )
+  fetchSubCatTypesParam(productType, category): Observable<any> {
+    const headers = new HttpHeaders({ 'Authorization': 'JWT ' + this.authToken })
 
-  };
+    let params = new HttpParams().set('l2category', productType).set('l1category', category)
 
+    return this.http.get(this.subCategoryURL, { headers: headers, params })
+  }
 
-  private page_header() {
-    let data = localStorage.getItem('auth_token');
-    let headers = new Headers();
-    let opt: RequestOptions;
-    headers.append('Authorization', 'JWT ' + data);
-    opt = new RequestOptions({ headers: headers });
-    return opt;
-  };
+  fetchCategories(): Observable<any> {
+    const headers = new HttpHeaders({ 'Authorization': 'JWT ' + this.authToken })
 
-
-  private handleError(error: any) {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  };
-
+    return this.http.get(this.categoryURL, { headers })
+  }
 
 }

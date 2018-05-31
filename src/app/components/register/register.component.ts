@@ -14,20 +14,24 @@ declare var $: any;
 export class RegisterComponent implements OnInit {
 
 
-  store: any = {};
+  user: any = {};
   registrationForm: FormGroup;
-  private formSubmitAttempt: boolean;
-  private loading: boolean;
+  formSubmitAttempt: boolean;
+  loading: boolean;
+  is_store: boolean = false;
+  is_customer: boolean = false;
 
   constructor(fb: FormBuilder, private userSrv: UserService, private router: Router) {
 
     this.registrationForm = fb.group({
-      'storeName': ['', Validators.required],
-      'description': ['', Validators.required],
-      'mobile': ['', Validators.required],
-      'email': ['', [Validators.required]],
+      'first_name': ['', Validators.required],
+      'last_name': ['', Validators.required],
       'password': ['', Validators.required],
       'confirmPassword': ['', Validators.required],
+      'mobile': ['', Validators.required],
+      'email': ['', [Validators.required]],
+      'is_store': [''],
+      'is_customer': [''],
       'agreedToTerms': ['', Validators.required],
     }, { validator: this.checkPasswords });
 
@@ -57,7 +61,7 @@ export class RegisterComponent implements OnInit {
     if (this.registrationForm.valid) {
       this.loading = true;
 
-      this.userSrv.register(this.store)
+      this.userSrv.register(this.user)
         .subscribe(res => {
           console.log(res);
           let msg = 'Successful, Login to continue';
@@ -65,21 +69,44 @@ export class RegisterComponent implements OnInit {
           $.toast({
             text: msg,
             position: 'top-center',
-            'icon': 'success',
-            showHideTransition: 'slide',
+            icon: 'success',
+            loader: false,
+            allowToastClose: false,
+            showHideTransition: 'plain',
+            hideAfter: 2000
           });
           this.router.navigateByUrl('/login');
         }, err => {
           this.loading = false;
           console.log(err);
-          // $.toast({
-          //   text: err,
-          //   position: 'top-center',
-          //   'icon': 'error',
-          //   showHideTransition: 'slide',
-          // });
+          let msg = err.error.message;
+          $.toast({
+            text: msg,
+            position: 'top-center',
+            icon: 'error',
+            loader: false,
+            allowToastClose: false,
+            showHideTransition: 'plain',
+            hideAfter: 2000
+          });
         })
     }
 
+  };
+
+  is_customerChange() {
+    this.is_customer = !this.is_customer;
+    this.user['is_customer'] = this.is_customer;
+    this.is_store = false;
+    !this.is_store;
+    this.user.is_store = false;
+  }
+
+  is_storeChange() {
+    this.is_store = !this.is_store;
+    this.user['is_store'] = this.is_store;
+    this.is_customer = false;
+    !this.is_customer;
+    this.user.is_customer = false;
   }
 }

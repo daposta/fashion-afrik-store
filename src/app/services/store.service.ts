@@ -1,69 +1,51 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Headers, RequestOptions } from '@angular/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Globals } from '../shared/api';
-import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
 
 declare var $: any;
 
 @Injectable()
 export class StoreService {
   public updateStoreUrl = this.globals.UPDATE_STORE_URL;
+  public storeUrl = this.globals.STORES_URL;
   store: any = {};
   storeId: any;
-  // public updateStoreUrlId = this.updateStoreUrl + this.storeId +'/';
+  storeData: any;
 
-  constructor(private http: Http, private router: Router, private globals: Globals) { }
+  authToken = localStorage.getItem('auth_token');
+  public updateStoreUrlId = this.updateStoreUrl + this.storeId + '/';
 
-  editStore(data: any) {
+  constructor(private http: HttpClient, private router: Router, private globals: Globals) { }
+
+  createStore(data: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json', 'Authorization': 'JWT ' + this.authToken
+      })
+    };
+
+    return this.http.post(this.storeUrl, data, httpOptions)
+  };
+
+  editStoreProfile(data: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json', 'Authorization': 'JWT ' + this.authToken
+      })
+    };
+
     let tempStore = localStorage.getItem('store');
     if (tempStore) {
-      this.store = JSON.parse(tempStore);
-      this.storeId = this.store.user;
-    }
+      this.storeData = JSON.parse(tempStore);
+      this.storeId = this.storeData.id;
+      // console.log(this.storeData);
+      // console.log(this.storeId);
+    };
 
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
-    return this.http.put(this.updateStoreUrl + this.storeId + '/', data, { headers })
-      .subscribe(res => {
-        let msg = JSON.parse(res['_body'])['message'];
-        console.log(msg);
-        console.log(res);
-        // $.toast({
-        //   text: msg,
-        //   position: 'top-center',
-        //   'icon': 'success',
-        //   showHideTransition: 'slide',
-        // });
-      }, error => {
-        let msg = JSON.parse(error._body)['message'];
-        console.log(msg);
-        console.log(error);
-        // $.toast({
-        //   text: msg,
-        //   position: 'top-center',
-        //   icon: 'error',
-        //   showHideTransition: 'slide',
-        // });
-
-      })
+    return this.http.patch(this.storeUrl + '/' + this.storeId + '/', data, httpOptions)
   }
-
-  private page_header() {
-    let data = localStorage.getItem('auth_token');
-    let headers = new Headers();
-    let opt: RequestOptions;
-    headers.append('Authorization', 'JWT ' + data);
-    opt = new RequestOptions({ headers: headers });
-    return opt;
-  };
-
-
-  private handleError(error: any) {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  };
-
 
 }

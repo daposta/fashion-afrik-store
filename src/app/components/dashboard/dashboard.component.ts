@@ -32,25 +32,25 @@ export class DashboardComponent implements OnInit {
     }, error => {
 
     })
-    this.fetchLatestOrders();
-    this.fetchRecentProducts();
+    // this.fetchLatestOrders();
+    // this.fetchRecentProducts();
   }
 
 
-  fetchLatestOrders() {
-    this.dashboardSrv.fetchLatestOrders().subscribe(res => {
-      this.latestOrdersList = Constants.extractData(res).results;
-    }, error => {
+  // fetchLatestOrders() {
+  //   this.dashboardSrv.fetchLatestOrders().subscribe(res => {
+  //     this.latestOrdersList = Constants.extractData(res).results;
+  //   }, error => {
 
-    })
-  }
+  //   })
+  // }
 
-  fetchRecentProducts() {
-    this.dashboardSrv.fetchRecentProducts().subscribe(res => {
-      this.recentProductsList = Constants.extractData(res).results;
-    }, error => {
+  // fetchRecentProducts() {
+  //   this.dashboardSrv.fetchRecentProducts().subscribe(res => {
+  //     this.recentProductsList = Constants.extractData(res).results;
+  //   }, error => {
 
-    })
-  }
+  //   })
+  // }
 
 }

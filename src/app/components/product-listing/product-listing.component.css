@@ -14,3 +14,8 @@ table td{
 	top: 150px;
 	font-size: 32px;
 }
+
+.label-error {
+    background-color: transparent;
+    color: #E76F15;
+}
