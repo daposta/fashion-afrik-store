@@ -13,11 +13,12 @@ declare var $: any;
 
 })
 export class LoginComponent implements OnInit {
-  user: any = {};
-  loginForm: FormGroup;
   emailRequired: string = 'Email is required';
   emailInvalid: string = 'Email is invalid';
   passwordRequired: string = 'Password is required';
+  passwordMinLength: string = 'Password min length 6 characters';
+  user: any = {};
+  loginForm: FormGroup;
   formSubmitAttempt: boolean;
   loading: boolean;
 
@@ -26,13 +27,13 @@ export class LoginComponent implements OnInit {
     let emailRegex = '^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$';
 
     this.loginForm = fb.group({
-      'email': ['', [Validators.required, <any>Validators.pattern(emailRegex)]],
-      'password': ['', Validators.required]
+      // 'email': ['', [Validators.required, Validators.email]],
+      'email': ['', [Validators.required, Validators.pattern(emailRegex)]],
+      'password': ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
   ngOnInit() {
-
 
   }
 
@@ -42,7 +43,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.user.email, this.user.password) {
+    this.formSubmitAttempt = true;
+    if (this.loginForm.valid) {
       this.loading = true;
       this.userSrv.login(this.user.email, this.user.password)
         .subscribe(res => {
@@ -56,15 +58,32 @@ export class LoginComponent implements OnInit {
           if (res.data.store == null || undefined) {
             this.loading = false;
             this.router.navigateByUrl('/store-profile');
+            $.toast({
+              text: 'Create store profile to continue',
+              position: 'top-center',
+              icon: 'success',
+              loader: false,
+              allowToastClose: false,
+              showHideTransition: 'plain',
+              hideAfter: 2000,
+            })
           } else if (res.data.store !== null || undefined) {
             this.loading = false;
             window.location.href = '/';
           } else {
             this.loading = false;
             this.router.navigateByUrl('/login');
+            $.toast({
+              text: 'Oops...Please try again',
+              position: 'top-center',
+              icon: 'success',
+              loader: false,
+              allowToastClose: false,
+              showHideTransition: 'plain',
+              hideAfter: 2000,
+            })
           }
         }, err => {
-          // let msg = err.error.message;
           console.log(err);
           this.loading = false;
           let msg = err.error.message;
@@ -81,8 +100,5 @@ export class LoginComponent implements OnInit {
 
     }
   }
-  private handleError(error: any) {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  };
+
 }

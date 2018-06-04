@@ -17,7 +17,7 @@ export class EditProfileService {
   updateStoreInfo(store: any): Observable<any> {
 
     let authToken = localStorage.getItem('auth_token');
-    console.log(authToken)
+    // console.log(authToken)
 
     let tempStore = localStorage.getItem('store');
     if (tempStore) {

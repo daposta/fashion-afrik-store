@@ -29,7 +29,7 @@ export class ForgotPasswordComponent implements OnInit {
   requestLink() {
     this.formSubmitAttempt = true;
     if(this.forgot.email) {
-      console.log(this.forgot.email);
+      // console.log(this.forgot.email);
     }
   }
 

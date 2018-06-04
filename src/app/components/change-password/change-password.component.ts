@@ -38,7 +38,7 @@ export class ChangePasswordComponent implements OnInit {
       this.userSrv.resetPassword(this.newPassword.password)
         .subscribe(res => {
           this.loading = false;
-          console.log(res);
+          // console.log(res);
           $.toast({
             text: 'Password Changed',
             position: 'top-center',

@@ -6,7 +6,15 @@ table td{
 	position: relative;
 	margin-top: 15px;
 	max-width: 250px;
-    display: inline-block;
+	display: inline-block;
+	box-shadow: 0 1px 1px #ccc;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 20px;
+    outline: 0;
+    background: #e0e0e0;
+    border: 0;
+    transition: 0.2s ease-in;
 }
 
 .no-item {
@@ -18,4 +26,12 @@ table td{
 .label-error {
     background-color: transparent;
     color: #E76F15;
+}
+
+.label {
+	font-weight: 600;
+}
+
+th {
+	font-weight: 600;
 }

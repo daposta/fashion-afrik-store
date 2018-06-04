@@ -19,19 +19,18 @@ export class RegisterComponent implements OnInit {
   formSubmitAttempt: boolean;
   loading: boolean;
   is_store: boolean = false;
-  is_customer: boolean = false;
 
   constructor(fb: FormBuilder, private userSrv: UserService, private router: Router) {
+    let emailRegex = '^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$';
 
     this.registrationForm = fb.group({
       'first_name': ['', Validators.required],
       'last_name': ['', Validators.required],
       'password': ['', Validators.required],
       'confirmPassword': ['', Validators.required],
-      'mobile': ['', Validators.required],
-      'email': ['', [Validators.required]],
-      'is_store': [''],
-      'is_customer': [''],
+      'mobile': ['', [Validators.required]],
+      'email': ['', [Validators.required, Validators.pattern(emailRegex)]],
+      'is_store': ['', Validators.required],
       'agreedToTerms': ['', Validators.required],
     }, { validator: this.checkPasswords });
 
@@ -41,21 +40,14 @@ export class RegisterComponent implements OnInit {
     let pass = group.controls.password.value;
     let confirmPass = group.controls.confirmPassword.value;
 
-
     return pass === confirmPass ? null : { notSame: true };
-
   };
 
   ngOnInit() {
+
   }
 
   register() {
-    let success = <HTMLInputElement>document.getElementById('feedback_success');
-    success.innerHTML = '';
-    success.style.display = 'None';
-    let err = <HTMLInputElement>document.getElementById('feedback_err');
-    err.innerHTML = '';
-    err.style.display = 'None';
 
     this.formSubmitAttempt = true;
     if (this.registrationForm.valid) {
@@ -94,19 +86,8 @@ export class RegisterComponent implements OnInit {
 
   };
 
-  is_customerChange() {
-    this.is_customer = !this.is_customer;
-    this.user['is_customer'] = this.is_customer;
-    this.is_store = false;
-    !this.is_store;
-    this.user.is_store = false;
-  }
-
   is_storeChange() {
     this.is_store = !this.is_store;
     this.user['is_store'] = this.is_store;
-    this.is_customer = false;
-    !this.is_customer;
-    this.user.is_customer = false;
   }
 }

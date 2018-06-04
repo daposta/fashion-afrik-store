@@ -24,7 +24,7 @@
                             <h3 class="box-title">Featured Image</h3>
                         </div>
                         <div class="product-image-wrapper">
-                            <img src="{{product.banner_image}}" class="img-responsive" style="height:200px; margin: 0 auto; width: auto; padding: 10px;"
+                            <img src="{{product.banner_image}}" class="img-responsive" style="height:300px; margin: 0 auto; width: auto; padding: 10px;"
                             />
                             <div class="image-actions">
                                 <a (click)="removeBannerImage(product.id)" class="remove-image">
@@ -41,11 +41,15 @@
                     <div class="box">
                         <h2 style="padding-left: 20px" class="box-title">Other Images</h2>
                         <div style="padding-left: 20px">
-                            <input type="file" name="blah" class="single-file">
+                            <div class="row">
+                                <div class="col" style="padding-left: 15px; padding-right: 50px;">
+                                    <input type="file" name="blah" class="single-file">
+                                </div>
+                            </div>
                         </div>
                         <div class="other-images" style="padding: 20px">
                             <div class="item" *ngFor="let item of allOther_images">
-                                <img src="{{item}}" alt="" style="height: 150px; width: 150px; object-fit: contain; padding: 10px; margin: 10px; border: 1px solid teal">
+                                <img src="{{item}}" alt="" style="height: 150px; width: 150px; object-fit: contain;">
                                 <span class="remove-img">&times;</span>
                             </div>
                         </div>
@@ -139,7 +143,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-6 form-group">
-                                        <input type="checkbox" [checked]="product.is_new_arrival" [(ngModel)]="new_product.is_new_arrival" [formControl]="productForm.controls['isNewArrival']"
+                                        <input type="checkbox" [checked]="newArrival" (change)="arrivalChange()" [(ngModel)]="new_product.is_new_arrival" [formControl]="productForm.controls['isNewArrival']"
                                             id="nArrival">
                                         <label for="nArrival">
                                             <span></span>
@@ -147,7 +151,7 @@
                                         </label>
                                     </div>
                                     <div class="col-sm-6 form-group">
-                                        <input type="checkbox" [checked]="product.is_clearance" [(ngModel)]="new_product.is_clearance" [formControl]="productForm.controls['isClearance']"
+                                        <input type="checkbox" [checked]="clearance" (change)="clearanceChange()" [(ngModel)]="new_product.is_clearance" [formControl]="productForm.controls['isClearance']"
                                             id="nClearance">
                                         <label for="nClearance">
                                             <span></span>

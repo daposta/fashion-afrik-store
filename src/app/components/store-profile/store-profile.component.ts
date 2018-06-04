@@ -47,14 +47,14 @@ export class StoreProfileComponent implements OnInit {
 
   createStore() {
     this.formSubmitAttempt = true;
-    console.log(this.createStoreForm.value);
+    // console.log(this.createStoreForm.value);
     if (this.createStoreForm.valid) {
       this.loading = true;
-      console.log(this.storeProfile);
+      // console.log(this.storeProfile);
 
       this.storeSrv.createStore(this.createStoreForm.value)
         .subscribe(res => {
-          console.log(res);
+          // console.log(res);
 
           this.loading = false;
           let msg = 'Store profile updated';

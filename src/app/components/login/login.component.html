@@ -1,7 +1,6 @@
 <div class="col-md-12 login-wrapper">
     <div class="login-box">
         <div class="login-logo">
-            <!-- <a routerLink="/">VogueAfriq</a> -->
             <a routerLink="#">
                 <img src="assets/dist/img/vogueBg3.png" alt="" class="vogueBg">
             </a>
@@ -28,6 +27,7 @@
                     <span class="ion-ios-locked-outline form-control-feedback"></span>
 
                     <div *ngIf="loginForm.controls['password'].hasError('required') && formSubmitAttempt" class="form-error">{{passwordRequired}}</div>
+                    <div *ngIf="loginForm.controls['password'].hasError('minlength')" class="form-error">{{passwordMinLength}}</div>
                 </div>
 
                 <a routerLink="/forgot-password" class="pull-right" style="font-weight: normal;font-size: 12px;opacity: 0.7;">

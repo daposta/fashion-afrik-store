@@ -52,6 +52,8 @@ export class ProductDetailComponent implements OnInit {
   allColors: any[] = [{}];
   changedInputs = [];
   dirtyValues = {};
+  clearance: boolean = false;
+  newArrival: boolean = false;
 
   constructor(private productSrv: ProductService, private route: ActivatedRoute, private globals: Globals,
     private categorySrv: CategoryService, private productTypeSrv: ProductTypeService, fb: FormBuilder,
@@ -141,7 +143,7 @@ export class ProductDetailComponent implements OnInit {
       this.productForm.reset();
     }
     this.product = product;
-    console.log(product);
+    // console.log(product);
     product.other_images.forEach(item => {
       this.allOther_images.push(item.image);
     });
@@ -159,7 +161,7 @@ export class ProductDetailComponent implements OnInit {
   fetchCurrencies() {
     this.currencySrv.fetchCurrencys().subscribe((res: any) => {
       this.currencys = res;
-      console.log(this.currencys);
+      // console.log(this.currencys);
     }, err => {
       console.log(err);
     })
@@ -168,7 +170,7 @@ export class ProductDetailComponent implements OnInit {
   fetchColors() {
     this.colorSrv.fetchColors().subscribe((res: any) => {
       this.colors = res;
-      console.log(this.colors);
+      // console.log(this.colors);
     }, err => {
       console.log(err);
     })
@@ -177,7 +179,7 @@ export class ProductDetailComponent implements OnInit {
   fetchSizes() {
     this.sizeSrv.fetchSizes().subscribe((res: any) => {
       this.sizes = res;
-      console.log(this.sizes);
+      // console.log(this.sizes);
     }, err => {
       console.log(err);
     })
@@ -186,7 +188,7 @@ export class ProductDetailComponent implements OnInit {
   fetchTags() {
     this.tagsSrv.fetchTags().subscribe((res: any) => {
       this.tags = res;
-      console.log(this.tags);
+      // console.log(this.tags);
     }, err => {
       console.log(err);
     })
@@ -195,7 +197,7 @@ export class ProductDetailComponent implements OnInit {
   fetchCategorys() {
     this.categorySrv.fetchCategories().subscribe((res: any) => {
       this.categorys = res;
-      console.log(this.categorys);
+      // console.log(this.categorys);
     }, err => {
       console.log(err);
     })
@@ -204,7 +206,7 @@ export class ProductDetailComponent implements OnInit {
   fetchProductTypes() {
     this.productTypeSrv.fetchProductTypes().subscribe((res: any) => {
       this.productTypes = res;
-      console.log(this.productTypes);
+      // console.log(this.productTypes);
     }, err => {
       console.log(err);
     })
@@ -213,7 +215,7 @@ export class ProductDetailComponent implements OnInit {
   fetchSubCategorys() {
     this.subCategorySrv.fetchSubCategorys().subscribe((res: any) => {
       this.subs = res;
-      console.log(this.subs);
+      // console.log(this.subs);
     }, err => {
       console.log(err);
     })
@@ -244,7 +246,7 @@ export class ProductDetailComponent implements OnInit {
     this.categorySrv.fetchProductTypesParam(this.category)
       .subscribe(res => {
         this.productTypes = res;
-        console.log(this.productTypes);
+        // console.log(this.productTypes);
       }, err => {
         console.log(err);
       })
@@ -260,25 +262,12 @@ export class ProductDetailComponent implements OnInit {
     this.categorySrv.fetchSubCatTypesParam(productType, category)
       .subscribe(res => {
         this.subs = res;
-        console.log(this.subs);
+        // console.log(this.subs);
       }, err => {
         console.log(err);
 
       })
   }
-
-  // getChangedInputs(): string[] {
-  //   let changedInputs = this.changedInputs;
-
-  //   Object.keys(this.productForm.controls).forEach((name, value) => {
-  //     let currentControl = this.productForm.controls[name];
-
-  //     if (currentControl.dirty)
-  //       changedInputs.push(name, value);
-  //   });
-  //   console.log(changedInputs);
-  //   return changedInputs;
-  // }
 
   getDirtyValues(form: any) {
 
@@ -293,21 +282,21 @@ export class ProductDetailComponent implements OnInit {
             this.dirtyValues[key] = currentControl.value;
         }
       });
-    console.log(this.dirtyValues)
+    // console.log(this.dirtyValues)
     return this.dirtyValues;
   }
 
   updateProduct() {
     this.formSubmitAttempt = true;
-    console.log(this.new_product);
+    // console.log(this.new_product);
     this.loading = true;
-    console.log(this.productForm.value);
+    // console.log(this.productForm.value);
     this.getDirtyValues(this.productForm);
 
     // this.productSrv.updateProduct(this.new_product)
     this.productSrv.updateProduct(this.new_product, this.dirtyValues)
       .subscribe(res => {
-        console.log(res);
+        // console.log(res);
         $.toast({
           text: 'Update successful',
           position: 'top-center',
@@ -333,11 +322,16 @@ export class ProductDetailComponent implements OnInit {
       })
   }
 
+  clearanceChange() {
+    this.clearance = !this.clearance;
+    this.product['isClearance'] = this.clearance;
 
-  // updateProduct() {
-  //   this.new_product['id'] = this.product['id'];
-  //   this.productSrv.updateProductInfo(this.new_product);
-  // };
+  }
+
+  arrivalChange() {
+    this.newArrival = !this.newArrival;
+    this.product['isNewArrival'] = this.newArrival;
+  }
 
 
   // removeOtherImages(productID) {

@@ -24,7 +24,7 @@
             <!-- Info boxes -->
             <div class="row" style="background: #fff; padding: 0 30px">
                 <div class="box-body" style="position: relative; min-height: 500px;">
-                    <input type="text" placeholder="Search" class="search form-control" [(ngModel)]="query" *ngIf="products.length >= 1">
+                    <input type="search" placeholder="Search" class="search form-control" [(ngModel)]="query" *ngIf="products.length >= 1">
                     <a routerLink="/new-product" class="btn btn-sm btn-accent text-bold pull-right">
                         Create New Product
                     </a>
@@ -46,20 +46,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let product of products | filter : query">
-                                        <td class="very-bold">
-                                            <a routerLink="/products/{{product.id}}">{{product.name}}</a>
-                                        </td>
-                                        <td class="very-bold">
-                                            <a routerLink="/products/{{product.id}}">{{product.l1category_name}}</a>
-                                        </td>
-                                        <td class="very-bold">
-                                            <a routerLink="/products/{{product.id}}">{{product.l2category_name}}</a>
+                                    <tr *ngFor="let product of products | filter : query" style="cursor: pointer; outline: none;" routerLink="/products/{{product.id}}">
+                                        <td>
+                                            <span>
+                                                {{product.name}}
+                                            </span>
                                         </td>
                                         <td>
-                                            <a routerLink="/products/{{product.id}}">
-                                                <span>{{product.currency_code}}{{product.sale_price | number}}</span>
-                                            </a>
+                                            <span>
+                                                {{product.l1category_name}}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                {{product.l2category_name}}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>{{product.currency_code}}{{product.store_price | number}}</span>
                                         </td>
                                         <td>
                                             <span class="label label-success" *ngIf="product.status === 'APPROVED'">{{product.status}}</span>

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Headers, RequestOptions } from '@angular/http';
-import { Router } from '@angular/router';
 import { Globals } from '../shared/api';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -17,7 +16,7 @@ export class UserService {
 
 	authToken = localStorage.getItem('auth_token');
 
-	constructor(private http: HttpClient, private router: Router, private globals: Globals) { }
+	constructor(private http: HttpClient, private globals: Globals) { }
 
 	login(email: string, password: string): Observable<any> {
 		const headers = new HttpHeaders({ 'Content-Type': 'application/json' })

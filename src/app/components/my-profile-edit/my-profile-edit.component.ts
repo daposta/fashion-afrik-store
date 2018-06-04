@@ -54,7 +54,7 @@ export class MyProfileEditComponent implements OnInit {
   editProfile() {
     // console.log(this.storeData.id)
     this.formSubmitAttempt = true;
-    console.log(this.editProfileForm.value);
+    // console.log(this.editProfileForm.value);
     this.loading = true;
 
     this.storeSrv.editStoreProfile(this.editProfileForm.value)
