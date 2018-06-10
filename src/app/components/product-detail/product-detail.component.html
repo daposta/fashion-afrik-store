@@ -143,7 +143,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-6 form-group">
-                                        <input type="checkbox" [checked]="newArrival" (change)="arrivalChange()" [(ngModel)]="new_product.is_new_arrival" [formControl]="productForm.controls['isNewArrival']"
+                                        <input type="checkbox" [checked]="newArrival" (change)="arrivalChange()" [(ngModel)]="new_product.is_new_arrival" [formControl]="productForm.controls['is_new_arrival']"
                                             id="nArrival">
                                         <label for="nArrival">
                                             <span></span>
@@ -151,7 +151,7 @@
                                         </label>
                                     </div>
                                     <div class="col-sm-6 form-group">
-                                        <input type="checkbox" [checked]="clearance" (change)="clearanceChange()" [(ngModel)]="new_product.is_clearance" [formControl]="productForm.controls['isClearance']"
+                                        <input type="checkbox" [checked]="clearance" (change)="clearanceChange()" [(ngModel)]="new_product.is_clearance" [formControl]="productForm.controls['is_clearance']"
                                             id="nClearance">
                                         <label for="nClearance">
                                             <span></span>
@@ -162,7 +162,7 @@
 
                                 <div class="form-group">
                                     <label>Discount Price</label>
-                                    <input type="text" class="form-control" [(ngModel)]="new_product.discount_price" [formControl]="productForm.controls['discountPrice']"
+                                    <input type="text" class="form-control" [(ngModel)]="new_product.discount_price" [formControl]="productForm.controls['discount_price']"
                                         required>
                                 </div>
 

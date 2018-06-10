@@ -72,9 +72,9 @@ export class ProductDetailComponent implements OnInit {
       'subCategory': [''],
       'currency': [''],
       'tags': [''],
-      'isClearance': [''],
-      'isNewArrival': [''],
-      'discountPrice': [''],
+      'is_clearance': [''],
+      'is_new_arrival': [''],
+      'discount_price': [''],
 
     });
   }
@@ -153,8 +153,10 @@ export class ProductDetailComponent implements OnInit {
       'name': product.name,
       'description': product.description,
       'store_price': product.store_price,
-      'discountPrice': product.discount_price,
+      'discount_price': product.discount_price,
       'currency': product.currency.code,
+      'is_clearance': product.is_clearance,
+      'is_new_arrival': product.is_new_arrival,
     })
   }
 
