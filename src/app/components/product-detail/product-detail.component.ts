@@ -162,7 +162,7 @@ export class ProductDetailComponent implements OnInit {
 
   fetchCurrencies() {
     this.currencySrv.fetchCurrencys().subscribe((res: any) => {
-      this.currencys = res;
+      this.currencys = res.data;
       // console.log(this.currencys);
     }, err => {
       console.log(err);
@@ -171,7 +171,7 @@ export class ProductDetailComponent implements OnInit {
 
   fetchColors() {
     this.colorSrv.fetchColors().subscribe((res: any) => {
-      this.colors = res;
+      this.colors = res.data;
       // console.log(this.colors);
     }, err => {
       console.log(err);
@@ -180,7 +180,7 @@ export class ProductDetailComponent implements OnInit {
 
   fetchSizes() {
     this.sizeSrv.fetchSizes().subscribe((res: any) => {
-      this.sizes = res;
+      this.sizes = res.data;
       // console.log(this.sizes);
     }, err => {
       console.log(err);
@@ -189,7 +189,7 @@ export class ProductDetailComponent implements OnInit {
 
   fetchTags() {
     this.tagsSrv.fetchTags().subscribe((res: any) => {
-      this.tags = res;
+      this.tags = res.data;
       // console.log(this.tags);
     }, err => {
       console.log(err);
@@ -198,7 +198,7 @@ export class ProductDetailComponent implements OnInit {
 
   fetchCategorys() {
     this.categorySrv.fetchCategories().subscribe((res: any) => {
-      this.categorys = res;
+      this.categorys = res.data;
       // console.log(this.categorys);
     }, err => {
       console.log(err);
@@ -207,7 +207,7 @@ export class ProductDetailComponent implements OnInit {
 
   fetchProductTypes() {
     this.productTypeSrv.fetchProductTypes().subscribe((res: any) => {
-      this.productTypes = res;
+      this.productTypes = res.data;
       // console.log(this.productTypes);
     }, err => {
       console.log(err);
@@ -216,7 +216,7 @@ export class ProductDetailComponent implements OnInit {
 
   fetchSubCategorys() {
     this.subCategorySrv.fetchSubCategorys().subscribe((res: any) => {
-      this.subs = res;
+      this.subs = res.data;
       // console.log(this.subs);
     }, err => {
       console.log(err);
@@ -247,7 +247,7 @@ export class ProductDetailComponent implements OnInit {
     this.productForm.patchValue({ 'productType': '', 'subCategory': '' })
     this.categorySrv.fetchProductTypesParam(this.category)
       .subscribe(res => {
-        this.productTypes = res;
+        this.productTypes = res.data;
         // console.log(this.productTypes);
       }, err => {
         console.log(err);
@@ -263,7 +263,7 @@ export class ProductDetailComponent implements OnInit {
     this.productForm.patchValue({ 'subCategory': '' })
     this.categorySrv.fetchSubCatTypesParam(productType, category)
       .subscribe(res => {
-        this.subs = res;
+        this.subs = res.data;
         // console.log(this.subs);
       }, err => {
         console.log(err);
@@ -290,15 +290,11 @@ export class ProductDetailComponent implements OnInit {
 
   updateProduct() {
     this.formSubmitAttempt = true;
-    // console.log(this.new_product);
     this.loading = true;
-    // console.log(this.productForm.value);
     this.getDirtyValues(this.productForm);
 
-    // this.productSrv.updateProduct(this.new_product)
     this.productSrv.updateProduct(this.new_product, this.dirtyValues)
       .subscribe(res => {
-        // console.log(res);
         $.toast({
           text: 'Update successful',
           position: 'top-center',

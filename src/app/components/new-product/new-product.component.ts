@@ -109,7 +109,7 @@ export class NewProductComponent implements OnInit {
   fetchCategorys() {
     this.categorySrv.fetchCategories()
       .subscribe(res => {
-        this.categorys = res;
+        this.categorys = res.data;
       }, err => {
         console.log(err);
       })
@@ -118,7 +118,7 @@ export class NewProductComponent implements OnInit {
   fetchTags() {
     this.tagsSrv.fetchTags().subscribe(
       res => {
-        this.tags = res;
+        this.tags = res.data;
       }, err => {
         console.log(err);
       }
@@ -127,7 +127,7 @@ export class NewProductComponent implements OnInit {
 
   fetchCurrencys() {
     this.currencySrv.fetchCurrencys().subscribe((res: any) => {
-      this.currencys = res;
+      this.currencys = res.data;
     }, err => {
       console.log(err);
     })
@@ -135,7 +135,7 @@ export class NewProductComponent implements OnInit {
 
   fetchColors() {
     this.colorSrv.fetchColors().subscribe((res: any) => {
-      this.colors = res;
+      this.colors = res.data;
     }, err => {
       console.log(err);
     })
@@ -143,7 +143,7 @@ export class NewProductComponent implements OnInit {
 
   fetchSize() {
     this.sizeSrv.fetchSizes().subscribe((res: any) => {
-      this.sizes = res;
+      this.sizes = res.data;
     }, err => {
       console.log(err);
     })
@@ -198,7 +198,7 @@ export class NewProductComponent implements OnInit {
     this.productForm.patchValue({ 'l2category': '', 'l3category': '' })
     this.categorySrv.fetchProductTypesParam(this.category)
       .subscribe(res => {
-        this.productTypes = res;
+        this.productTypes = res.data;
       }, err => {
         console.log(err);
       })
@@ -210,7 +210,7 @@ export class NewProductComponent implements OnInit {
     let category = this.category
     this.categorySrv.fetchSubCatTypesParam(productType, category)
       .subscribe(res => {
-        this.subCategory = res;
+        this.subCategory = res.data;
       }, err => {
         console.log(err);
 
