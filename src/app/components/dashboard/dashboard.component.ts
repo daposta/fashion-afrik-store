@@ -28,19 +28,19 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.dashboardSrv.fetchDashboardDAta().subscribe(response => {
       let res = Constants.extractData(response);
-      // console.log(res);
-      this.newOrders = res.data[0]['new_orders'];
-      this.pendingOrders = res.data[1]['pending_orders'];
-      this.completedOrders = res.data[2]['completed_orders'];
-      this.approvedProducts = res.data[3]['approved_products'];
-      this.pendingProducts = res.data[4]['pending_products'];
+      // console.log(res.data);
+      this.newOrders = res.data.new_orders;
+      this.pendingOrders = res.data.pending_orders;
+      this.completedOrders = res.data.completed_orders;
+      this.approvedProducts = res.data.approved_products;
+      this.pendingProducts = res.data.pending_products;
 
     }, error => {
 
       console.log(error);
     });
 
-    this.fetchProducts();
+    // this.fetchProducts();
     // this.fetchLatestOrders();
     // this.fetchRecentProducts();
   }
@@ -62,15 +62,15 @@ export class DashboardComponent implements OnInit {
   //   })
   // }
 
-  fetchProducts() {
-    this.productSrv.fetchProducts().subscribe((res: any) => {
+  // fetchProducts() {
+  //   this.productSrv.fetchProducts().subscribe((res: any) => {
 
-      this.latestProduct = res.data[0];
-      console.log(this.latestProduct);
-    }, err => {
+  //     this.latestProduct = res.data[0];
+  //     console.log(this.latestProduct);
+  //   }, err => {
 
-      console.log(err);
-    })
-  }
+  //     console.log(err);
+  //   })
+  // }
 
 }

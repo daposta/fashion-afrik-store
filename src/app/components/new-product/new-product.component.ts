@@ -10,6 +10,7 @@ import { TagsService } from '../../services/tags.service';
 import { SizeService } from '../../services/size.service';
 import { SubCategoryService } from '../../services/sub-category.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -49,7 +50,7 @@ export class NewProductComponent implements OnInit {
 
   constructor(fb: FormBuilder, private productSrv: ProductService, private productTypeSrv: ProductTypeService,
     private categorySrv: CategoryService, private currencySrv: CurrencyService, private colorSrv: ColorService,
-    private sizeSrv: SizeService, private subCategorySrv: SubCategoryService, private router: Router, private tagsSrv: TagsService) {
+    private sizeSrv: SizeService, private subCategorySrv: SubCategoryService, private router: Router, private tagsSrv: TagsService, private toastr: ToastrService) {
     this.productForm = fb.group({
       'name': ['', Validators.required],
       'description': ['', Validators.required],
@@ -155,30 +156,15 @@ export class NewProductComponent implements OnInit {
       this.loading = true;
       this.productSrv.saveProduct(this.product).subscribe(
         res => {
-          $.toast({
-            text: res,
-            position: 'top-center',
-            icon: 'success',
-            loader: false,
-            showHideTransition: 'plain',
-            allowToastClose: false,
-            hideAfter: 2000,
-          });
+
+          this.toastr.success('Product Saved');
           this.loading = false;
           this.router.navigateByUrl('/products');
         },
         err => {
           this.loading = false;
           console.log(err);
-          $.toast({
-            text: err.error.message,
-            position: 'top-center',
-            icon: 'error',
-            loader: false,
-            showHideTransition: 'plain',
-            allowToastClose: false,
-            hideAfter: 2000
-          });
+          this.toastr.error('Something went wrong, try again!');
         })
     }
   };

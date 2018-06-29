@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
@@ -20,7 +21,7 @@ export class RegisterComponent implements OnInit {
   loading: boolean;
   is_store: boolean = false;
 
-  constructor(fb: FormBuilder, private userSrv: UserService, private router: Router) {
+  constructor(fb: FormBuilder, private userSrv: UserService, private router: Router, private toastr: ToastrService) {
     let emailRegex = '^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$';
 
     this.registrationForm = fb.group({
@@ -30,7 +31,7 @@ export class RegisterComponent implements OnInit {
       'confirmPassword': ['', Validators.required],
       'mobile': ['', [Validators.required]],
       'email': ['', [Validators.required, Validators.pattern(emailRegex)]],
-      'is_store': ['', Validators.required],
+      // 'is_store': ['', Validators.required],
       'agreedToTerms': ['', Validators.required],
     }, { validator: this.checkPasswords });
 
@@ -55,32 +56,18 @@ export class RegisterComponent implements OnInit {
 
       this.userSrv.register(this.user)
         .subscribe(res => {
-          console.log(res);
-          let msg = 'Successful, Login to continue';
+
+          // console.log(res);
           this.loading = false;
-          $.toast({
-            text: msg,
-            position: 'top-center',
-            icon: 'success',
-            loader: false,
-            allowToastClose: false,
-            showHideTransition: 'plain',
-            hideAfter: 2000
-          });
+          this.toastr.success(res.message);
           this.router.navigateByUrl('/login');
         }, err => {
+
+          // console.log(err);
           this.loading = false;
-          console.log(err);
           let msg = err.error.message;
-          $.toast({
-            text: msg,
-            position: 'top-center',
-            icon: 'error',
-            loader: false,
-            allowToastClose: false,
-            showHideTransition: 'plain',
-            hideAfter: 2000
-          });
+
+          this.toastr.error(msg)
         })
     }
 

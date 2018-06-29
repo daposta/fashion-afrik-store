@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { StoreService } from '../../services/store.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 declare var $: any;
 
@@ -21,7 +22,7 @@ export class StoreProfileComponent implements OnInit {
   loading: boolean;
   // user: string = this.userId;
 
-  constructor(fb: FormBuilder, private storeSrv: StoreService, private router: Router) {
+  constructor(fb: FormBuilder, private storeSrv: StoreService, private router: Router, private toastr: ToastrService) {
     this.createStoreForm = fb.group({
       'name': ['', Validators.required],
       'description': ['', Validators.required],
@@ -54,19 +55,20 @@ export class StoreProfileComponent implements OnInit {
 
       this.storeSrv.createStore(this.createStoreForm.value)
         .subscribe(res => {
-          // console.log(res);
+          console.log(res);
 
           this.loading = false;
           let msg = 'Store profile updated';
-          $.toast({
-            text: msg,
-            position: 'top-center',
-            icon: 'success',
-            loader: false,
-            allowToastClose: false,
-            showHideTransition: 'plain',
-            hideAfter: 2000
-          });
+          this.toastr.success(msg);
+          // $.toast({
+          //   text: msg,
+          //   position: 'top-center',
+          //   icon: 'success',
+          //   loader: false,
+          //   allowToastClose: false,
+          //   showHideTransition: 'plain',
+          //   hideAfter: 2000
+          // });
           localStorage.setItem('store', JSON.stringify(res));
           this.router.navigateByUrl('/');
         }, err => {
@@ -74,15 +76,16 @@ export class StoreProfileComponent implements OnInit {
 
           this.loading = false;
           let msg = 'Something went wrong, try again';
-          $.toast({
-            text: msg,
-            position: 'top-center',
-            icon: 'error',
-            loader: false,
-            allowToastClose: false,
-            showHideTransition: 'plain',
-            hideAfter: 2000
-          });
+          this.toastr.error(msg);
+          // $.toast({
+          //   text: msg,
+          //   position: 'top-center',
+          //   icon: 'error',
+          //   loader: false,
+          //   allowToastClose: false,
+          //   showHideTransition: 'plain',
+          //   hideAfter: 2000
+          // });
         });
     }
   }

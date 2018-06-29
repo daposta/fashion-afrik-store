@@ -26,7 +26,16 @@ export class UserService {
 
 	register(data: any): Observable<any> {
 
-		return this.http.post(this.registerUrl, data)
+		let formData = new FormData();
+		formData.append('first_name', data['first_name']);
+		formData.append('last_name', data['last_name']);
+		formData.append('password', data['password']);
+		formData.append('mobile', data['mobile']);
+		formData.append('email', data['email']);
+		formData.append('agreedToTerms', data['agreedToTerms']);
+		formData.append('is_store', 'true');
+
+		return this.http.post(this.registerUrl, formData)
 	}
 
 	getCurrentProfile(): Observable<any> {
